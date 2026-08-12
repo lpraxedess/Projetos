@@ -1,49 +1,57 @@
-# Laboratório — Cloud Security (Microsoft Azure)
+# Laboratório — Cloud Security
 
-Laboratório pessoal desenvolvido em Microsoft Azure para prática de Cloud Security, Identity and Access Management (IAM), controle de acesso e segurança de recursos em nuvem.
+Laboratório pessoal desenvolvido em Microsoft Azure para prática de Segurança da Informação, Cloud Security e Identity and Access Management (IAM).
 
 ## Objetivo
 
 Desenvolver experiência prática em Segurança da Informação, Microsoft Azure, Cloud Security e Identity and Access Management (IAM).
 
-## Tecnologias
-
-- Microsoft Azure
-- Microsoft Entra ID
-- RBAC
-- Virtual Machines
-- Virtual Networks (VNets)
-- Subnets
-- Network Security Groups (NSGs)
-- Windows Server
-- Linux
-
-## Ambiente
-
-### Resource Group
-
-A definir durante a implementação.
-
-### Identidade e Acesso
-
-A definir durante a implementação.
+## Arquitetura
 
 ### Rede
 
-A definir durante a implementação.
+| Recurso | Configuração |
+|---|---|
+| Resource Group | RG-CLOUD-SECURITY-LAB |
+| Região | Brazil South |
+| VNet | VNET-CLOUD-SECURITY |
+| Espaço de endereçamento | 10.10.0.0/16 |
 
-### Máquinas Virtuais
+### Sub-redes
 
-A definir durante a implementação.
+| Sub-rede | CIDR | Função |
+|---|---|---|
+| SNET-MANAGEMENT | 10.10.10.0/24 | Administração |
+| SNET-SECURITY | 10.10.20.0/24 | Segurança |
+| SNET-WORKLOAD | 10.10.30.0/24 | Cargas de trabalho |
 
-## Segurança
+### Network Security Groups
 
-Controles de segurança serão documentados conforme a implementação do laboratório.
+| NSG | Sub-rede | Função |
+|---|---|---|
+| NSG-MANAGEMENT | SNET-MANAGEMENT | Controle de acesso administrativo |
+| NSG-SECURITY | SNET-SECURITY | Controle de acesso aos recursos de segurança |
+| NSG-WORKLOAD | SNET-WORKLOAD | Controle de acesso às cargas de trabalho |
 
-## Evidências
+## Máquinas Virtuais
 
-Screenshots e registros técnicos serão adicionados conforme a evolução do laboratório.
+### JUMP-SERVER-01
 
-## Aprendizados
+- Sistema operacional: Windows Server 2025 Datacenter: Azure Edition
+- Tamanho: Standard D2als_v6
+- vCPUs: 2
+- Sub-rede: SNET-MANAGEMENT
+- IP privado: 10.10.10.4
+- NSG: NSG-MANAGEMENT
+- Função: Jump Server para administração dos recursos internos
 
-Os principais aprendizados serão registrados durante a implementação do laboratório.
+## Validação
+
+### JUMP-SERVER-01
+
+```text
+Hostname: JUMP-SERVER-01
+IPv4: 10.10.10.4
+Máscara: 255.255.255.0
+Gateway: 10.10.10.1
+Usuário: jump-server-01\labadmin
