@@ -1,55 +1,26 @@
 # Projetos
 
-Portfólio de estudos, laboratórios práticos e projetos técnicos em Segurança da Informação, Cybersecurity, Microsoft Azure, Cloud Security, IAM e infraestrutura.
+Portfólio de estudos, laboratórios práticos e projetos técnicos em Segurança da Informação, Cybersecurity, Cloud e Infraestrutura.
 
 ## Laboratórios
 
-### Microsoft Azure — Cloud Security & IAM
+### Laboratório — Cloud Security (Microsoft Azure)
 
-Laboratório pessoal desenvolvido em Microsoft Azure para prática de Identity and Access Management (IAM), controle de acesso e segurança em ambientes de nuvem.
-
-**Tecnologias e conceitos:**
-
-- Microsoft Azure
-- Microsoft Entra ID
-- RBAC
-- Virtual Machines
-- VNets
-- Subnets
-- Network Security Groups (NSGs)
-- Windows Server
-- Linux
-- Hardening
+Laboratório pessoal focado em Cloud Security, Identity and Access Management (IAM), Microsoft Entra ID, RBAC e segurança de recursos Azure.
 
 [Ver laboratório →](./laboratorio-cloudsecurity/)
 
+## Objetivo
+
+Desenvolver experiência prática em Segurança da Informação, Microsoft Azure, Cloud Security e Identity and Access Management (IAM).
 ---
 
-### SOC — Wazuh, Suricata & Active Directory
+### Laboratório — On-Premises 
 
-Laboratório pessoal desenvolvido para simular uma infraestrutura corporativa e praticar monitoramento, detecção de ameaças, gestão de identidades, hardening e resposta a incidentes.
-
-**Tecnologias e conceitos:**
-
-- Wazuh
-- SIEM
-- Suricata
-- IDS/IPS
-- Active Directory
-- Windows Server
-- GPO
-- DNS
-- DHCP
-- WSUS
-- Linux
-- Hardening
+Laboratório pessoal focado em Segurança da Informação, SOC, Blue Team, SIEM, monitoramento, Active Directory, IDS/IPS e hardening.
 
 [Ver laboratório →](./laboratorio-onpremises/)
 
-## Estudos
+## Objetivo
 
-Conteúdos de estudo e documentação técnica serão adicionados conforme a evolução dos projetos.
-
-## Objetivo profissional
-
-Desenvolver experiência prática em Segurança da Informação, SOC/Blue Team e Microsoft Azure, direcionando minha evolução profissional para Cloud Security e, posteriormente, especialização em Identity and Access Management (IAM).
+Desenvolver experiência prática em Segurança da Informação, SIEM, monitoramento, detecção e resposta a incidentes, Active Directory, GPO e hardening em ambiente On-Premises.
