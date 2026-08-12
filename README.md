@@ -8,7 +8,7 @@ Repositório dedicado ao meu registro de aprendizado contínuo, laboratórios pr
 ## 🎯 Objetivos Atuais
 - [ ] Domínio avançado em Segurança da Informação
 - [ ] Aprofundamento em Infraestrutura e Automação
-- [ ] Certificações técnicas em andamento
+- [ ] Certificações técnicas em andamento (sc 900 e Az 900)
 
 ## 📂 Organização do Repositório
 | Categoria | Descrição |
