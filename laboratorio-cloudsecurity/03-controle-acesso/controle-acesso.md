@@ -12,8 +12,7 @@ Atualmente, a assinatura possui três atribuições com a função `Owner`.
 
 | Identidade | Função | Escopo |
 |---|---|---|
-| `Luiz Henrique Praxedes da Silva` | Owner | Assinatura |
-| `Luiz Henrique Praxedes da Silva` | Owner | Assinatura |
+| `Luiz Praxedes` | Owner | Assinatura |
 | `luiz.azure.admin` | Owner | Assinatura |
 
 > O ambiente ainda está em fase de evolução. A configuração atual possui privilégios elevados para permitir a construção do laboratório. A redução desses privilégios será realizada nas próximas etapas, utilizando funções específicas e escopos mais restritos.
