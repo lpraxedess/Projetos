@@ -55,10 +55,10 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 | Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
 | Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
 | Evidências | Em atualização | [Ver evidências →](./04-evidencias/) |
-| Microsoft Entra ID | Próximo | — |
-| RBAC | Planejado | — |
-| Hardening | Planejado | — |
-| Monitoramento | Planejado | — |
+| Microsoft Entra ID | Concluído | — |
+| RBAC | Planejado | Próximo |
+| Hardening | Planejado | Próximo |
+| Monitoramento | Planejado | Próximo |
 
 ---
 
