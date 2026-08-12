@@ -1,21 +1,55 @@
 # Projetos
-Registro diário de estudos, projetos e evolução técnica.
 
-# 🚀 Meus Estudos e Evolução Técnica
+Portfólio de estudos, laboratórios práticos e projetos técnicos em Segurança da Informação, Cybersecurity, Microsoft Azure, Cloud Security, IAM e infraestrutura.
 
-Repositório dedicado ao meu registro de aprendizado contínuo, laboratórios práticos e desenvolvimento de carreira.
+## Laboratórios
 
-## 🎯 Objetivos Atuais
-- [ ] Domínio avançado em Segurança da Informação
-- [ ] Aprofundamento em Infraestrutura e Automação
-- [ ] Certificações técnicas em andamento (SC-900 e AZ-900)
+### Microsoft Azure — Cloud Security & IAM
 
-## 📂 Organização do Repositório
-| Categoria | Descrição |
-| :--- | :--- |
-| **[Cybersecurity](./cybersecurity/)** | Anotações de laboratórios |
-| **[Programação](./programacao/)** | Códigos, scripts e projetos práticos |
-| **[Certificados](./certificados/)** | Comprovantes de conclusão de cursos |
+Laboratório pessoal desenvolvido em Microsoft Azure para prática de Identity and Access Management (IAM), controle de acesso e segurança em ambientes de nuvem.
 
-## 📊 Progresso Recente
-* **[Data]**: Conclusão do módulo X / Laboratório Y.
+**Tecnologias e conceitos:**
+
+- Microsoft Azure
+- Microsoft Entra ID
+- RBAC
+- Virtual Machines
+- VNets
+- Subnets
+- Network Security Groups (NSGs)
+- Windows Server
+- Linux
+- Hardening
+
+[Ver laboratório →](./laboratorio-cloudsecurity/)
+
+---
+
+### SOC — Wazuh, Suricata & Active Directory
+
+Laboratório pessoal desenvolvido para simular uma infraestrutura corporativa e praticar monitoramento, detecção de ameaças, gestão de identidades, hardening e resposta a incidentes.
+
+**Tecnologias e conceitos:**
+
+- Wazuh
+- SIEM
+- Suricata
+- IDS/IPS
+- Active Directory
+- Windows Server
+- GPO
+- DNS
+- DHCP
+- WSUS
+- Linux
+- Hardening
+
+[Ver laboratório →](./laboratorio-onpremises/)
+
+## Estudos
+
+Conteúdos de estudo e documentação técnica serão adicionados conforme a evolução dos projetos.
+
+## Objetivo profissional
+
+Desenvolver experiência prática em Segurança da Informação, SOC/Blue Team e Microsoft Azure, direcionando minha evolução profissional para Cloud Security e, posteriormente, especialização em Identity and Access Management (IAM).
