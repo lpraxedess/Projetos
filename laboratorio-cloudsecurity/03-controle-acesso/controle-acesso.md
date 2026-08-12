@@ -136,3 +136,5 @@ Controle de acesso
 A próxima evolução será implementar MFA para as identidades administrativas do ambiente, adicionando uma camada de proteção além das credenciais.
 
 Após a validação do MFA, o laboratório avançará para controles de privilégio e administração just-in-time com PIM.
+
+[Retornar ao Laboratório →](../README.md)
