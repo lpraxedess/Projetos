@@ -1,56 +1,86 @@
 # Controle de Acesso — Cloud Security Lab
 
+## Objetivo
+
+Evoluir progressivamente os controles de acesso do ambiente, começando pelos controles de rede e avançando para controles de identidade, autenticação e autorização.
+
+---
+
+## Evolução do Controle de Acesso
+
+### Etapa 01 — Controle de acesso pela rede
+
+Na primeira etapa, o controle de acesso administrativo foi implementado principalmente através dos Network Security Groups (NSGs).
+
+O acesso ao ambiente foi segmentado por subnet, permitindo:
+
+- RDP externo somente para o ambiente de gerenciamento;
+- RDP interno entre `SNET-MANAGEMENT` e `SNET-SECURITY`;
+- ausência de acesso administrativo direto da Internet ao servidor de segurança.
+
+Essa etapa estabeleceu o controle de acesso no nível de rede.
+
+![NSGs do ambiente](../04-evidencias/controle-acesso/nsg-cloud-security.png)
+
+---
+
+### Etapa 02 — Controle de acesso baseado em identidade
+
+Com a estrutura de rede estabelecida, o próximo nível de controle passou a ser a identidade.
+
+Foram criadas contas com finalidades diferentes no Microsoft Entra ID:
+
+- `luiz.admin` — administração de identidade;
+- `luiz.azure.admin` — administração do Azure;
+- `luiz.azure.reader` — acesso de leitura;
+- `lab.breakglass01` — conta de emergência;
+- `lab.breakglass02` — conta de emergência.
+
+![Identidades do Microsoft Entra ID](../04-evidencias/controle-acesso/identidades-entra.png)
+
+---
+
+### Etapa 03 — Evolução para Azure RBAC
+
+A próxima evolução é substituir o uso amplo da função `Owner` por funções específicas de acordo com a necessidade de cada identidade.
+
+O objetivo é aplicar o princípio do menor privilégio e reduzir permissões administrativas permanentes.
+
+![IAM da assinatura](../04-evidencias/controle-acesso/iam-assinatura.png)
+
+---
+
+## Modelo de Evolução
+
+Controle de acesso
+       │
+       ├── 01. Rede
+       │      └── NSGs
+       │
+       ├── 02. Identidade
+       │      └── Microsoft Entra ID
+       │
+       ├── 03. Autorização
+       │      └── Azure RBAC
+       │
+       ├── 04. Autenticação
+       │      └── MFA
+       │
+       └── 05. Privilégios
+              └── PIM / menor privilégio
+
 ## Estado Atual
 
-O controle de acesso do ambiente Azure utiliza Microsoft Entra ID e Azure RBAC.
-
-As permissões são aplicadas em diferentes níveis de escopo, permitindo evoluir posteriormente para o princípio do menor privilégio.
-
-## Azure RBAC
-
-Atualmente, a assinatura possui três atribuições com a função `Owner`.
-
-| Identidade | Função | Escopo |
-|---|---|---|
-| `Luiz Praxedes` | Owner | Assinatura |
-| `luiz.azure.admin` | Owner | Assinatura |
-
-> O ambiente ainda está em fase de evolução. A configuração atual possui privilégios elevados para permitir a construção do laboratório. A redução desses privilégios será realizada nas próximas etapas, utilizando funções específicas e escopos mais restritos.
-
-## Microsoft Entra ID
-
-O ambiente possui identidades administrativas e contas destinadas a contingência:
-
-| Identidade | Finalidade |
+| Controle | Estado |
 |---|---|
-| `luiz.admin` | Administração do Microsoft Entra ID |
-| `luiz.azure.admin` | Administração dos recursos Azure |
-| `luiz.azure.reader` | Acesso somente leitura |
-| `lab.breakglass01` | Conta de contingência |
-| `lab.breakglass02` | Conta de contingência |
+| Segmentação de rede | Implementado |
+| NSGs | Implementado |
+| Microsoft Entra ID | Implementado |
+| Separação de identidades | Implementado |
+| Azure RBAC | Em evolução |
+| MFA | Próxima etapa |
+| PIM | Planejado |
 
-As contas `lab.breakglass01` e `lab.breakglass02` serão utilizadas como contas de emergência e deverão permanecer protegidas e com uso restrito.
+## Próxima Etapa
 
-## Próxima Evolução
-
-A próxima etapa será reduzir a dependência da função `Owner` e implementar um modelo de acesso baseado em menor privilégio.
-
-Serão avaliados:
-
-- Azure RBAC
-- Microsoft Entra ID
-- MFA
-- Microsoft Entra Privileged Identity Management (PIM)
-- Separação entre contas administrativas e contas de uso diário
-- Contas de emergência (*break glass*)
-- Escopos específicos para cada função
-
-## Evidência
-
-A evidência do estado atual do RBAC está armazenada em:
-
-`04-evidencias/controle-acesso/`
-
-![IAM da assinatura Azure](../04-evidencias/controle-acesso/iam-assinatura.png)
-
-![IAM do Resource Group](../04-evidencias/controle-acesso/iam-resource-group.png)
+A próxima evolução será revisar as atribuições atuais de `Owner` e implementar Azure RBAC com permissões mais específicas e escopo reduzido.
