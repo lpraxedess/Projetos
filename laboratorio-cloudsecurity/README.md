@@ -4,24 +4,24 @@ Laboratório prático desenvolvido em Microsoft Azure com foco em Cloud Security
 
 ## Arquitetura
 
-Descrição da arquitetura do ambiente.
+Estrutura geral do ambiente, organização dos recursos e componentes da infraestrutura.
 
-[Ver arquitetura →](./rede.md)
+[Ver arquitetura →](./01-arquitetura/arquitetura.md)
+
+## Rede
+
+Configuração da VNet, sub-redes, segmentação de rede e Network Security Groups (NSGs).
+
+[Ver rede →](./02-rede/rede.md)
 
 ## Controle de Acesso
 
-Configuração de Jump Server, NSGs, RBAC e Microsoft Entra ID.
+Configuração do Jump Server e controles de acesso à infraestrutura.
 
-[Ver controle de acesso →](./controle-de-acesso.md)
+[Ver controle de acesso →](./03-controle-acesso/controle-acesso.md)
 
-## Segurança
+## Evidências
 
-Configurações de segurança, hardening e proteção dos recursos.
+Registros visuais das configurações e validações realizadas durante a implementação do laboratório.
 
-[Ver segurança →](./seguranca.md)
-
-## Monitoramento
-
-Monitoramento, logs e detecção de eventos.
-
-[Ver monitoramento →](./monitoramento.md)
+[Ver evidências →](./04-evidencias/)
