@@ -35,3 +35,5 @@ Cada subnet possui um Network Security Group dedicado:
 - `NSG-WORKLOAD`
 
 Os NSGs serão utilizados para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos.
+
+[Retornar ao Laboratório →](./laboratory-cloudsecurity/README.md)
