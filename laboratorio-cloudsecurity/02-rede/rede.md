@@ -18,3 +18,5 @@ A infraestrutura utiliza uma Virtual Network dedicada ao laboratório, com o esp
 - `NSG-WORKLOAD`
 
 ![VNet Cloud Security](../04-evidencias/vnet-cloud-security.png)
+
+![VNet Cloud Security](../04-evidencias/subnet-cloud-security.png)
