@@ -66,6 +66,24 @@ O objetivo é aplicar progressivamente o princípio do menor privilégio, conced
 A configuração atual ainda possui permissões administrativas amplas que serão revisadas nas próximas etapas.
 
 ---
+### Etapa 04 — Redução do privilégio administrativo
+
+Após validar a atribuição de `Contributor` no `RG-CLOUD-SECURITY-LAB`, a atribuição de `Owner` que existia diretamente na assinatura foi removida da identidade `luiz.azure.admin`.
+
+A conta permanece com capacidade administrativa sobre os recursos necessários ao laboratório, porém o escopo foi reduzido para o grupo de recursos.
+
+Essa alteração reduz o impacto potencial de uma utilização indevida da conta e aproxima o ambiente do princípio do menor privilégio.
+
+![RBAC administrativo — escopo do Resource Group](../04-evidencias/controle-acesso/rbac-admin-final.png)
+
+Estado anterior:
+
+`luiz.azure.admin → Owner → Azure subscription 1`
+
+Estado atual:
+
+`luiz.azure.admin → Contributor → RG-CLOUD-SECURITY-LAB`
+
 ### Matriz de Acesso
 
 A definição das permissões será baseada na função de cada identidade e no princípio do menor privilégio.
@@ -83,7 +101,7 @@ O objetivo é evitar a utilização de permissões administrativas mais amplas d
 As atribuições serão aplicadas preferencialmente no menor escopo possível, reduzindo a superfície de privilégio do ambiente.
 
 ## Modelo de Evolução
-
+```text
 Controle de acesso
        │
        ├── 01. Rede
@@ -100,7 +118,7 @@ Controle de acesso
        │
        └── 05. Privilégios
               └── PIM / menor privilégio
-
+```
 ## Estado Atual
 
 | Controle | Estado |
