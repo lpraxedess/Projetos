@@ -36,4 +36,4 @@ Cada subnet possui um Network Security Group dedicado:
 
 Os NSGs serão utilizados para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos.
 
-[Retornar ao Laboratório →](./laboratorio-cloudsecurity/README.md)
+[Retornar ao Laboratório →](../README.md)
