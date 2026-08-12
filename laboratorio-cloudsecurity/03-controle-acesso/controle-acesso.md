@@ -2,55 +2,56 @@
 
 ## Estado Atual
 
-O controle de acesso da infraestrutura utiliza Network Security Groups (NSGs) associados aos ambientes de gerenciamento, segurança e workloads.
+O controle de acesso do ambiente Azure utiliza Microsoft Entra ID e Azure RBAC.
 
-Os NSGs foram criados de acordo com a segmentação da rede e serão utilizados para controlar o tráfego entre os diferentes ambientes.
+As permissões são aplicadas em diferentes níveis de escopo, permitindo evoluir posteriormente para o princípio do menor privilégio.
 
-## NSGs Implementados
+## Azure RBAC
 
-| NSG | Subnet | Função |
+Atualmente, a assinatura possui três atribuições com a função `Owner`.
+
+| Identidade | Função | Escopo |
 |---|---|---|
-| `NSG-MANAGEMENT` | `SNET-MANAGEMENT` | Controle do ambiente de administração |
-| `NSG-SECURITY` | `SNET-SECURITY` | Controle dos servidores de segurança |
-| `NSG-WORKLOAD` | `SNET-WORKLOAD` | Controle dos workloads futuros |
+| `Luiz Henrique Praxedes da Silva` | Owner | Assinatura |
+| `Luiz Henrique Praxedes da Silva` | Owner | Assinatura |
+| `luiz.azure.admin` | Owner | Assinatura |
 
-## Arquitetura de Acesso
+> O ambiente ainda está em fase de evolução. A configuração atual possui privilégios elevados para permitir a construção do laboratório. A redução desses privilégios será realizada nas próximas etapas, utilizando funções específicas e escopos mais restritos.
 
-O modelo de administração utilizado no laboratório segue o fluxo:
+## Microsoft Entra ID
 
-    Máquina Administrativa
-            |
-            | RDP
-            v
-    JUMP-SERVER-01
-    10.10.10.4
-            |
-            | RDP
-            v
-    SECURITY-SERVER-01
-    10.10.20.4
+O ambiente possui identidades administrativas e contas destinadas a contingência:
 
-O `SECURITY-SERVER-01` não possui IP público.
+| Identidade | Finalidade |
+|---|---|
+| `luiz.admin` | Administração do Microsoft Entra ID |
+| `luiz.azure.admin` | Administração dos recursos Azure |
+| `luiz.azure.reader` | Acesso somente leitura |
+| `lab.breakglass01` | Conta de contingência |
+| `lab.breakglass02` | Conta de contingência |
 
-O acesso administrativo ao servidor interno ocorre através do `JUMP-SERVER-01`.
+As contas `lab.breakglass01` e `lab.breakglass02` serão utilizadas como contas de emergência e deverão permanecer protegidas e com uso restrito.
+
+## Próxima Evolução
+
+A próxima etapa será reduzir a dependência da função `Owner` e implementar um modelo de acesso baseado em menor privilégio.
+
+Serão avaliados:
+
+- Azure RBAC
+- Microsoft Entra ID
+- MFA
+- Microsoft Entra Privileged Identity Management (PIM)
+- Separação entre contas administrativas e contas de uso diário
+- Contas de emergência (*break glass*)
+- Escopos específicos para cada função
 
 ## Evidência
 
-Abaixo está a evidência dos Network Security Groups criados no ambiente do laboratório.
+A evidência do estado atual do RBAC está armazenada em:
 
-![Network Security Groups — Cloud Security Lab](../04-evidencias/controle-acesso/nsg-cloud-security.png)
+`04-evidencias/controle-acesso/`
 
-## Status
+![IAM da assinatura Azure](../04-evidencias/controle-acesso/iam-assinatura.png)
 
-Controle de acesso inicial implementado.
-
-### Próximas evoluções
-
-- Microsoft Entra ID
-- RBAC
-- MFA
-- Princípio do menor privilégio
-- Hardening
-- Monitoramento e auditoria
-
-[Retornar ao Laboratório →](../README.md)
+![IAM do Resource Group](../04-evidencias/controle-acesso/iam-resource-group.png)
