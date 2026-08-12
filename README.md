@@ -1,10 +1,10 @@
-# 🧪 Laboratórios de Cibersegurança
+#  Laboratórios de Cibersegurança
 
 Ambientes práticos desenvolvidos para aplicar e demonstrar competências em Cloud Security, segurança corporativa, infraestrutura, monitoramento e defesa.
 
 ---
 
-## ☁️ 1. Cloud Security — Microsoft Azure
+##  1. Cloud Security — Microsoft Azure
 
 > Ambiente de Cloud Security construído de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança.
 
@@ -16,7 +16,7 @@ Ambientes práticos desenvolvidos para aplicar e demonstrar competências em Clo
 
 ---
 
-## 🏢 2. On-Premises — Segurança & Blue Team
+##  2. On-Premises — Segurança & Blue Team
 
 > Ambiente corporativo local desenvolvido com foco em monitoramento, detecção de ameaças, análise de eventos e resposta a incidentes.
 
