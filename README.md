@@ -1,29 +1,26 @@
-# Projetos
+# 🧪 Laboratórios de Cibersegurança
 
-Portfólio de estudos, laboratórios práticos e projetos técnicos em Segurança da Informação, Cybersecurity, Cloud e Infraestrutura.
+Ambientes práticos desenvolvidos para aplicar e demonstrar competências em Cloud Security, segurança corporativa, infraestrutura, monitoramento e defesa.
 
 ---
 
-## Laboratórios
+## ☁️ 1. Cloud Security — Microsoft Azure
 
-### Laboratório — Cloud Security (Microsoft Azure)
+> Ambiente de Cloud Security construído de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança.
 
-Laboratório pessoal focado em Cloud Security, Identity and Access Management (IAM), Microsoft Entra ID, RBAC e segurança de recursos Azure.
-
-**Objetivo**
-
-Desenvolver experiência prática em Segurança da Informação, Microsoft Azure, Cloud Security e Identity and Access Management (IAM).
+- **Foco:** Cloud Security, IAM, controle de acesso, segmentação e hardening.
+- **Stack:** Microsoft Azure, VNet, NSGs, Windows Server e Jump Server.
+- **Referências:** conceitos e controles relacionados a ISO 27001 e PCI DSS.
 
 [Ver laboratório →](./laboratorio-cloudsecurity/)
 
 ---
 
-### Laboratório — On-Premises
+## 🏢 2. On-Premises — Segurança & Blue Team
 
-Laboratório pessoal focado em Segurança da Informação, SOC, Blue Team, SIEM, monitoramento, Active Directory, IDS/IPS e hardening.
+> Ambiente corporativo local desenvolvido com foco em monitoramento, detecção de ameaças, análise de eventos e resposta a incidentes.
 
-**Objetivo**
-
-Desenvolver experiência prática em Segurança da Informação, SIEM, monitoramento, detecção e resposta a incidentes, Active Directory, GPO e hardening em ambiente On-Premises.
+- **Foco:** Blue Team, SOC, SIEM, monitoramento, detecção e análise de logs.
+- **Stack:** Wazuh, Graylog, TheHive, Active Directory e Sysmon.
 
 [Ver laboratório →](./laboratorio-onpremises/)
