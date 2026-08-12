@@ -52,3 +52,5 @@ Controle de acesso inicial implementado.
 - Princípio do menor privilégio
 - Hardening
 - Monitoramento e auditoria
+
+[Retornar ao Laboratório →](../README.md)
