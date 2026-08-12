@@ -42,11 +42,28 @@ Foram criadas contas com finalidades diferentes no Microsoft Entra ID:
 
 ### Etapa 03 — Evolução para Azure RBAC
 
-A próxima evolução é substituir o uso amplo da função `Owner` por funções específicas de acordo com a necessidade de cada identidade.
+Após estabelecer os controles de acesso no nível de rede e estruturar as identidades no Microsoft Entra ID, o controle de acesso passou a ser tratado também no nível de autorização dos recursos Azure.
 
-O objetivo é aplicar o princípio do menor privilégio e reduzir permissões administrativas permanentes.
+Como primeiro passo, a identidade `luiz.azure.reader` recebeu a função `Leitor` no escopo do `RG-CLOUD-SECURITY-LAB`.
 
-![IAM da assinatura](../04-evidencias/controle-acesso/iam-assinatura.png)
+A atribuição foi realizada no nível do grupo de recursos, evitando conceder permissões de leitura em toda a assinatura.
+
+![Azure RBAC — Reader no Resource Group](../04-evidencias/controle-acesso/rbac-reader-resource-group.png)
+
+Essa alteração representa a evolução de um modelo baseado em permissões amplas para um modelo baseado em função e escopo.
+
+O objetivo é aplicar progressivamente o princípio do menor privilégio, concedendo a cada identidade somente as permissões necessárias para sua finalidade.
+
+### Estado atual do RBAC
+
+| Identidade | Função | Escopo | Estado |
+|---|---|---|---|
+| `luiz.azure.reader` | Leitor | `RG-CLOUD-SECURITY-LAB` | Implementado |
+| `luiz.azure.admin` | Proprietário | Assinatura | Em revisão |
+| `lab.breakglass01` | Administrador Global | Entra ID | Mantido para emergência |
+| `lab.breakglass02` | Administrador Global | Entra ID | Mantido para emergência |
+
+A configuração atual ainda possui permissões administrativas amplas que serão revisadas nas próximas etapas.
 
 ---
 ### Matriz de Acesso
