@@ -2,63 +2,53 @@
 
 ## Estado Atual
 
-O controle de acesso da infraestrutura é realizado através de Network Security Groups (NSGs), associados às subnets de acordo com sua função.
+O controle de acesso da infraestrutura utiliza Network Security Groups (NSGs) associados aos ambientes de gerenciamento, segurança e workloads.
 
-O objetivo é limitar a exposição dos servidores e permitir somente os fluxos necessários para administração.
+Os NSGs foram criados de acordo com a segmentação da rede e serão utilizados para controlar o tráfego entre os diferentes ambientes.
 
 ## NSGs Implementados
 
 | NSG | Subnet | Função |
 |---|---|---|
-| `NSG-MANAGEMENT` | `SNET-MANAGEMENT` | Controle do acesso administrativo |
-| `NSG-SECURITY` | `SNET-SECURITY` | Proteção dos servidores de segurança |
+| `NSG-MANAGEMENT` | `SNET-MANAGEMENT` | Controle do ambiente de administração |
+| `NSG-SECURITY` | `SNET-SECURITY` | Controle dos servidores de segurança |
 | `NSG-WORKLOAD` | `SNET-WORKLOAD` | Controle dos workloads futuros |
 
----
+## Arquitetura de Acesso
 
-## NSG-MANAGEMENT
+O modelo de administração utilizado no laboratório segue o fluxo:
 
-O `NSG-MANAGEMENT` controla o acesso à subnet de gerenciamento.
+    Máquina Administrativa
+            |
+            | RDP
+            v
+    JUMP-SERVER-01
+    10.10.10.4
+            |
+            | RDP
+            v
+    SECURITY-SERVER-01
+    10.10.20.4
 
-### Regra administrativa
+O `SECURITY-SERVER-01` não possui IP público.
 
-Foi configurada uma regra de entrada permitindo RDP:
+O acesso administrativo ao servidor interno ocorre através do `JUMP-SERVER-01`.
 
-| Regra | Porta | Protocolo | Origem | Ação |
-|---|---:|---|---|---|
-| `Allow-RDP-Admin` | `3389` | TCP | IP administrativo autorizado | Allow |
+## Evidência
 
-O acesso RDP externo é restrito à origem administrativa autorizada.
+Abaixo está a evidência dos Network Security Groups criados no ambiente do laboratório.
 
-As demais conexões de entrada são bloqueadas pela regra padrão `DenyAllInBound`.
+![Network Security Groups — Cloud Security Lab](../04-evidencias/controle-acesso/nsg-cloud-security.png)
 
----
+## Status
 
-## NSG-SECURITY
+Controle de acesso inicial implementado.
 
-O `NSG-SECURITY` controla o acesso à subnet onde está localizado o `SECURITY-SERVER-01`.
+### Próximas evoluções
 
-### Regra administrativa
-
-O acesso RDP é permitido somente a partir da subnet de gerenciamento:
-
-| Regra | Porta | Protocolo | Origem | Ação |
-|---|---:|---|---|---|
-| `Allow-RDP-From-Management` | `3389` | TCP | `10.10.10.0/24` | Allow |
-
-Dessa forma, o `SECURITY-SERVER-01` não precisa aceitar conexões RDP diretamente da Internet.
-
-O fluxo administrativo utilizado é:
-
-```text
-Máquina Administrativa
-        |
-        | RDP
-        v
-JUMP-SERVER-01
-10.10.10.4
-        |
-        | RDP
-        v
-SECURITY-SERVER-01
-10.10.20.4
+- Microsoft Entra ID
+- RBAC
+- MFA
+- Princípio do menor privilégio
+- Hardening
+- Monitoramento e auditoria
