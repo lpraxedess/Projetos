@@ -1,47 +1,113 @@
-# Laboratório — Cloud Security
+# Cloud Security Lab — Microsoft Azure
 
-Laboratório prático desenvolvido em Microsoft Azure com foco em Cloud Security, IAM, controle de acesso, segmentação de rede e hardening.
+> Laboratório prático de Cloud Security desenvolvido de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança.
 
-O projeto está sendo construído de forma incremental. A ideia é registrar não apenas o resultado final, mas também como a infraestrutura foi planejada, quais decisões foram tomadas, quais problemas surgiram e como foram resolvidos.
+---
 
-## Objetivo
+## Visão Geral
 
-Construir um ambiente de laboratório que permita praticar, de forma próxima a um cenário real, conceitos de Segurança da Informação, Microsoft Azure, Cloud Security e Identity and Access Management (IAM).
+Este projeto documenta a construção de um ambiente de Cloud Security no Microsoft Azure.
 
-## Arquitetura
+O laboratório está sendo desenvolvido passo a passo. Cada etapa registra o estado atual do ambiente, as decisões tomadas, os ajustes realizados e as validações executadas.
 
-O ambiente utiliza uma Virtual Network dedicada, com o espaço de endereçamento `10.10.0.0/16`.
+A ideia é permitir acompanhar não apenas o resultado final, mas também a evolução da infraestrutura ao longo do projeto.
 
-A rede foi dividida em três sub-redes, cada uma com uma finalidade específica:
+---
+
+## Arquitetura Atual
+
+```text
+[ Maquina Administrativa ]
+         │
+         │ RDP (Restricted Source IP / NSG)
+         ▼
+┌────────────────────────────────────────────────────────────────┐
+│ VNET-CLOUD-SECURITY (10.10.0.0/16)                             │
+│                                                                │
+│   ┌────────────────────────────────────────────────────────┐   │
+│   │ SNET-MANAGEMENT (10.10.10.0/24)                        │   │
+│   │ └── JUMP-SERVER-01 (10.10.10.4) [Public IP]            │   │
+│   └───────────────────────────┬────────────────────────────┘   │
+│                               │                                │
+│                               │ Internal RDP (Enforced by NSG) │
+│                               ▼                                │
+│   ┌────────────────────────────────────────────────────────┐   │
+│   │ SNET-SECURITY (10.10.20.0/24)                          │   │
+│   │ └── SECURITY-SERVER-01 (10.10.20.4) [No Public IP]     │   │
+│   └────────────────────────────────────────────────────────┘   │
+│                                                                │
+│   ┌────────────────────────────────────────────────────────┐   │
+│   │ SNET-WORKLOAD (10.10.30.0/24)                          │   │
+│   │ └── [Reserved for Future Workloads]                    │   │
+│   └────────────────────────────────────────────────────────┘   │
+└────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Estado do Projeto
+
+| Área | Status | Acompanhar |
+|---|---|---|
+| Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
+| Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
+| Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
+| Evidências | Em atualização | [Ver evidências →](./04-evidencias/) |
+| Microsoft Entra ID | Próximo | — |
+| RBAC | Planejado | — |
+| Hardening | Planejado | — |
+| Monitoramento | Planejado | — |
+| SIEM / Wazuh | Planejado | — |
+
+---
+
+## O que já foi construído
+
+### Rede
+
+A infraestrutura foi criada utilizando uma VNet dedicada:
+
+`VNET-CLOUD-SECURITY — 10.10.0.0/16`
+
+Com três sub-redes:
 
 - `SNET-MANAGEMENT` — `10.10.10.0/24`
 - `SNET-SECURITY` — `10.10.20.0/24`
 - `SNET-WORKLOAD` — `10.10.30.0/24`
 
-A separação permite manter a administração, os componentes de segurança e os workloads em segmentos diferentes.
+[Ver evolução da rede →](./02-rede/rede.md)
 
-## Implementação
+### Controle de acesso
 
-### 1. Estrutura de rede
-
-Foi criada a `VNET-CLOUD-SECURITY` e as sub-redes foram associadas a Network Security Groups próprios:
+Foram criados NSGs específicos para cada subnet:
 
 - `NSG-MANAGEMENT`
 - `NSG-SECURITY`
 - `NSG-WORKLOAD`
 
-Desde o início, a comunicação entre os segmentos foi pensada de acordo com a função de cada rede, evitando liberar acesso desnecessário.
+Também foi implementado o `JUMP-SERVER-01` como ponto central de administração.
 
-### 2. Jump Server
+[Ver evolução do controle de acesso →](./03-controle-acesso/controle-acesso.md)
 
-O `JUMP-SERVER-01` foi criado na `SNET-MANAGEMENT`.
+### Servidores
 
-Ele possui um IP público e funciona como ponto de entrada para a administração dos recursos privados do laboratório.
+O ambiente atualmente possui:
 
-O fluxo de acesso é:
+- `JUMP-SERVER-01` — `10.10.10.4`
+- `SECURITY-SERVER-01` — `10.10.20.4`
+
+O Security Server não possui IP público.
+
+O acesso administrativo foi validado através do Jump Server.
+
+---
+
+## Validação Atual
+
+O fluxo administrativo validado foi:
 
 ```text
-Máquina administrativa
+Máquina Administrativa
         |
         | RDP
         v
@@ -54,77 +120,37 @@ SECURITY-SERVER-01
 10.10.20.4
 ```
 
-Dessa forma, os servidores internos não precisam ficar diretamente expostos à Internet.
+O acesso ao servidor interno não é realizado diretamente pela Internet.
 
-### 3. Security Server
+[Ver evidências →](./04-evidencias/)
 
-O `SECURITY-SERVER-01` foi criado na `SNET-SECURITY`.
+---
 
-Seu endereço é `10.10.20.4` e a máquina não possui IP público.
+## Próxima Etapa
 
-O acesso administrativo foi realizado através do `JUMP-SERVER-01`, validando na prática o modelo de administração centralizada por Jump Server.
+### Microsoft Entra ID
 
-### 4. Controle de acesso
-
-O tráfego entre as sub-redes é controlado pelos Network Security Groups.
-
-O modelo adotado até aqui é:
-
-```text
-Acesso administrativo
-        |
-        v
-Jump Server
-        |
-        v
-Recursos privados
-```
-
-Em vez de permitir que cada servidor interno seja acessado diretamente pela Internet, o acesso administrativo passa primeiro pelo ambiente de gerenciamento.
-
-## O que já foi validado
-
-- VNet criada e organizada por função.
-- Sub-redes de Management, Security e Workload implementadas.
-- NSGs criados e associados às respectivas sub-redes.
-- Jump Server implementado.
-- Security Server implementado sem IP público.
-- Acesso RDP ao Jump Server validado.
-- Acesso RDP do Jump Server para o Security Server validado.
-- Comunicação entre os segmentos validada de acordo com as regras configuradas.
-
-## Decisões de segurança
-
-Durante a construção do laboratório, algumas decisões foram tomadas para aproximar o ambiente de uma infraestrutura corporativa:
-
-- Separação da rede por função.
-- Controle de tráfego utilizando NSGs.
-- Administração centralizada através de Jump Server.
-- Servidores internos sem exposição pública.
-- Restrição do acesso administrativo à rede de gerenciamento.
-- Uso do menor nível de exposição possível para os recursos internos.
-
-## Evolução do projeto
-
-O laboratório ainda está em construção.
-
-As próximas etapas serão adicionadas conforme forem implementadas e validadas, incluindo:
+A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
 
 - Microsoft Entra ID
 - RBAC
-- Hardening dos servidores
-- Monitoramento
-- Logs e auditoria
-- Detecção de eventos de segurança
-- Controles adicionais de Cloud Security
+- MFA
+- Princípio do menor privilégio
+- Controles de acesso administrativos
 
-A intenção é que este README acompanhe a evolução do laboratório e permita entender rapidamente o estado atual do ambiente sem precisar consultar cada arquivo individualmente.
+---
 
 ## Documentação
 
-Os detalhes técnicos e as evidências das implementações estão organizados nas seguintes seções:
+| Área | Conteúdo |
+|---|---|
+| [Arquitetura](./01-arquitetura/arquitetura.md) | Estrutura e decisões arquiteturais |
+| [Rede](./02-rede/rede.md) | VNet, subnets, endereçamento e evolução da rede |
+| [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | NSGs, Jump Server e fluxo administrativo |
+| [Evidências](./04-evidencias/) | Evidências e validações realizadas |
 
-- [Arquitetura](./01-arquitetura/arquitetura.md)
-- [Rede](./02-rede/rede.md)
-- [Controle de Acesso](./03-controle-acesso/controle-acesso.md)
-- [Evidências](./04-evidencias/)
+---
+
+## Stack
+
+`Microsoft Azure` · `Virtual Network` · `Network Security Groups` · `Windows Server 2025` · `Microsoft Entra ID` · `RBAC` · `Cloud Security`
