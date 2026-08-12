@@ -16,7 +16,7 @@ Ambiente em nuvem construído passo a passo, buscando aplicar práticas de segur
 
 **Referências:** Microsoft Cloud Security, Zero Trust, CIS Controls, ISO 27001 e PCI DSS.
 
-[Ver laboratório →](./laboratorio-cloudsecurity/)
+[Ver laboratório →](./laboratorio-cloudsecurity/README.md)
 
 ---
 
@@ -32,4 +32,4 @@ Ambiente corporativo local voltado à prática de monitoramento, detecção e re
 
 **Referências:** MITRE ATT&CK, CIS Controls, NIST Cybersecurity Framework e boas práticas de SOC.
 
-[Ver laboratório →](./laboratorio-onpremises/)
+[Ver laboratório →](./laboratorio-onpremises/README.md)
