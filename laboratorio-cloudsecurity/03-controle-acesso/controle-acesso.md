@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Evoluir progressivamente os controles de acesso do ambiente, começando pelos controles de rede e avançando para controles de identidade, autenticação e autorização.
+Evoluir progressivamente os controles de acesso do ambiente, começando pelos controles de rede e avançando para controles de identidade, autenticação, autorização e menor privilégio.
 
 ---
 
@@ -36,6 +36,8 @@ Foram criadas contas com finalidades diferentes no Microsoft Entra ID:
 - `lab.breakglass01` — conta de emergência;
 - `lab.breakglass02` — conta de emergência.
 
+A separação das identidades permite diferenciar funções administrativas, leitura e acesso emergencial.
+
 ![Identidades do Microsoft Entra ID](../04-evidencias/controle-acesso/identidades-entra.png)
 
 ---
@@ -59,13 +61,14 @@ O objetivo é aplicar progressivamente o princípio do menor privilégio, conced
 | Identidade | Função | Escopo | Estado |
 |---|---|---|---|
 | `luiz.azure.reader` | Leitor | `RG-CLOUD-SECURITY-LAB` | Implementado |
-| `luiz.azure.admin` | Proprietário | Assinatura | Em revisão |
+| `luiz.azure.admin` | Contributor | `RG-CLOUD-SECURITY-LAB` | Implementado |
 | `lab.breakglass01` | Administrador Global | Entra ID | Mantido para emergência |
 | `lab.breakglass02` | Administrador Global | Entra ID | Mantido para emergência |
 
-A configuração atual ainda possui permissões administrativas amplas que serão revisadas nas próximas etapas.
+As permissões administrativas amplas existentes anteriormente foram reduzidas conforme a finalidade de cada identidade.
 
 ---
+
 ### Etapa 04 — Redução do privilégio administrativo
 
 Após validar a atribuição de `Contributor` no `RG-CLOUD-SECURITY-LAB`, a atribuição de `Owner` que existia diretamente na assinatura foi removida da identidade `luiz.azure.admin`.
@@ -86,7 +89,7 @@ Estado atual:
 
 ### Matriz de Acesso
 
-A definição das permissões será baseada na função de cada identidade e no princípio do menor privilégio.
+A definição das permissões é baseada na função de cada identidade e no princípio do menor privilégio.
 
 | Identidade | Função | Escopo | Permissão |
 |---|---|---|---|
@@ -96,29 +99,50 @@ A definição das permissões será baseada na função de cada identidade e no 
 | `lab.breakglass01` | Emergência | Conforme necessidade | Acesso emergencial |
 | `lab.breakglass02` | Emergência | Conforme necessidade | Acesso emergencial |
 
-O objetivo é evitar a utilização de permissões administrativas mais amplas do que o necessário.
+As atribuições são aplicadas preferencialmente no menor escopo possível, reduzindo a superfície de privilégio do ambiente.
 
-As atribuições serão aplicadas preferencialmente no menor escopo possível, reduzindo a superfície de privilégio do ambiente.
+---
+
+### Etapa 05 — Autenticação multifator
+
+Com a estrutura de identidade e autorização estabelecida, foi adicionada uma camada adicional de proteção às contas administrativas por meio da autenticação multifator.
+
+Foram configurados métodos de autenticação no Microsoft Entra ID:
+
+- `luiz.admin` — Software OATH/TOTP;
+- `luiz.azure.admin` — Microsoft Authenticator.
+
+O MFA adiciona um segundo fator de autenticação além das credenciais, reduzindo o impacto de um eventual comprometimento da senha.
+
+![MFA — luiz.admin](../04-evidencias/controle-acesso/mfa-luiz-admin.png)
+
+![MFA — luiz.azure.admin](../04-evidencias/controle-acesso/mfa-luiz-azure-admin.png)
+
+> **Nota:** o tenant não possui licenciamento suficiente para utilizar o Microsoft Entra Conditional Access neste momento. Por isso, políticas baseadas em risco, aplicativo, dispositivo e localização permanecem como evolução futura.
+
+---
 
 ## Modelo de Evolução
-```text
-Controle de acesso
-       │
-       ├── 01. Rede
-       │      └── NSGs
-       │
-       ├── 02. Identidade
-       │      └── Microsoft Entra ID
-       │
-       ├── 03. Autorização
-       │      └── Azure RBAC
-       │
-       ├── 04. Autenticação
-       │      └── MFA
-       │
-       └── 05. Privilégios
-              └── PIM / menor privilégio
-```
+
+**Controle de acesso**
+
+→ **01. Rede**  
+NSGs
+
+→ **02. Identidade**  
+Microsoft Entra ID
+
+→ **03. Autorização**  
+Azure RBAC
+
+→ **04. Autenticação**  
+MFA
+
+→ **05. Privilégios**  
+PIM / menor privilégio
+
+---
+
 ## Estado Atual
 
 | Controle | Estado |
@@ -127,14 +151,20 @@ Controle de acesso
 | NSGs | Implementado |
 | Microsoft Entra ID | Implementado |
 | Separação de identidades | Implementado |
-| Azure RBAC | Em evolução |
-| MFA | Próxima etapa |
+| Azure RBAC | Implementado |
+| Redução de privilégios | Implementado |
+| MFA | Implementado |
+| Conditional Access | Não disponível — licenciamento |
 | PIM | Planejado |
+
+---
 
 ## Próxima Etapa
 
-A próxima evolução será implementar MFA para as identidades administrativas do ambiente, adicionando uma camada de proteção além das credenciais.
+A próxima evolução será trabalhar o gerenciamento de privilégios administrativos.
 
-Após a validação do MFA, o laboratório avançará para controles de privilégio e administração just-in-time com PIM.
+O objetivo será avaliar o uso de PIM e mecanismos de acesso just-in-time, reduzindo a necessidade de privilégios administrativos permanentes e aumentando o controle sobre acessos privilegiados.
+
+---
 
 [Retornar ao Laboratório →](../README.md)
