@@ -53,7 +53,7 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 |---|---|---|
 | Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
 | Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
-| Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
+| Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
 | Evidências | Em atualização | [Ver evidências →](./04-evidencias/) |
 | Microsoft Entra ID | Próximo | — |
 | RBAC | Planejado | — |
