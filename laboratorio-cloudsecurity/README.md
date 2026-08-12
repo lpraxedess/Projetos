@@ -50,7 +50,7 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 ## Estado do Projeto
 
 | Área | Status | Acompanhar |
-| --- | --- | --- |
+|---|---|---|
 | Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
 | Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
 | Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
@@ -59,7 +59,6 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 | RBAC | Planejado | — |
 | Hardening | Planejado | — |
 | Monitoramento | Planejado | — |
-| SIEM / Wazuh | Planejado | — |
 
 ---
 
@@ -126,6 +125,8 @@ SECURITY-SERVER-01
 
 O acesso ao servidor interno não é realizado diretamente pela Internet.
 
+As evidências das validações são armazenadas na pasta:
+
 [Ver evidências →](./04-evidencias/)
 
 ---
@@ -147,11 +148,11 @@ A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
 ## Documentação
 
 | Área | Conteúdo |
-| --- | --- |
+|---|---|
 | [Arquitetura](./01-arquitetura/arquitetura.md) | Estrutura e decisões arquiteturais |
 | [Rede](./02-rede/rede.md) | VNet, subnets, endereçamento e evolução da rede |
 | [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | NSGs, Jump Server e fluxo administrativo |
-| [Evidências](./04-evidencias/) | Evidências e validações realizadas |
+| [Evidências](./04-evidencias/) | Capturas e evidências utilizadas pelas demais etapas |
 
 ---
 
