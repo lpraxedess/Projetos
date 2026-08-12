@@ -122,6 +122,22 @@ O MFA adiciona um segundo fator de autenticação além das credenciais, reduzin
 
 ---
 
+### Etapa 06 — Avaliação de gerenciamento de privilégios
+
+Após a implementação do menor privilégio e do MFA, foi avaliada a utilização do Microsoft Entra Privileged Identity Management (PIM) para controle de acessos administrativos privilegiados e acesso just-in-time.
+
+Durante a avaliação, o portal Microsoft Entra informou que o tenant não possui atualmente o licenciamento necessário para utilizar todos os recursos do PIM.
+
+Dessa forma, o PIM não foi registrado como controle implementado.
+
+A decisão adotada foi manter o PIM como evolução planejada e continuar aplicando o princípio do menor privilégio através do Azure RBAC disponível no ambiente.
+
+**Estado:** Planejado — dependente de licenciamento Microsoft Entra ID P2 ou Microsoft Entra ID Governance.
+
+![Licenciamento para Microsoft Entra PIM](../04-evidencias/controle-acesso/pim-licenciamento.png)
+
+---
+
 ## Modelo de Evolução
 
 **Controle de acesso**
@@ -135,11 +151,14 @@ Microsoft Entra ID
 → **03. Autorização**  
 Azure RBAC
 
-→ **04. Autenticação**  
+→ **04. Menor privilégio**  
+Redução de escopo
+
+→ **05. Autenticação**  
 MFA
 
-→ **05. Privilégios**  
-PIM / menor privilégio
+→ **06. Privilégios**  
+PIM — planejado conforme disponibilidade de licenciamento
 
 ---
 
@@ -155,15 +174,17 @@ PIM / menor privilégio
 | Redução de privilégios | Implementado |
 | MFA | Implementado |
 | Conditional Access | Não disponível — licenciamento |
-| PIM | Planejado |
+| PIM | Planejado — licenciamento |
 
 ---
 
 ## Próxima Etapa
 
-A próxima evolução será trabalhar o gerenciamento de privilégios administrativos.
+Como o PIM depende de licenciamento que não está disponível no tenant atual, a próxima evolução prática do laboratório será trabalhar controles de governança e conformidade utilizando recursos disponíveis no Azure.
 
-O objetivo será avaliar o uso de PIM e mecanismos de acesso just-in-time, reduzindo a necessidade de privilégios administrativos permanentes e aumentando o controle sobre acessos privilegiados.
+A próxima etapa será o **Azure Policy**, começando pela criação de uma política simples e controlada para demonstrar governança preventiva sobre os recursos do laboratório.
+
+O objetivo será evoluir do controle de acesso para o controle de conformidade, demonstrando que os recursos não apenas possuem permissões adequadas, mas também precisam obedecer a regras definidas pelo ambiente.
 
 ---
 
