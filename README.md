@@ -20,7 +20,7 @@ Ambiente em nuvem construído passo a passo, buscando aplicar práticas de segur
 
 ---
 
-## 2. LAB 02 — On-Premises | Blue Team
+## 2. LAB 02 — On-Premises | Blue Team - (Em Construção)
 
 Ambiente corporativo local voltado à prática de monitoramento, detecção e resposta a eventos de segurança.
 
