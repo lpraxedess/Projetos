@@ -1,44 +1,32 @@
-# Rede
+# Rede — Cloud Security Lab
 
 ## Estado Atual
 
-A infraestrutura de rede utiliza a VNET-CLOUD-SECURITY com espaço de endereçamento `10.10.0.0/16`.
+A infraestrutura utiliza uma Virtual Network dedicada ao laboratório:
 
-A VNet está dividida em três sub-redes:
+- VNet: `VNET-CLOUD-SECURITY`
+- Endereço: `10.10.0.0/16`
+- Região: `Brazil South`
 
-| Subnet | Endereço | Função | Status |
-|---|---|---|---|
-| SNET-MANAGEMENT | 10.10.10.0/24 | Administração | Ativo |
-| SNET-SECURITY | 10.10.20.0/24 | Segurança | Ativo |
-| SNET-WORKLOAD | 10.10.30.0/24 | Workloads | Reservado |
+A rede foi dividida em subnets de acordo com a função de cada ambiente.
 
----
+## VNet
 
-## Implementação
+![VNET-CLOUD-SECURITY](../04-evidencias/rede/vnet-cloud-security.png)
 
-### VNET-CLOUD-SECURITY
+## Subnets
 
-- Região: Brazil South
-- Address Space: `10.10.0.0/16`
+A VNet foi segmentada em três subnets:
 
-### SNET-MANAGEMENT
+![Subnets da VNET-CLOUD-SECURITY](../04-evidencias/rede/subnet-cloud-security.png)
 
-- Address Space: `10.10.10.0/24`
-- Função: gerenciamento administrativo
+| Subnet | Endereço | Função |
+|---|---|---|
+| `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração |
+| `SNET-SECURITY` | `10.10.20.0/24` | Servidores de segurança |
+| `SNET-WORKLOAD` | `10.10.30.0/24` | Workloads futuros |
 
-### SNET-SECURITY
-
-- Address Space: `10.10.20.0/24`
-- Função: servidores e componentes de segurança
-
-### SNET-WORKLOAD
-
-- Address Space: `10.10.30.0/24`
-- Função: workloads futuros
-
----
-
-## Controles Aplicados
+## Network Security Groups
 
 Cada subnet possui um Network Security Group dedicado:
 
@@ -46,27 +34,4 @@ Cada subnet possui um Network Security Group dedicado:
 - `NSG-SECURITY`
 - `NSG-WORKLOAD`
 
----
-
-## Evolução
-
-### 12/08/2026
-
-- VNet criada.
-- Três subnets configuradas.
-- NSGs associados às subnets.
-- Jump Server implantado na SNET-MANAGEMENT.
-- Security Server implantado na SNET-SECURITY.
-- Comunicação administrativa entre Jump Server e Security Server validada.
-
----
-
-## Próxima Evolução
-
-A próxima alteração prevista para a camada de rede será definida conforme a implementação dos controles de identidade, segurança e monitoramento.
-
----
-
-## Evidências
-
-[Ver evidências de rede →](../04-evidencias/)
+Os NSGs serão utilizados para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos.
