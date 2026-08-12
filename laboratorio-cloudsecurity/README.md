@@ -17,28 +17,30 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 ## Arquitetura Atual
 
 ```text
-[ Maquina Administrativa ]
+[ Máquina Administrativa ]
          │
-         │ RDP (Restricted Source IP / NSG)
+         │ RDP
+         │ Origem restrita por NSG
          ▼
 ┌────────────────────────────────────────────────────────────────┐
 │ VNET-CLOUD-SECURITY (10.10.0.0/16)                             │
 │                                                                │
 │   ┌────────────────────────────────────────────────────────┐   │
 │   │ SNET-MANAGEMENT (10.10.10.0/24)                        │   │
-│   │ └── JUMP-SERVER-01 (10.10.10.4) [Public IP]            │   │
+│   │ └── JUMP-SERVER-01 (10.10.10.4) [IP Público]           │   │
 │   └───────────────────────────┬────────────────────────────┘   │
 │                               │                                │
-│                               │ Internal RDP (Enforced by NSG) │
+│                               │ RDP interno                    │
+│                               │ Controlado por NSG             │
 │                               ▼                                │
 │   ┌────────────────────────────────────────────────────────┐   │
 │   │ SNET-SECURITY (10.10.20.0/24)                          │   │
-│   │ └── SECURITY-SERVER-01 (10.10.20.4) [No Public IP]     │   │
+│   │ └── SECURITY-SERVER-01 (10.10.20.4) [Sem IP Público]   │   │
 │   └────────────────────────────────────────────────────────┘   │
 │                                                                │
 │   ┌────────────────────────────────────────────────────────┐   │
 │   │ SNET-WORKLOAD (10.10.30.0/24)                          │   │
-│   │ └── [Reserved for Future Workloads]                    │   │
+│   │ └── [Reservada para Workloads Futuros]                 │   │
 │   └────────────────────────────────────────────────────────┘   │
 └────────────────────────────────────────────────────────────────┘
 ```
@@ -48,10 +50,10 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 ## Estado do Projeto
 
 | Área | Status | Acompanhar |
-|---|---|---|
+| --- | --- | --- |
 | Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
 | Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
-| Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
+| Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
 | Evidências | Em atualização | [Ver evidências →](./04-evidencias/) |
 | Microsoft Entra ID | Próximo | — |
 | RBAC | Planejado | — |
@@ -75,9 +77,11 @@ Com três sub-redes:
 - `SNET-SECURITY` — `10.10.20.0/24`
 - `SNET-WORKLOAD` — `10.10.30.0/24`
 
+A rede foi segmentada de acordo com a função de cada ambiente.
+
 [Ver evolução da rede →](./02-rede/rede.md)
 
-### Controle de acesso
+### Controle de Acesso
 
 Foram criados NSGs específicos para cada subnet:
 
@@ -96,9 +100,9 @@ O ambiente atualmente possui:
 - `JUMP-SERVER-01` — `10.10.10.4`
 - `SECURITY-SERVER-01` — `10.10.20.4`
 
-O Security Server não possui IP público.
+O `SECURITY-SERVER-01` não possui IP público.
 
-O acesso administrativo foi validado através do Jump Server.
+O acesso administrativo ao servidor interno foi validado através do Jump Server.
 
 ---
 
@@ -143,7 +147,7 @@ A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
 ## Documentação
 
 | Área | Conteúdo |
-|---|---|
+| --- | --- |
 | [Arquitetura](./01-arquitetura/arquitetura.md) | Estrutura e decisões arquiteturais |
 | [Rede](./02-rede/rede.md) | VNet, subnets, endereçamento e evolução da rede |
 | [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | NSGs, Jump Server e fluxo administrativo |
