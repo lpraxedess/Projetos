@@ -133,4 +133,6 @@ Controle de acesso
 
 ## Próxima Etapa
 
-A próxima evolução será revisar as atribuições atuais de `Owner` e implementar Azure RBAC com permissões mais específicas e escopo reduzido.
+A próxima evolução será implementar MFA para as identidades administrativas do ambiente, adicionando uma camada de proteção além das credenciais.
+
+Após a validação do MFA, o laboratório avançará para controles de privilégio e administração just-in-time com PIM.
