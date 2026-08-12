@@ -49,6 +49,21 @@ O objetivo é aplicar o princípio do menor privilégio e reduzir permissões ad
 ![IAM da assinatura](../04-evidencias/controle-acesso/iam-assinatura.png)
 
 ---
+### Matriz de Acesso
+
+A definição das permissões será baseada na função de cada identidade e no princípio do menor privilégio.
+
+| Identidade | Função | Escopo | Permissão |
+|---|---|---|---|
+| `luiz.azure.admin` | Administração Azure | Resource Group | Administração dos recursos do laboratório |
+| `luiz.azure.reader` | Leitura | Resource Group | Somente leitura |
+| `luiz.admin` | Administração de identidade | Microsoft Entra ID | Administração de identidades |
+| `lab.breakglass01` | Emergência | Conforme necessidade | Acesso emergencial |
+| `lab.breakglass02` | Emergência | Conforme necessidade | Acesso emergencial |
+
+O objetivo é evitar a utilização de permissões administrativas mais amplas do que o necessário.
+
+As atribuições serão aplicadas preferencialmente no menor escopo possível, reduzindo a superfície de privilégio do ambiente.
 
 ## Modelo de Evolução
 
