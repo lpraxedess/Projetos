@@ -38,8 +38,6 @@ Foram criadas contas com finalidades diferentes no Microsoft Entra ID:
 
 A separação das identidades permite diferenciar funções administrativas, leitura e acesso emergencial.
 
-![Identidades do Microsoft Entra ID](../04-evidencias/controle-acesso/identidades-entra.png)
-
 ---
 
 ### Etapa 03 — Evolução para Azure RBAC
