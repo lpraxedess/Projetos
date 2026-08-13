@@ -64,7 +64,7 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 
 ## O que já foi construído
 
-### Rede
+- ### Rede
 
 A infraestrutura foi criada utilizando uma VNet dedicada:
 
@@ -80,7 +80,7 @@ A rede foi segmentada de acordo com a função de cada ambiente.
 
 [Ver evolução da rede →](./02-rede/rede.md)
 
-### Controle de Acesso
+- ### Controle de Acesso
 
 Foram criados NSGs específicos para cada subnet:
 
@@ -92,7 +92,7 @@ Também foi implementado o `JUMP-SERVER-01` como ponto central de administraçã
 
 [Ver evolução do controle de acesso →](./03-controle-acesso/controle-acesso.md)
 
-### Servidores
+- ### Servidores
 
 O ambiente atualmente possui:
 
@@ -102,6 +102,11 @@ O ambiente atualmente possui:
 O `SECURITY-SERVER-01` não possui IP público.
 
 O acesso administrativo ao servidor interno foi validado através do Jump Server.
+
+### Governança e Conformidade
+Implementamos o **Azure Policy** para garantir que nenhum recurso seja provisionado sem a tag `Ambiente`. Isso marca a transição de um ambiente puramente funcional para um ambiente governado e preparado para escala corporativa.
+
+[Ver detalhes da governança →](./06-governanca/azure-policy.md)
 
 ---
 
