@@ -54,9 +54,9 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 | Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
 | Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
 | Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
+| Identidade | Concluído | [Ver identidade →](./05-identidade/entra-id.md) |
+| Governança | Concluído | [Ver governança →](./06-governanca/azure-policy.md) |
 | Evidências | Em atualização | [Ver evidências →](./04-evidencias/) |
-| Microsoft Entra ID | Concluído | [Ver identidade →](./05-identidade/entra-id.md) |
-| RBAC | Planejado | Próximo |
 | Hardening | Planejado | Próximo |
 | Monitoramento | Planejado | Próximo |
 
