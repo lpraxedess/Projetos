@@ -20,25 +20,26 @@ A infraestrutura está organizada da seguinte forma:
 
 ## Modelo de Acesso
 
-A administração dos servidores internos não é realizada diretamente pela Internet.
+<div align="center">
 
-O acesso segue o modelo:
+```mermaid
+flowchart LR
+    A(["💻 Admin"])-->|HTTPS 443| B(["🔒 Bastion"])
+    B --> C(["🖥️ JUMP-SERVER-01"])
+    C -->|RDP interno| D(["🛡️ SECURITY-SERVER-01"])
+    classDef external fill:#1e3a5f,stroke:#60a5fa,stroke-width:2px,color:#e0f2fe
+    classDef bastion fill:#5a3a1e,stroke:#fb923c,stroke-width:2px,color:#fed7aa
+    classDef server fill:#1e4620,stroke:#4ade80,stroke-width:2px,color:#dcfce7
+    classDef secure fill:#4c1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
+    class A external
+    class B bastion
+    class C server
+    class D secure
+```
 
-    Máquina Administrativa
-            |
-            | RDP
-            v
-    JUMP-SERVER-01
-    10.10.10.4
-            |
-            | RDP interno
-            v
-    SECURITY-SERVER-01
-    10.10.20.4
+</div>
 
-O `JUMP-SERVER-01` funciona como ponto de entrada administrativo e não possui mais IP público — o acesso é realizado via Azure Bastion.
-
-O `SECURITY-SERVER-01` permanece na rede privada e não possui IP público.
+A administração dos servidores internos não é realizada diretamente pela Internet. O `Azure Bastion` funciona como ponto de entrada administrativo via navegador (HTTPS/443), e o `SECURITY-SERVER-01` permanece na rede privada, sem IP público.
 
 # Segmentação
 
