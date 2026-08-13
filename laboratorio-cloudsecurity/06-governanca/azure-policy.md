@@ -35,6 +35,6 @@ Nota: O erro RequestDisallowedByPolicy confirma que o Azure interceptou a requis
 
 ![politica](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
 
-![politica barrando](../04-evidencias/governanca/politica-exigencia-tag-criacao.png)
+![politica barrando](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
 
 [Retornar ao Laboratório →](../README.md)
