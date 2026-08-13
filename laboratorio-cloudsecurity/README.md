@@ -16,7 +16,7 @@ Meu foco de especialização é IAM, mas entendo que conhecimento sólido em tod
 
 # Áreas do Laboratório
 
-Cada frente abaixo representa um tema que venho desenvolvendo dentro do laboratório. O resumo aqui é só o ponto de partida — o histórico completo de decisões, ajustes e evolução de cada uma fica documentado na área específica.
+>Cada frente abaixo representa um tema que venho desenvolvendo dentro do laboratório. O resumo aqui é só o ponto de partida — o histórico completo de decisões, ajustes e evolução de cada uma fica documentado na área específica.
 
 ## 🏗️ Arquitetura
 Foquei em desenhar uma estrutura que já nasce segmentada, separando o que é gerenciamento, o que é segurança e o que é workload — reduzindo a superfície de ataque desde a concepção do ambiente, não como um ajuste posterior.
