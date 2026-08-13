@@ -1,5 +1,12 @@
 # Rede — Cloud Security Lab
 
+## Histórico de Evolução
+
+| Data | Alteração |
+|---|---|
+| 2026-03 | Adicionada AzureBastionSubnet (10.10.40.0/26) para suportar acesso via Azure Bastion. |
+| 2026-01 | Criação da VNet dedicada e segmentação inicial em SNET-MANAGEMENT, SNET-SECURITY e SNET-WORKLOAD. |
+
 ## Estado Atual
 
 A infraestrutura utiliza uma Virtual Network dedicada ao laboratório:
