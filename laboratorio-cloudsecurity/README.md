@@ -33,7 +33,7 @@ Aqui o foco foi evoluir o acesso administrativo de forma progressiva — começa
 
 [Ver evolução completa →](./03-controle-acesso/controle-acesso.md)
 
-## 🪪 Identidade & IAM — 
+## 🪪 Identidade & IAM
 Esta é a frente onde aprofundo mais — centralização da autenticação no Microsoft Entra ID, separação de contas por função, e evolução contínua para Privileged Access Management (PAM), federação e princípio do menor privilégio em todos os níveis.
 
 [Ver evolução completa →](./05-identidade/entra-id.md)
