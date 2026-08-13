@@ -14,3 +14,5 @@ Para eliminar a exposição direta do Jump Server à internet, implementamos o *
 
 ## Validação
 O acesso é realizado via Portal do Azure > Virtual Machines > JUMP-SERVER-01 > Connect > Bastion. O login é validado através de credenciais locais, assegurando que o ambiente de laboratório está operando dentro dos padrões de segurança corporativos.
+
+[Retornar ao Laboratório →](../README.md)
