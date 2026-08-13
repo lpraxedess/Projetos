@@ -32,3 +32,6 @@ Foi utilizado o modo `All` para garantir que o motor do Azure Policy intercepte 
 A tentativa de criação de uma conta de armazenamento (testesemtag) sem a tag obrigatória resultou no bloqueio preventivo pelo Azure Policy, confirmando a eficácia do controle.
 
 Nota: O erro RequestDisallowedByPolicy confirma que o Azure interceptou a requisição e negou a operação antes da criação do recurso.
+
+
+[Retornar ao Laboratório →](../README.md)
