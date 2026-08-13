@@ -27,7 +27,7 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 │                                                                │
 │   ┌────────────────────────────────────────────────────────┐   │
 │   │ SNET-MANAGEMENT (10.10.10.0/24)                        │   │
-│   │ └── JUMP-SERVER-01 (10.10.10.4) [IP Público]           │   │
+│   │ └── JUMP-SERVER-01 (10.10.10.4) [Via Bastion]          │   │
 │   └───────────────────────────┬────────────────────────────┘   │
 │                               │                                │
 │                               │ RDP interno                    │
@@ -56,8 +56,10 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 | Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
 | Identidade | Em evolução | [Ver identidade →](./05-identidade/entra-id.md) |
 | Governança | Em evolução | [Ver governança →](./06-governanca/azure-policy.md) |
+| Exposição Pública (Bastion) | Em evolução | [Ver detalhes →](./03-controle-acesso/bastion-implementation.md) |
 | Hardening | Planejado | Próximo |
 | Monitoramento | Planejado | Próximo |
+
 
 ---
 
@@ -159,6 +161,7 @@ A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
 | [Identidade](./05-identidade/entra-id.md) | Microsoft Entra ID, RBAC e MFA |
 | [Governança](./06-governanca/azure-policy.md) | Azure Policy e conformidade preventiva |
 | [Evidências](./04-evidencias/) | Capturas e evidências utilizadas pelas demais etapas |
+| [Bastion](./03-controle-acesso/bastion-implementation.md) | Eliminação de exposição pública via Azure Bastion |
 
 ---
 
