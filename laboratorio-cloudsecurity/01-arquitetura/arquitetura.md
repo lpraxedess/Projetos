@@ -1,11 +1,14 @@
 # Arquitetura — Cloud Security Lab
 
-## Histórico de Evolução
+<details>
+<summary><strong>📜 Histórico de Evolução</strong></summary>
 
 | Data | Alteração |
 |---|---|
 | 2026-03 | Removido IP público do JUMP-SERVER-01; adicionada AzureBastionSubnet (10.10.40.0/26). |
 | 2026-01 | Definição inicial da arquitetura: VNet única segmentada em três subnets por função. |
+
+</details>
 
 ## Visão Geral
 
