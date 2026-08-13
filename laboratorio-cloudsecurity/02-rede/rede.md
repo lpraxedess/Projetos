@@ -9,13 +9,13 @@
 
 ## Estado Atual
 
-A infraestrutura utiliza uma Virtual Network dedicada ao laboratório:
+Para este laboratório, optei por uma Virtual Network dedicada:
 
 - VNet: `VNET-CLOUD-SECURITY`
 - Endereço: `10.10.0.0/16`
 - Região: `Brazil South`
 
-A rede foi dividida em subnets de acordo com a função de cada ambiente.
+Dividi essa rede em subnets de acordo com a função de cada ambiente.
 
 ## VNet
 
@@ -23,7 +23,7 @@ A rede foi dividida em subnets de acordo com a função de cada ambiente.
 
 ## Subnets
 
-A VNet foi segmentada em três subnets:
+Hoje a VNet está segmentada em quatro subnets:
 
 ![Subnets da VNET-CLOUD-SECURITY](../04-evidencias/rede/subnet-cloud-security.png)
 
@@ -42,6 +42,6 @@ Cada subnet possui um Network Security Group dedicado:
 - `NSG-SECURITY`
 - `NSG-WORKLOAD`
 
-Os NSGs serão utilizados para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos.
+Uso os NSGs para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos ao mínimo necessário.
 
 [Retornar ao Laboratório →](../README.md)
