@@ -12,7 +12,7 @@ A rede foi dividida em subnets de acordo com a função de cada ambiente.
 
 ## VNet
 
-![VNET-CLOUD-SECURITY](../04-evidencias/rede/vnet-cloud-security.png)
+![VNET-CLOUD-SECURITY](../04-evidencias/rede/vnt-cloud-security.png)
 
 ## Subnets
 
