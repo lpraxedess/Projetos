@@ -1,4 +1,4 @@
-# Rede — Cloud Security Lab 
+# Rede — Cloud Security Lab
 
 <details>
 <summary><strong>📜 Histórico de Evolução</strong></summary>
@@ -46,4 +46,5 @@ Cada subnet possui um Network Security Group dedicado:
 - `NSG-WORKLOAD`
 
 Uso os NSGs para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos ao mínimo necessário.
+
 [Retornar ao Laboratório →](../README.md)
