@@ -1,14 +1,20 @@
 # Controle de Acesso — Cloud Security Lab
 
-## Objetivo
+### Histórico de Evolução
 
-Evoluir progressivamente os controles de acesso do ambiente, começando pelos controles de rede e avançando para controles de identidade, autenticação, autorização e menor privilégio.
+| Data | Alteração |
+|---|---|
+| 2026-03 | Etapa 07 — Implementado Azure Bastion, eliminando IP público do Jump Server. |
+| 2026-02 | Etapa 06 — Avaliado Microsoft Entra PIM; mantido como planejado por limitação de licenciamento. |
+| 2026-02 | Etapa 05 — Configurado MFA para contas administrativas (`luiz.admin`, `luiz.azure.admin`). |
+| 2026-02 | Etapa 04 — Removida atribuição de Owner na assinatura; reduzido escopo para Contributor no Resource Group. |
+| 2026-01 | Etapa 03 — Implementado Azure RBAC com função Leitor no escopo do Resource Group. |
+| 2026-01 | Etapa 02 — Criadas identidades segregadas por função no Microsoft Entra ID. |
+| 2026-01 | Etapa 01 — Implementado controle de acesso via NSGs e Jump Server. |
 
 ---
 
-## Evolução do Controle de Acesso
-
-### Etapa 01 — Controle de acesso pela rede
+## Etapa 01 — Controle de acesso pela rede
 
 Na primeira etapa, o controle de acesso administrativo foi implementado principalmente através dos Network Security Groups (NSGs).
 
@@ -48,7 +54,7 @@ A administração dos servidores internos não é realizada diretamente pela Int
 
 ---
 
-### Etapa 02 — Controle de acesso baseado em identidade
+## Etapa 02 — Controle de acesso baseado em identidade
 
 Com a estrutura de rede estabelecida, o próximo nível de controle passou a ser a identidade.
 
@@ -64,7 +70,7 @@ A separação das identidades permite diferenciar funções administrativas, lei
 
 ---
 
-### Etapa 03 — Evolução para Azure RBAC
+## Etapa 03 — Evolução para Azure RBAC
 
 Após estabelecer os controles de acesso no nível de rede e estruturar as identidades no Microsoft Entra ID, o controle de acesso passou a ser tratado também no nível de autorização dos recursos Azure.
 
@@ -91,7 +97,7 @@ As permissões administrativas amplas existentes anteriormente foram reduzidas c
 
 ---
 
-### Etapa 04 — Redução do privilégio administrativo
+## Etapa 04 — Redução do privilégio administrativo
 
 Após validar a atribuição de `Contributor` no `RG-CLOUD-SECURITY-LAB`, a atribuição de `Owner` que existia diretamente na assinatura foi removida da identidade `luiz.azure.admin`.
 
@@ -125,7 +131,7 @@ As atribuições são aplicadas preferencialmente no menor escopo possível, red
 
 ---
 
-### Etapa 05 — Autenticação multifator
+## Etapa 05 — Autenticação multifator
 
 Com a estrutura de identidade e autorização estabelecida, foi adicionada uma camada adicional de proteção às contas administrativas por meio da autenticação multifator.
 
@@ -144,7 +150,7 @@ O MFA adiciona um segundo fator de autenticação além das credenciais, reduzin
 
 ---
 
-### Etapa 06 — Avaliação de gerenciamento de privilégios
+## Etapa 06 — Avaliação de gerenciamento de privilégios
 
 Após a implementação do menor privilégio e do MFA, foi avaliada a utilização do Microsoft Entra Privileged Identity Management (PIM) para controle de acessos administrativos privilegiados e acesso just-in-time.
 
