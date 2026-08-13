@@ -36,7 +36,7 @@ O acesso segue o modelo:
     SECURITY-SERVER-01
     10.10.20.4
 
-O `JUMP-SERVER-01` funciona como ponto de entrada administrativo.
+O `JUMP-SERVER-01` funciona como ponto de entrada administrativo e não possui mais IP público — o acesso é realizado via Azure Bastion.
 
 O `SECURITY-SERVER-01` permanece na rede privada e não possui IP público.
 
