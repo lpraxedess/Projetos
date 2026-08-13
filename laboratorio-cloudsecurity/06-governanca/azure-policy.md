@@ -1,16 +1,28 @@
 # Governança e Conformidade — Azure Policy
 
+<details>
+<summary><strong>📜 Histórico de Evolução</strong></summary>
+
+| Data | Alteração |
+|---|---|
+| 2026-03 | Validado bloqueio preventivo via Azure Policy em tentativa de criação de recurso sem tag `Ambiente`. |
+| 2026-03 | Implementada política de tag obrigatória (`Ambiente`) no escopo do Resource Group. |
+
+</details>
+
 ## Objetivo
-Evoluir o laboratório do controle de acesso reativo para o controle preventivo de conformidade utilizando o **Azure Policy**, garantindo que todos os recursos sigam padrões organizacionais (tags obrigatórias).
+
+Meu objetivo aqui foi evoluir o laboratório do controle de acesso reativo para o controle preventivo de conformidade, utilizando o **Azure Policy** para garantir que todos os recursos sigam padrões organizacionais — nesse caso, a exigência de tags obrigatórias.
 
 ---
 
 ## Implementação da Política de Tags
 
-Foi implementada uma política para exigir a presença obrigatória da tag `Ambiente` em qualquer recurso criado dentro do escopo do laboratório (`RG-CLOUD-SECURITY-LAB`).
+Implementei uma política para exigir a presença obrigatória da tag `Ambiente` em qualquer recurso criado dentro do escopo do laboratório (`RG-CLOUD-SECURITY-LAB`).
 
 ### Definição da Política (JSON)
-Foi utilizado o modo `All` para garantir que o motor do Azure Policy intercepte todas as requisições de criação (`PUT/PATCH`) no momento da submissão:
+
+Usei o modo `All` para garantir que o motor do Azure Policy intercepte todas as requisições de criação (`PUT/PATCH`) no momento da submissão:
 
 ```json
 {
@@ -27,11 +39,12 @@ Foi utilizado o modo `All` para garantir que o motor do Azure Policy intercepte 
   "parameters": {}
 }
 ```
+
 ## Validação e Evidências
 
-A tentativa de criação de uma conta de armazenamento (testesemtag) sem a tag obrigatória resultou no bloqueio preventivo pelo Azure Policy, confirmando a eficácia do controle.
+Para testar o controle, tentei criar uma conta de armazenamento (`testesemtag`) sem a tag obrigatória, e a criação foi bloqueada preventivamente pelo Azure Policy — confirmando a eficácia do controle.
 
-Nota: O erro RequestDisallowedByPolicy confirma que o Azure interceptou a requisição e negou a operação antes da criação do recurso.
+**Nota:** o erro `RequestDisallowedByPolicy` confirma que o Azure interceptou a requisição e negou a operação antes mesmo da criação do recurso.
 
 ![politica](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
 
