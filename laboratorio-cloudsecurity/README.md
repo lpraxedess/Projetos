@@ -49,7 +49,7 @@ O objetivo será aprofundar o que começou em Identidade, indo além da estrutur
 ### 🔒 Criptografia e Proteção de Dados — *Em Desenvolvimento*
 O objetivo será trabalhar a proteção de dados em repouso e em trânsito, gestão de chaves e segredos com Azure Key Vault, e controlar quem tem permissão de acessar cada camada de criptografia.
 
-### 🛡️ Hardening — Em Desenvolvimento*
+### 🛡️ Hardening — *Em Desenvolvimento*
 O objetivo será reduzir a superfície de ataque nos próprios servidores, aplicando benchmarks de configuração segura no nível do sistema operacional.
 
 ### 📊 Monitoramento — *Em Desenvolvimento*
@@ -61,4 +61,4 @@ O objetivo será estruturar um processo de investigação e resposta a partir do
 ### ⚙️ DevSecOps / Infraestrutura como Código — *Em Desenvolvimento*
 O objetivo será aplicar segurança desde o provisionamento do ambiente, usando Infraestrutura como Código com validações de segurança antes do deploy, ao invés de corrigir depois que o recurso já existe.
 
-[Retornar aos Projetos →](../laboratorio-cloudsecurity/README.md)
+[Retornar aos Projetos →](../README.md)
