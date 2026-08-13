@@ -135,6 +135,15 @@ A decisão adotada foi manter o PIM como evolução planejada e continuar aplica
 ![Licenciamento para Microsoft Entra PIM](../04-evidencias/controle-acesso/pim-licenciamento.png)
 
 ---
+### Etapa 07 — Eliminação de exposição pública (Azure Bastion)
+
+Com os controles de identidade, autorização e conformidade estabelecidos, o último passo desta fase foi eliminar completamente a exposição direta de IP público na infraestrutura administrativa.
+
+O IP público foi removido do `JUMP-SERVER-01` e o acesso passou a ser realizado via **Azure Bastion**, através do navegador (HTTPS/443), sem exposição de portas RDP à Internet.
+
+[Ver detalhes da implementação →](./bastion-implementation.md)
+
+---
 
 ## Modelo de Evolução
 
