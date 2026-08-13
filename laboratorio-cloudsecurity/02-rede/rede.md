@@ -1,11 +1,14 @@
-# Rede — Cloud Security Lab
+# Rede — Cloud Security Lab 
 
-## Histórico de Evolução
+<details>
+<summary><strong>📜 Histórico de Evolução</strong></summary>
 
 | Data | Alteração |
 |---|---|
 | 2026-03 | Adicionada AzureBastionSubnet (10.10.40.0/26) para suportar acesso via Azure Bastion. |
 | 2026-01 | Criação da VNet dedicada e segmentação inicial em SNET-MANAGEMENT, SNET-SECURITY e SNET-WORKLOAD. |
+
+</details>
 
 ## Estado Atual
 
@@ -43,5 +46,4 @@ Cada subnet possui um Network Security Group dedicado:
 - `NSG-WORKLOAD`
 
 Uso os NSGs para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos ao mínimo necessário.
-
 [Retornar ao Laboratório →](../README.md)
