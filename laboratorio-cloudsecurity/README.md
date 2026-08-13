@@ -16,34 +16,31 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 
 ## Arquitetura Atual
 
-```text
-[ Máquina Administrativa ]
-         │
-         │ RDP
-         │ Origem restrita por NSG
-         ▼
-┌────────────────────────────────────────────────────────────────┐
-│ VNET-CLOUD-SECURITY (10.10.0.0/16)                             │
-│                                                                │
-│   ┌────────────────────────────────────────────────────────┐   │
-│   │ SNET-MANAGEMENT (10.10.10.0/24)                        │   │
-│   │ └── JUMP-SERVER-01 (10.10.10.4) [Via Bastion]          │   │
-│   └───────────────────────────┬────────────────────────────┘   │
-│                               │                                │
-│                               │ RDP interno                    │
-│                               │ Controlado por NSG             │
-│                               ▼                                │
-│   ┌────────────────────────────────────────────────────────┐   │
-│   │ SNET-SECURITY (10.10.20.0/24)                          │   │
-│   │ └── SECURITY-SERVER-01 (10.10.20.4) [Sem IP Público]   │   │
-│   └────────────────────────────────────────────────────────┘   │
-│                                                                │
-│   ┌────────────────────────────────────────────────────────┐   │
-│   │ SNET-WORKLOAD (10.10.30.0/24)                          │   │
-│   │ └── [Reservada para Workloads Futuros]                 │   │
-│   └────────────────────────────────────────────────────────┘   │
-└────────────────────────────────────────────────────────────────┘
+## Arquitetura Atual
+
+<div align="center">
+
+```mermaid
+flowchart LR
+    A(["💻 Admin"])-->|HTTPS 443| B(["🔒 Bastion"])
+    B --> C(["🖥️ JUMP-SERVER-01"])
+    C -->|RDP interno| D(["🛡️ SECURITY-SERVER-01"])
+    E["📦 Workload<br/>reservado"]
+
+    classDef external fill:#1e3a5f,stroke:#60a5fa,stroke-width:2px,color:#e0f2fe
+    classDef bastion fill:#5a3a1e,stroke:#fb923c,stroke-width:2px,color:#fed7aa
+    classDef server fill:#1e4620,stroke:#4ade80,stroke-width:2px,color:#dcfce7
+    classDef secure fill:#4c1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
+    classDef reserved fill:#2d3340,stroke:#64748b,stroke-width:1px,stroke-dasharray: 4 4,color:#94a3b8
+
+    class A external
+    class B bastion
+    class C server
+    class D secure
+    class E reserved
 ```
+
+</div>
 
 ---
 
