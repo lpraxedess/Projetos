@@ -1,0 +1,38 @@
+name: Atualizar status do README
+
+# Roda automaticamente sempre que você editar o status.yml,
+# ou manualmente pela aba "Actions" do GitHub (workflow_dispatch).
+on:
+  push:
+    paths:
+      - ".github/status.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: pip install pyyaml
+
+      - name: Gerar tabelas e atualizar READMEs
+        run: python .github/scripts/generate_status.py
+
+      - name: Commitar mudanças automaticamente
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: atualizar status do laboratório automaticamente"
+          file_pattern: "**/README.md"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
