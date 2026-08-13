@@ -22,6 +22,30 @@ Essa etapa estabeleceu o controle de acesso no nível de rede.
 
 ![NSGs do ambiente](../04-evidencias/controle-acesso/nsg-cloud-security.png)
 
+
+## Modelo de Acesso
+
+<div align="center">
+
+```mermaid
+flowchart LR
+    A(["💻 Admin"])-->|HTTPS 443| B(["🔒 Bastion"])
+    B --> C(["🖥️ JUMP-SERVER-01"])
+    C -->|RDP interno| D(["🛡️ SECURITY-SERVER-01"])
+    classDef external fill:#1e3a5f,stroke:#60a5fa,stroke-width:2px,color:#e0f2fe
+    classDef bastion fill:#5a3a1e,stroke:#fb923c,stroke-width:2px,color:#fed7aa
+    classDef server fill:#1e4620,stroke:#4ade80,stroke-width:2px,color:#dcfce7
+    classDef secure fill:#4c1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
+    class A external
+    class B bastion
+    class C server
+    class D secure
+```
+
+</div>
+
+A administração dos servidores internos não é realizada diretamente pela Internet. O `Azure Bastion` funciona como ponto de entrada administrativo via navegador (HTTPS/443), e o `SECURITY-SERVER-01` permanece na rede privada, sem IP público.
+
 ---
 
 ### Etapa 02 — Controle de acesso baseado em identidade
