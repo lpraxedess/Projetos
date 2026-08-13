@@ -33,5 +33,8 @@ A tentativa de criação de uma conta de armazenamento (testesemtag) sem a tag o
 
 Nota: O erro RequestDisallowedByPolicy confirma que o Azure interceptou a requisição e negou a operação antes da criação do recurso.
 
+![politica](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
+
+![politica barrando](../04-evidencias/governanca/politica-exigencia-tag-criacao.png)
 
 [Retornar ao Laboratório →](../README.md)
