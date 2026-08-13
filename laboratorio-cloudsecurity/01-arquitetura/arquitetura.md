@@ -16,6 +16,7 @@ A infraestrutura está organizada da seguinte forma:
 | `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração |
 | `SNET-SECURITY` | `10.10.20.0/24` | Servidores de segurança |
 | `SNET-WORKLOAD` | `10.10.30.0/24` | Workloads futuros |
+| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso via Azure Bastion (sem exposição pública) |
 
 ## Modelo de Acesso
 
