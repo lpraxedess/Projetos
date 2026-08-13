@@ -1,6 +1,6 @@
 # Cloud Security Lab — Microsoft Azure
 
-> Laboratório prático de Cloud Security desenvolvido de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança.
+> Laboratório prático de Cloud Security desenvolvido de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança — com aprofundamento contínuo em Identity and Access Management (IAM).
 
 ---
 
@@ -8,158 +8,55 @@
 
 Este projeto documenta a construção de um ambiente de Cloud Security no Microsoft Azure.
 
-O laboratório está sendo desenvolvido passo a passo. Cada etapa registra o estado atual do ambiente, as decisões tomadas, os ajustes realizados e as validações executadas.
+O laboratório está sendo desenvolvido passo a passo. Cada área possui seu próprio histórico de evolução, disponível no respectivo documento.
 
-A ideia é permitir acompanhar não apenas o resultado final, mas também a evolução da infraestrutura ao longo do projeto.
-
----
-
-## Arquitetura Atual
-
-<div align="center">
-
-```mermaid
-flowchart LR
-    A(["💻 Admin"])-->|HTTPS 443| B(["🔒 Bastion"])
-    B --> C(["🖥️ JUMP-SERVER-01"])
-    C -->|RDP interno| D(["🛡️ SECURITY-SERVER-01"])
-    E["📦 Workload<br/>reservado"]
-
-    classDef external fill:#1e3a5f,stroke:#60a5fa,stroke-width:2px,color:#e0f2fe
-    classDef bastion fill:#5a3a1e,stroke:#fb923c,stroke-width:2px,color:#fed7aa
-    classDef server fill:#1e4620,stroke:#4ade80,stroke-width:2px,color:#dcfce7
-    classDef secure fill:#4c1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
-    classDef reserved fill:#2d3340,stroke:#64748b,stroke-width:1px,stroke-dasharray: 4 4,color:#94a3b8
-
-    class A external
-    class B bastion
-    class C server
-    class D secure
-    class E reserved
-```
-
-</div>
+Meu foco de especialização é IAM, mas entendo que conhecimento sólido em todas as frentes de Cloud Security é necessário para atuar com profundidade — por isso o laboratório evolui em múltiplas áreas, cada uma no seu devido tempo.
 
 ---
 
-## Estado do Projeto
+## Áreas do Laboratório
 
-| Área | Status | Acompanhar |
-|---|---|---|
-| Arquitetura | Em evolução | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
-| Rede | Em evolução | [Ver rede →](./02-rede/rede.md) |
-| Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
-| Identidade | Em evolução | [Ver identidade →](./05-identidade/entra-id.md) |
-| Governança | Em evolução | [Ver governança →](./06-governanca/azure-policy.md) |
-| Exposição Pública (Bastion) | Em evolução | [Ver detalhes →](./03-controle-acesso/bastion-implementation.md) |
-| Hardening | Planejado | Próximo |
-| Monitoramento | Planejado | Próximo |
+Cada frente abaixo representa um tema que venho desenvolvendo dentro do laboratório. O resumo aqui é só o ponto de partida — o histórico completo de decisões, ajustes e evolução de cada uma fica documentado na área específica.
 
+### 🏗️ Arquitetura
+Foquei em desenhar uma estrutura que já nasce segmentada, separando o que é gerenciamento, o que é segurança e o que é workload — reduzindo a superfície de ataque desde a concepção do ambiente, não como um ajuste posterior.
 
----
+[Ver evolução completa →](./01-arquitetura/arquitetura.md)
 
-## O que já foi construído
+### 🌐 Rede
+Em redes, foquei na estruturação e arquitetura da conexão entre as máquinas, aplicando boas práticas de segurança para garantir uma estrutura e conexão segura entre os ambientes.
 
-### Rede
+[Ver evolução completa →](./02-rede/rede.md)
 
-A infraestrutura foi criada utilizando uma VNet dedicada:
+### 🔐 Controle de Acesso
+Aqui o foco foi evoluir o acesso administrativo de forma progressiva — começando pelo controle via rede (NSGs e Jump Server), avançando para autorização (RBAC) e autenticação (MFA), até eliminar completamente a exposição pública com Azure Bastion.
 
-`VNET-CLOUD-SECURITY — 10.10.0.0/16`
+[Ver evolução completa →](./03-controle-acesso/controle-acesso.md)
 
-Com três sub-redes:
+### 🪪 Identidade & IAM — *área de especialização*
+Esta é a frente onde aprofundo mais — centralização da autenticação no Microsoft Entra ID, separação de contas por função, e evolução contínua para Privileged Access Management (PAM), federação e princípio do menor privilégio em todos os níveis.
 
-- `SNET-MANAGEMENT` — `10.10.10.0/24`
-- `SNET-SECURITY` — `10.10.20.0/24`
-- `SNET-WORKLOAD` — `10.10.30.0/24`
+[Ver evolução completa →](./05-identidade/entra-id.md)
 
-A rede foi segmentada de acordo com a função de cada ambiente.
+### 📋 Governança
+Foquei em sair de um controle apenas reativo para um controle preventivo — usando Azure Policy pra garantir que os recursos sigam padrões definidos antes mesmo de serem criados, não depois.
 
-[Ver evolução da rede →](./02-rede/rede.md)
+[Ver evolução completa →](./06-governanca/azure-policy.md)
 
-### Controle de Acesso
+### 🔑 Federação e SSO — *Em Desenvolvimento*
+O objetivo será aprofundar o que começou em Identidade, indo além da estrutura básica de contas — trabalhando federação entre provedores, Single Sign-On e cenários de colaboração externa (B2B/B2C).
 
-Foram criados NSGs específicos para cada subnet:
+### 🔒 Criptografia e Proteção de Dados — *Em Desenvolvimento*
+O objetivo será trabalhar a proteção de dados em repouso e em trânsito, gestão de chaves e segredos com Azure Key Vault, e controlar quem tem permissão de acessar cada camada de criptografia.
 
-- `NSG-MANAGEMENT`
-- `NSG-SECURITY`
-- `NSG-WORKLOAD`
+### 🛡️ Hardening — Em Desenvolvimento*
+O objetivo será reduzir a superfície de ataque nos próprios servidores, aplicando benchmarks de configuração segura no nível do sistema operacional.
 
-Também foi implementado o `JUMP-SERVER-01` como ponto central de administração.
+### 📊 Monitoramento — *Em Desenvolvimento*
+O objetivo será dar visibilidade sobre o que acontece dentro do ambiente — logs, alertas e detecção de comportamento anômalo.
 
-[Ver evolução do controle de acesso →](./03-controle-acesso/controle-acesso.md)
+### 🕵️ Resposta a Incidentes — *Em Desenvolvimento*
+O objetivo será estruturar um processo de investigação e resposta a partir do que for detectado no Monitoramento — da identificação à contenção, documentando cada cenário como um caso de estudo.
 
-### Servidores
-
-O ambiente atualmente possui:
-
-- `JUMP-SERVER-01` — `10.10.10.4`
-- `SECURITY-SERVER-01` — `10.10.20.4`
-
-O `SECURITY-SERVER-01` não possui IP público.
-
-O acesso administrativo ao servidor interno foi validado através do Jump Server.
-
-### Governança e Conformidade
-Implementamos o **Azure Policy** para garantir que nenhum recurso seja provisionado sem a tag `Ambiente`. Isso marca a transição de um ambiente puramente funcional para um ambiente governado e preparado para escala corporativa.
-
-[Ver detalhes da governança →](./06-governanca/azure-policy.md)
-
----
-
-## Validação Atual
-
-O fluxo administrativo validado foi:
-
-```text
-Máquina Administrativa
-        |
-        | RDP
-        v
-JUMP-SERVER-01
-10.10.10.4
-        |
-        | RDP
-        v
-SECURITY-SERVER-01
-10.10.20.4
-```
-
-O acesso ao servidor interno não é realizado diretamente pela Internet.
-
-As evidências das validações são armazenadas na pasta:
-
-[Ver evidências →](./04-evidencias/)
-
----
-
-## Próxima Etapa
-
-### Microsoft Entra ID
-
-A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
-
-- Microsoft Entra ID
-- RBAC
-- MFA
-- Princípio do menor privilégio
-- Controles de acesso administrativos
-
----
-
-## Documentação
-
-| Área | Conteúdo |
-|---|---|
-| [Arquitetura](./01-arquitetura/arquitetura.md) | Estrutura e decisões arquiteturais |
-| [Rede](./02-rede/rede.md) | VNet, subnets, endereçamento e evolução da rede |
-| [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | NSGs, Jump Server e fluxo administrativo |
-| [Identidade](./05-identidade/entra-id.md) | Microsoft Entra ID, RBAC e MFA |
-| [Governança](./06-governanca/azure-policy.md) | Azure Policy e conformidade preventiva |
-| [Evidências](./04-evidencias/) | Capturas e evidências utilizadas pelas demais etapas |
-| [Bastion](./03-controle-acesso/bastion-implementation.md) | Eliminação de exposição pública via Azure Bastion |
-
----
-
-## Stack
-
-`Microsoft Azure` · `Virtual Network` · `Network Security Groups` · `Windows Server 2025` · `Microsoft Entra ID` · `RBAC` · `Cloud Security`
+### ⚙️ DevSecOps / Infraestrutura como Código — *Em Desenvolvimento*
+O objetivo será aplicar segurança desde o provisionamento do ambiente, usando Infraestrutura como Código com validações de segurança antes do deploy, ao invés de corrigir depois que o recurso já existe.
