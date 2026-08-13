@@ -1,5 +1,12 @@
 # Arquitetura — Cloud Security Lab
 
+## Histórico de Evolução
+
+| Data | Alteração |
+|---|---|
+| 2026-03 | Removido IP público do JUMP-SERVER-01; adicionada AzureBastionSubnet (10.10.40.0/26). |
+| 2026-01 | Definição inicial da arquitetura: VNet única segmentada em três subnets por função. |
+
 ## Visão Geral
 
 O laboratório foi estruturado no Microsoft Azure com o objetivo de separar os diferentes níveis de infraestrutura e reduzir a exposição dos recursos.
@@ -75,3 +82,5 @@ Arquitetura inicial implementada e validada.
 Próximas evoluções da arquitetura serão incorporadas conforme novos controles de segurança forem adicionados ao laboratório.
 
 [Retornar ao Laboratório →](../README.md)
+
+
