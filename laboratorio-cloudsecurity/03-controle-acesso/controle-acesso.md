@@ -167,6 +167,9 @@ MFA
 → **06. Privilégios**  
 PIM — planejado conforme disponibilidade de licenciamento
 
+→ **07. Exposição**  
+Azure Bastion — eliminação de IP público
+
 ---
 
 ## Estado Atual
@@ -182,6 +185,7 @@ PIM — planejado conforme disponibilidade de licenciamento
 | MFA | Implementado |
 | Conditional Access | Não disponível — licenciamento |
 | PIM | Planejado — licenciamento |
+| Azure Bastion | Implementado |
 
 ---
 
