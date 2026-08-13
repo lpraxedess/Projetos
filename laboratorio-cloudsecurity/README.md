@@ -51,11 +51,11 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 
 | Área | Status | Acompanhar |
 |---|---|---|
-| Arquitetura | Concluído | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
-| Rede | Concluído | [Ver rede →](./02-rede/rede.md) |
-| Controle de Acesso | Concluído | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
-| Identidade | Concluído | [Ver identidade →](./05-identidade/entra-id.md) |
-| Governança | Concluído | [Ver governança →](./06-governanca/azure-policy.md) |
+| Arquitetura | Em evolução | [Ver arquitetura →](./01-arquitetura/arquitetura.md) |
+| Rede | Em evolução | [Ver rede →](./02-rede/rede.md) |
+| Controle de Acesso | Em evolução | [Ver controle de acesso →](./03-controle-acesso/controle-acesso.md) |
+| Identidade | Em evolução | [Ver identidade →](./05-identidade/entra-id.md) |
+| Governança | Em evolução | [Ver governança →](./06-governanca/azure-policy.md) |
 | Hardening | Planejado | Próximo |
 | Monitoramento | Planejado | Próximo |
 
@@ -156,6 +156,8 @@ A próxima etapa será evoluir o controle de identidade e acesso, trabalhando:
 | [Arquitetura](./01-arquitetura/arquitetura.md) | Estrutura e decisões arquiteturais |
 | [Rede](./02-rede/rede.md) | VNet, subnets, endereçamento e evolução da rede |
 | [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | NSGs, Jump Server e fluxo administrativo |
+| [Identidade](./05-identidade/entra-id.md) | Microsoft Entra ID, RBAC e MFA |
+| [Governança](./06-governanca/azure-policy.md) | Azure Policy e conformidade preventiva |
 | [Evidências](./04-evidencias/) | Capturas e evidências utilizadas pelas demais etapas |
 
 ---
