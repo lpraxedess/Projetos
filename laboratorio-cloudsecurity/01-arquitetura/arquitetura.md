@@ -9,13 +9,13 @@
 
 ## Visão Geral
 
-O laboratório foi estruturado no Microsoft Azure com o objetivo de separar os diferentes níveis de infraestrutura e reduzir a exposição dos recursos.
+Estruturei este laboratório no Microsoft Azure com um objetivo claro desde o início: separar os diferentes níveis de infraestrutura e reduzir ao máximo a exposição dos recursos.
 
-A arquitetura utiliza uma Virtual Network dedicada, dividida em subnets com funções específicas.
+Para isso, optei por uma Virtual Network dedicada, dividida em subnets com funções bem específicas — cada uma isolando um tipo de responsabilidade dentro do ambiente.
 
 ## Estrutura
 
-A infraestrutura está organizada da seguinte forma:
+A infraestrutura ficou organizada da seguinte forma:
 
 | Componente | Endereço | Função |
 |---|---|---|
@@ -46,41 +46,35 @@ flowchart LR
 
 </div>
 
-A administração dos servidores internos não é realizada diretamente pela Internet. O `Azure Bastion` funciona como ponto de entrada administrativo via navegador (HTTPS/443), e o `SECURITY-SERVER-01` permanece na rede privada, sem IP público.
+Um dos pontos que priorizei foi garantir que a administração dos servidores internos nunca fosse feita diretamente pela Internet. Hoje, o `Azure Bastion` é o único ponto de entrada administrativo, acessado via navegador (HTTPS/443), e o `SECURITY-SERVER-01` permanece isolado na rede privada, sem IP público.
 
-# Segmentação
+## Segmentação
 
-A separação das subnets permite aplicar controles diferentes de acordo com a função de cada ambiente.
+Dividi as subnets por função justamente para poder aplicar controles diferentes de acordo com o que cada ambiente representa:
 
-- ### Management: Responsável pelos recursos utilizados para administração da infraestrutura.
-
-- ### Security : Destinada aos servidores e componentes relacionados à segurança.
-
-- ### Workload: Reservada para aplicações e outros workloads que serão adicionados durante a evolução do laboratório.
+- ### Management: onde ficam os recursos que uso para administrar a infraestrutura.
+- ### Security: reservada para os servidores e componentes ligados diretamente à segurança.
+- ### Workload: deixei reservada para aplicações e outros workloads que devo adicionar conforme o laboratório evoluir.
 
 ## Decisões de Segurança
 
-A arquitetura foi construída considerando:
+Ao longo da construção dessa arquitetura, as decisões que guiei foram:
 
-- Segmentação de rede por função..
-- Redução da exposição direta à Internet.
-- Administração centralizada através de Jump Server.
-- Servidores internos sem IP público.
-- Controle de comunicação através de Network Security Groups.
-- Evolução futura para controles baseados em identidade.
+- Segmentar a rede por função.
+- Reduzir ao máximo a exposição direta à Internet.
+- Centralizar a administração através de um Jump Server.
+- Manter os servidores internos sem IP público.
+- Controlar toda comunicação através de Network Security Groups.
+- Deixar espaço para evoluir os controles com base em identidade no futuro.
 
 ## Evidência
 
-A arquitetura atual pode ser validada através da evidência abaixo.
+A imagem abaixo é a evidência da arquitetura atual, validada em ambiente real:
 
 ![Arquitetura de Rede — Cloud Security Lab](../04-evidencias/arquitetura/arquitetura-cloud-security.png)
 
 ## Status
 
-Arquitetura inicial implementada e validada.
-
-Próximas evoluções da arquitetura serão incorporadas conforme novos controles de segurança forem adicionados ao laboratório.
+A arquitetura inicial já está implementada e validada. As próximas evoluções vão sendo incorporadas conforme adiciono novos controles de segurança ao laboratório.
 
 [Retornar ao Laboratório →](../README.md)
-
-
