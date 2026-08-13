@@ -16,8 +16,6 @@ A ideia é permitir acompanhar não apenas o resultado final, mas também a evol
 
 ## Arquitetura Atual
 
-## Arquitetura Atual
-
 <div align="center">
 
 ```mermaid
