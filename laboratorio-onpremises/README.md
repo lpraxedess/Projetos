@@ -23,13 +23,13 @@ Criei este ambiente em **VirtualBox** para simular uma infraestrutura corporativ
     
 ## 📂 O que já construí e meus próximos passos
 
-
 | Área do Laboratório | O que fiz / O que abrange | Status |
 |---|---|---|
 | [Arquitetura](./01-arquitetura/arquitetura.md) | Desenho da rede virtual, topologia no VirtualBox e comunicação entre VMs. | ✅ **Concluído** |
-| [Identidade & Diretório](./02-identidade-diretorio/active-directory-entra-connect.md) | Windows Server 2025, Active Directory, WSUS e sincronização via Microsoft Entra Connect. | ✅ **Concluído** |
-| [Hardening & Compliance](./03-hardening-compliance/cis-benchmarks-scripts.md) | Scripts automatizados baseados em CIS Benchmarks e validação de postura de segurança. | ✅ **Concluído** |
-| [Monitoramento & SOC](./04-monitoramento-soc/wazuh-suricata.md) | Implementação do Wazuh (SIEM/XDR) e Suricata (IDS/IPS) no Rocky Linux. | ✅ **Concluído** |
+| [Identidade](./02-identidade/identidade.md) | Windows Server 2025, Active Directory, DNS/DHCP e sincronização via Microsoft Entra Connect. | ✅ **Concluído** |
+| [Gerenciamento](./03-gerenciamento/gerenciamento.md) | Gestão de atualizações, patches e correções de segurança com WSUS. | ✅ **Concluído** |
+| [Hardening](./04-hardening/hardening.md) | Análise de aplicabilidade, scripts automatizados baseados em CIS Benchmarks e validação de postura. | ✅ **Concluído** |
+| [Monitoramento](./05-monitoramento/monitoramento.md) | Implementação de Wazuh (SIEM/XDR) e Suricata (IDS/IPS) no Rocky Linux. | ✅ **Concluído** |
 | Resposta a Incidentes | Simulação de ataques e triagem de alertas no SOC on-premises. | ⏳ *Planejado* |
 
 ---
