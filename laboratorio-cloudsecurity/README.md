@@ -1,64 +1,44 @@
-# Cloud Security Lab — Microsoft Azure
+<div align="center">
 
-> Laboratório prático de Cloud Security desenvolvido de forma incremental, com foco em segmentação de rede, controle de acesso, redução de exposição e evolução dos controles de segurança — com aprofundamento contínuo em Identity and Access Management (IAM).
+# ☁️ Cloud Security & IAM Lab — Microsoft Azure
+
+> **Meu laboratório prático de segurança em nuvem e gestão de identidades**  
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
+  <img src="https://img.shields.io/badge/Core-IAM%20%2F%20Entra%20ID-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white" alt="Entra ID">
+  <img src="https://img.shields.io/badge/Status-Em%20Evolução%20Ativa-107C10?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Foco-Segurança%20%2F%20IAM-FFB900?style=for-the-badge" alt="Focus">
+</p>
+
+</div>
 
 ---
 
-## Visão Geral
+## 👋 Sobre este Laboratório
 
-Este projeto documenta a construção de um ambiente de Cloud Security no Microsoft Azure.
+Criei este repositório para colocar a mão na massa e documentar a construção do meu laboratório de **Cloud Security e IAM** no **Microsoft Azure**. 
 
-O laboratório está sendo desenvolvido passo a passo. Cada área possui seu próprio histórico de evolução, disponível no respectivo documento.
+Meu foco principal é **IAM (Gestão de Identidade e Acesso)**, mas sei que para ser um profissional de segurança completo, preciso entender a fundo como a infraestrutura e as redes funcionam por trás dos panos, apesar de ter sempre trabalhado em ambientes hibridos quero aprofundar meus conhecimentos em cloud. Por isso, construí o ambiente de forma incremental: comecei estruturando a rede do zero, criei camadas rígidas de controle de acesso, centralizei as identidades e implementei governança. 
 
-Meu foco de especialização é IAM, mas entendo que conhecimento sólido em todas as frentes de Cloud Security é necessário para atuar com profundidade — por isso o laboratório evolui em múltiplas áreas, cada uma no seu devido tempo.
+Aqui você vai encontrar exatamente o histórico prático de tudo o que estou estudando, testando e validando no dia a dia.
 
 ---
 
-# Áreas do Laboratório
+## 📂 O que já construí e meus próximos passos
 
->Cada frente abaixo representa um tema que venho desenvolvendo dentro do laboratório. O resumo aqui é só o ponto de partida — o histórico completo de decisões, ajustes e evolução de cada uma fica documentado na área específica.
-
-## 🏗️ Arquitetura
-Foquei em desenhar uma estrutura que já nasce segmentada, separando o que é gerenciamento, o que é segurança e o que é workload — reduzindo a superfície de ataque desde a concepção do ambiente, não como um ajuste posterior.
-
-[Ver evolução completa →](./01-arquitetura/arquitetura.md)
-
-## 🌐 Rede
-Em redes, foquei na estruturação e arquitetura da conexão entre as máquinas, aplicando boas práticas de segurança para garantir uma estrutura e conexão segura entre os ambientes.
-
-[Ver evolução completa →](./02-rede/rede.md)
-
-## 🔐 Controle de Acesso
-Aqui o foco foi evoluir o acesso administrativo de forma progressiva — começando pelo controle via rede (NSGs e Jump Server), avançando para autorização (RBAC) e autenticação (MFA), até eliminar completamente a exposição pública com Azure Bastion.
-
-[Ver evolução completa →](./03-controle-acesso/controle-acesso.md)
-
-## 🪪 Identidade & IAM
-Esta é a frente onde aprofundo mais — centralização da autenticação no Microsoft Entra ID, separação de contas por função, e evolução contínua para Privileged Access Management (PAM), federação e princípio do menor privilégio em todos os níveis.
-
-[Ver evolução completa →](./05-identidade/entra-id.md)
-
-## 📋 Governança
-Foquei em sair de um controle apenas reativo para um controle preventivo — usando Azure Policy pra garantir que os recursos sigam padrões definidos antes mesmo de serem criados, não depois.
-
-[Ver evolução completa →](./06-governanca/azure-policy.md)
-
-## 🔑 Federação e SSO — *Em Desenvolvimento*
-O objetivo será aprofundar o que começou em Identidade, indo além da estrutura básica de contas — trabalhando federação entre provedores, Single Sign-On e cenários de colaboração externa (B2B/B2C).
-
-## 🔒 Criptografia e Proteção de Dados — *Em Desenvolvimento*
-O objetivo será trabalhar a proteção de dados em repouso e em trânsito, gestão de chaves e segredos com Azure Key Vault, e controlar quem tem permissão de acessar cada camada de criptografia.
-
-## 🛡️ Hardening — *Em Desenvolvimento*
-O objetivo será reduzir a superfície de ataque nos próprios servidores, aplicando benchmarks de configuração segura no nível do sistema operacional.
-
-## 📊 Monitoramento — *Em Desenvolvimento*
-O objetivo será dar visibilidade sobre o que acontece dentro do ambiente — logs, alertas e detecção de comportamento anômalo.
-
-## 🕵️ Resposta a Incidentes — *Em Desenvolvimento*
-O objetivo será estruturar um processo de investigação e resposta a partir do que for detectado no Monitoramento — da identificação à contenção, documentando cada cenário como um caso de estudo.
-
-## ⚙️ DevSecOps / Infraestrutura como Código — *Em Desenvolvimento*
-O objetivo será aplicar segurança desde o provisionamento do ambiente, usando Infraestrutura como Código com validações de segurança antes do deploy, ao invés de corrigir depois que o recurso já existe.
-
-[Retornar aos Projetos →](../README.md)
+| # | Área do Laboratório | O que fiz / O que abrange | Status |
+|---|---|---|---|
+| **01** | [Arquitetura](./01-arquitetura/arquitetura.md) | Desenho e segmentação inicial da infraestrutura (Management, Security, Workload). | ✅ **Concluído** |
+| **02** | [Rede](./02-rede/rede.md) | Configuração de VNets, subnets dedicadas e Network Security Groups (NSGs). | ✅ **Concluído** |
+| **03** | [Controle de Acesso](./03-controle-acesso/controle-acesso.md) | Aplicação de RBAC, MFA, Azure Bastion e remoção de IPs públicos. | ✅ **Concluído** |
+| **04** | [Evidências](./04-evidencias/) | Onde guardo todos os prints, capturas de tela e validações reais do laboratório. | 📁 **Ativo** |
+| **05** | [Identidade & IAM](./05-identidade/entra-id.md) | Centralização no Microsoft Entra ID e separação de contas por função. | ✅ **Concluído** |
+| **06** | [Governança](./06-governanca/azure-policy.md) | Criação de regras preventivas com Azure Policy para controle de conformidade. | ✅ **Concluído** |
+| **07** | Federação e SSO | Próximos testes com B2B/B2C, federação de identidades e Single Sign-On. | ⏳ *Em breve* |
+| **08** | Criptografia | Gestão de chaves, Key Vault e proteção de dados em repouso e trânsito. | ⏳ *Planejado* |
+| **09** | Resposta a Incidentes | Simulação de investigação e análise forense baseada nos logs da nuvem. | ⏳ *Planejado* |
+| **10** | DevSecOps / IaC | Práticas de infraestrutura como código com validação de segurança antes do deploy. | ⏳ *Planejado* |
+| **11** | Monitoramento | Coleta de logs, centralização e visibilidade do que acontece no ambiente. | ⏳ *Planejado* |
+| **12** | Detecção | Criação de alertas e detecção de comportamentos anômalos. | ⏳ *Planejado* |
+| **13** | Microsoft Defender | Proteção avançada de workloads e postura de segurança com o Defender for Cloud. | ⏳ *Planejado* |
