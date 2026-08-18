@@ -1,45 +1,47 @@
-# Laboratórios de Cibersegurança
+<div align="center">
 
-> Laboratórios pessoais que desenvolvo para aplicar e consolidar conhecimentos em Segurança da Informação, Infraestrutura, Cloud Security e Blue Team.
+# 🛡️ Laboratórios de Cibersegurança
 
-Uso estes ambientes para transformar estudos teóricos em prática — testando tecnologias, validando configurações, simulando cenários e aprofundando conhecimentos técnicos.
+> Meus laboratórios práticos para consolidar conhecimentos em Segurança da Informação, Infraestrutura, Cloud Security e Blue Team.
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Foco-Cloud%20Security%20%2F%20IAM-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
+  <img src="https://img.shields.io/badge/Foco-Blue%20Team%20%2F%20SOC-FFB900?style=for-the-badge&logo=security&logoColor=white" alt="SOC">
+  <img src="https://img.shields.io/badge/Status-Em%20Evolução%20Contínua-107C10?style=for-the-badge" alt="Status">
+</p>
 
-## 1. LAB 01 — Cloud Security | Microsoft Azure
-
-Ambiente em nuvem que venho desenvolvendo passo a passo, aplicando conceitos e práticas de segurança próximos de um cenário corporativo.
-
-**Foco:** Cloud Security, IAM, segmentação de rede, controle de acesso e hardening.
-
-**Objetivo:** construir uma infraestrutura segura, reduzir a exposição dos recursos e validar controles de segurança na prática.
-
-**Stack:** Microsoft Azure, VNet, NSGs, Windows Server, Jump Server, Azure Bastion, Azure Policy e Microsoft Entra ID.
-
-**Referências:** Microsoft Cloud Security, Zero Trust, CIS Controls, ISO 27001 e PCI DSS.
-
-[Ver laboratório →](./laboratorio-cloudsecurity/README.md)
+</div>
 
 ---
 
-## 2. LAB 02 — On-Premises | Blue Team — Em Construção
-
-Ambiente on-premises simulado que estou desenvolvendo para praticar monitoramento, detecção e resposta a eventos de segurança.
-
-**Foco:** Blue Team, SOC, SIEM, análise de logs, detecção e resposta.
-
-**Objetivo:** simular uma infraestrutura corporativa e praticar a identificação, análise e investigação de atividades suspeitas.
-
-**Stack:** Wazuh, Graylog, TheHive, Active Directory e Sysmon.
-
-**Referências:** MITRE ATT&CK, CIS Controls, NIST Cybersecurity Framework e boas práticas de SOC.
-
-[Ver laboratório →](./laboratorio-onpremises/README.md)
+> 💡 **Propósito:** Uso estes ambientes para transformar estudos teóricos em prática — testando tecnologias, validando configurações, simulando cenários e aprofundando conhecimentos técnicos de forma controlada.
 
 ---
 
-## Objetivo dos Laboratórios
+## 🏗️ Meus Laboratórios
 
-> Os laboratórios fazem parte do meu processo contínuo de desenvolvimento técnico, permitindo estudar, implementar, testar e documentar diferentes tecnologias e controles de segurança em ambientes controlados.
+### 1. ☁️ Cloud Security | Microsoft Azure
+Ambiente em nuvem que venho desenvolvendo passo a passo, aplicando conceitos e práticas de segurança inspirados em cenários corporativos reais.
 
-> Os projetos são desenvolvidos para fins de estudo e demonstração técnica e não representam ambientes produtivos ou informações de infraestrutura de organizações.
+* **Foco:** Cloud Security, IAM, segmentação de rede, controle de acesso e hardening.
+* **Objetivo:** Construir uma infraestrutura segura, reduzir a superfície de ataque e validar controles de segurança na nuvem.
+* **Stack:** Microsoft Azure, VNet, NSGs, Windows Server, Jump Server, Azure Bastion, Azure Policy e Microsoft Entra ID.
+* **Referências:** Microsoft Cloud Security, Zero Trust, CIS Controls, ISO 27001 e PCI DSS.
+
+[👉 Acessar Laboratório de Azure](./laboratorio-cloudsecurity/README.md)
+
+---
+
+### 2. 🛡️ On-Premises | Blue Team — *Em Construção*
+Ambiente simulado on-premises que estou estruturando para praticar monitoramento, detecção de ameaças e resposta a incidentes.
+
+* **Foco:** Blue Team, SOC, SIEM, análise de logs, detecção e resposta.
+* **Objetivo:** Simular uma infraestrutura corporativa tradicional para praticar triagem, investigação e hunting.
+* **Stack:** Wazuh, Graylog, TheHive, Active Directory e Sysmon.
+* **Referências:** MITRE ATT&CK, CIS Controls, NIST CSF e melhores práticas de SOC.
+
+[👉 Acessar Laboratório On-Premises](./laboratorio-onpremises/README.md)
+
+---
+
+> ⚠️ **Nota:** Os projetos aqui documentados são desenvolvidos exclusivamente para fins de estudo, prática e demonstração técnica, não representando ambientes produtivos ou dados de infraestruturas corporativas reais.
