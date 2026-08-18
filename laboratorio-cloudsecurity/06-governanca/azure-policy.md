@@ -5,24 +5,24 @@
 
 | Data | Alteração |
 |---|---|
-| 2026-03 | Validado bloqueio preventivo via Azure Policy em tentativa de criação de recurso sem tag `Ambiente`. |
+| 2026-03 | Validado bloqueio preventivo via Azure Policy em tentativa de criação de recurso sem a tag `Ambiente`. |
 | 2026-03 | Implementada política de tag obrigatória (`Ambiente`) no escopo do Resource Group. |
 
 </details>
 
-## Objetivo
+## 🎯 Objetivo
 
-Meu objetivo aqui foi evoluir o laboratório do controle de acesso reativo para o controle preventivo de conformidade, utilizando o **Azure Policy** para garantir que todos os recursos sigam padrões organizacionais — nesse caso, a exigência de tags obrigatórias.
+O objetivo desta etapa foi evoluir o laboratório de uma abordagem de controle estritamente reativa para mecanismos de governança preventiva. Utilizei o **Azure Policy** para garantir conformidade automatizada e padronização organizacional, focando inicialmente na obrigatoriedade de tags em recursos.
 
 ---
 
-## Implementação da Política de Tags
+## 🛠️ Implementação da Política de Tags
 
-Implementei uma política para exigir a presença obrigatória da tag `Ambiente` em qualquer recurso criado dentro do escopo do laboratório (`RG-CLOUD-SECURITY-LAB`).
+Configurei uma política personalizada para exigir a presença obrigatória da tag `Ambiente` em qualquer recurso provisionado no escopo do grupo de recursos do laboratório (`RG-CLOUD-SECURITY-LAB`).
 
-### Definição da Política (JSON)
+### Definição da Política
 
-Usei o modo `All` para garantir que o motor do Azure Policy intercepte todas as requisições de criação (`PUT/PATCH`) no momento da submissão:
+Utilizei o modo `All` para assegurar que o motor do Azure Policy analise e intercepte requisições de criação ou modificação (`PUT/PATCH`) no nível de controle:
 
 ```json
 {
@@ -39,15 +39,18 @@ Usei o modo `All` para garantir que o motor do Azure Policy intercepte todas as 
   "parameters": {}
 }
 ```
+---
 
-## Validação e Evidências
+## 🧪 Validação e Evidências
 
-Para testar o controle, tentei criar uma conta de armazenamento (`testesemtag`) sem a tag obrigatória, e a criação foi bloqueada preventivamente pelo Azure Policy — confirmando a eficácia do controle.
+Para testar o controle preventivo, tentei provisionar uma conta de armazenamento (`testesemtag`) omitindo a tag obrigatória. O Azure Policy interceptou a submissão e bloqueou o provisionamento de forma síncrona.
 
-**Nota:** o erro `RequestDisallowedByPolicy` confirma que o Azure interceptou a requisição e negou a operação antes mesmo da criação do recurso.
+> **Nota Técnica:** O retorno do código de erro `RequestDisallowedByPolicy` evidencia que o motor de conformidade atuou na camada de controle (*Management Plane*), negando a operação antes que qualquer infraestrutura fosse alocada.
 
-![politica](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
+![Atribuição da política no Resource Group](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
 
-![politica barrando](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
+![Bloqueio preventivo de criação por falta de tag](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
 
-[Retornar ao Laboratório →](../README.md)
+---
+
+[← Retornar ao Início do Laboratório](../README.md)
