@@ -37,14 +37,14 @@ Os prints abaixo demonstram o sucesso do processo e o resultado da sincronizaç�
 ### 🟢 Conclusão do Assistente de Instalação do Entra Connect
 > *Evidência do término bem-sucedido da configuração de sincronização híbrida.*
 
-![Conclusão da Integração do Entra Connect](../evidencias/integracao/entra-connect-conclusao.png)
+![Conclusão da Integração do Entra Connect](../evidencias/identidade/integracao-concluida.png)
 
 ---
 
 ### 👥 Usuários Sincronizados no Microsoft Entra ID
 > *Visão no portal da nuvem mostrando os usuários e o status de sincronização local habilitada.*
 
-![Usuários Sincronizados no Entra ID](../evidencias/integracao/usuarios-sincronizados-entra.png)
+![Usuários Sincronizados no Entra ID](../evidencias/identidade/sincronizacao-realizada.png)
 
 ---
 
