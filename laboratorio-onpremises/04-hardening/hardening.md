@@ -34,14 +34,14 @@ Os prints abaixo mostram o antes e o depois do ambiente após a aplicação dos 
 ### 🔴 Cenário Inicial (Antes do Hardening)
 > *Visão da pontuação crua e dos alertas gerados pelas políticas padrão de instalação do sistema.*
 
-![Pontuação Antes do Hardening](../evidencias/hardening/cis-pontuacao-antes.png)
+![Pontuação Antes do Hardening](../evidencias/hardening/before-hardening.png)
 
 ---
 
 ### 🟢 Cenário Atual (Após o Hardening Aplicado e Filtrado)
 > *Visão após rodar os ajustes validados, mostrando a subida expressiva na conformidade e a mitigação dos riscos reais.*
 
-![Pontuação Depois do Hardening](../evidencias/hardening/cis-pontuacao-depois.png)
+![Pontuação Depois do Hardening](../evidencias/hardening/after-hardening.png)
 
 ---
 
