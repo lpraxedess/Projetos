@@ -5,46 +5,54 @@
 
 | Data | Alteração |
 |---|---|
-| 2026-03 | Adicionada AzureBastionSubnet (10.10.40.0/26) para suportar acesso via Azure Bastion. |
-| 2026-01 | Criação da VNet dedicada e segmentação inicial em SNET-MANAGEMENT, SNET-SECURITY e SNET-WORKLOAD. |
+| 2026-03 | Adicionada `AzureBastionSubnet` (`10.10.40.0/26`) para suportar acesso via Azure Bastion. |
+| 2026-01 | Criação da VNet dedicada e segmentação inicial em `SNET-MANAGEMENT`, `SNET-SECURITY` e `SNET-WORKLOAD`. |
 
 </details>
 
-## Estado Atual
+## 🌐 Estado Atual
 
-Para este laboratório, optei por uma Virtual Network dedicada:
+Para sustentar este laboratório com isolamento adequado, estruturei uma Virtual Network dedicada:
 
-- VNet: `VNET-CLOUD-SECURITY`
-- Endereço: `10.10.0.0/16`
-- Região: `Brazil South`
+* **VNet:** `VNET-CLOUD-SECURITY`
+* **Bloco CIDR:** `10.10.0.0/16`
+* **Região:** `Brazil South`
 
-Dividi essa rede em subnets de acordo com a função de cada ambiente.
+Dividi esta rede em subnets segmentadas estritamente de acordo com a função e responsabilidade de cada ambiente.
 
-## VNet
+---
+
+## 🗺️ Visão da VNet
 
 ![VNET-CLOUD-SECURITY](../04-evidencias/rede/vnet-cloud-security.png)
 
-## Subnets
+---
 
-Hoje a VNet está segmentada em quatro subnets:
+## 📂 Segmentação de Subnets
+
+Atualmente, a VNet está dividida em quatro subnets principais:
 
 ![Subnets da VNET-CLOUD-SECURITY](../04-evidencias/rede/subnet-cloud-security.png)
 
-| Subnet | Endereço | Função |
+| Subnet | Bloco CIDR | Função |
 |---|---|---|
-| `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração |
-| `SNET-SECURITY` | `10.10.20.0/24` | Servidores de segurança |
-| `SNET-WORKLOAD` | `10.10.30.0/24` | Workloads futuros |
-| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso administrativo via Bastion |
+| `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração e gerenciamento do ambiente |
+| `SNET-SECURITY` | `10.10.20.0/24` | Servidores e componentes de segurança |
+| `SNET-WORKLOAD` | `10.10.30.0/24` | Camada reservada para cargas de trabalho futuras |
+| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso administrativo seguro via Azure Bastion |
 
-## Network Security Groups
+---
 
-Cada subnet possui um Network Security Group dedicado:
+## 🛡️ Network Security Groups (NSGs)
 
-- `NSG-MANAGEMENT`
-- `NSG-SECURITY`
-- `NSG-WORKLOAD`
+Para aplicar o controle de tráfego de forma granular, cada subnet conta com um NSG dedicado:
 
-Uso os NSGs para controlar o tráfego entre os diferentes ambientes e limitar a exposição dos recursos ao mínimo necessário.
+* `NSG-MANAGEMENT`
+* `NSG-SECURITY`
+* `NSG-WORKLOAD`
 
-[Retornar ao Laboratório →](../README.md)
+Utilizo os NSGs para restringir a comunicação lateral entre os ambientes e mitigar qualquer exposição desnecessária de recursos.
+
+---
+
+[← Retornar ao Início do Laboratório](../README.md)
