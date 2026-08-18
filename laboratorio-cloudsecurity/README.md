@@ -41,3 +41,5 @@ Aqui você vai encontrar exatamente o histórico prático de tudo o que estou es
 | Monitoramento | Coleta de logs, centralização e visibilidade do que acontece no ambiente. | ⏳ *Planejado* |
 | Detecção | Criação de alertas e detecção de comportamentos anômalos. | ⏳ *Planejado* |
 | Microsoft Defender | Proteção avançada de workloads e postura de segurança com o Defender for Cloud. | ⏳ *Planejado* |
+
+[← Retornar ao Início Geral dos Laboratórios](../README.md)
