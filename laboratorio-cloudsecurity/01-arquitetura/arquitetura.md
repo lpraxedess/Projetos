@@ -5,30 +5,34 @@
 
 | Data | Alteração |
 |---|---|
-| 2026-03 | Removido IP público do JUMP-SERVER-01; adicionada AzureBastionSubnet (10.10.40.0/26). |
+| 2026-03 | Removido IP público do `JUMP-SERVER-01`; adicionada `AzureBastionSubnet` (`10.10.40.0/26`). |
 | 2026-01 | Definição inicial da arquitetura: VNet única segmentada em três subnets por função. |
 
 </details>
 
-## Visão Geral
+## 🌐 Visão Geral
 
-Estruturei este laboratório no Microsoft Azure com um objetivo claro desde o início: separar os diferentes níveis de infraestrutura e reduzir ao máximo a exposição dos recursos.
+Estruturei este laboratório no **Microsoft Azure** com um objetivo claro desde o início: separar os diferentes níveis de infraestrutura e reduzir ao máximo a exposição dos recursos.
 
-Para isso, optei por uma Virtual Network dedicada, dividida em subnets com funções bem específicas — cada uma isolando um tipo de responsabilidade dentro do ambiente.
+Para alcançar esse isolamento, optei por uma Virtual Network dedicada, dividida em subnets com funções bem específicas, garantindo que cada componente cumpra um papel isolado dentro do ambiente.
 
-## Estrutura
+---
 
-A infraestrutura ficou organizada da seguinte forma:
+## 🏗️ Estrutura de Rede
 
-| Componente | Endereço | Função |
+A infraestrutura está organizada conforme a tabela abaixo:
+
+| Componente | Bloco CIDR | Função |
 |---|---|---|
 | `VNET-CLOUD-SECURITY` | `10.10.0.0/16` | Rede principal do laboratório |
 | `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração |
 | `SNET-SECURITY` | `10.10.20.0/24` | Servidores de segurança |
 | `SNET-WORKLOAD` | `10.10.30.0/24` | Workloads futuros |
-| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso via Azure Bastion (sem exposição pública) |
+| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso seguro via Azure Bastion (sem exposição pública) |
 
-## Modelo de Acesso
+---
+
+## 🔒 Modelo de Acesso
 
 <div align="center">
 
@@ -46,38 +50,48 @@ flowchart LR
     class C server
     class D secure
 ```
-
 </div>
 
-Um dos pontos que priorizei foi garantir que a administração dos servidores internos nunca fosse feita diretamente pela Internet. Hoje, o `Azure Bastion` é o único ponto de entrada administrativo, acessado via navegador (HTTPS/443), e o `SECURITY-SERVER-01` permanece isolado na rede privada, sem IP público.
+Priorizei garantir que a administração dos servidores internos **nunca** seja feita de forma direta pela Internet. 
 
-## Segmentação
+* O **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`).
+* O `SECURITY-SERVER-01` permanece isolado em rede estritamente privada, completamente desprovido de IP público.
 
-Dividi as subnets por função justamente para poder aplicar controles diferentes de acordo com o que cada ambiente representa:
+---
 
-- ### Management: onde ficam os recursos que uso para administrar a infraestrutura.
-- ### Security: reservada para os servidores e componentes ligados diretamente à segurança.
-- ### Workload: deixei reservada para aplicações e outros workloads que devo adicionar conforme o laboratório evoluir.
+## 🧩 Segmentação por Subnet
 
-## Decisões de Segurança
+Dividi as subnets por função para aplicar controles granulares de acordo com o escopo de cada ambiente:
 
-Ao longo da construção dessa arquitetura, as decisões que guiei foram:
+* **Management:** Recursos voltados à administração e suporte da infraestrutura.
+* **Security:** Servidores e componentes de monitoramento/segurança.
+* **Workload:** Camada reservada para aplicações e serviços futuros.
 
-- Segmentar a rede por função.
-- Reduzir ao máximo a exposição direta à Internet.
-- Centralizar a administração através de um Jump Server.
-- Manter os servidores internos sem IP público.
-- Controlar toda comunicação através de Network Security Groups.
-- Deixar espaço para evoluir os controles com base em identidade no futuro.
+---
 
-## Evidência
+## 🛡️ Decisões de Arquitetura & Segurança
 
-A imagem abaixo é a evidência da arquitetura atual, validada em ambiente real:
+As premissas que guiaram a construção deste ambiente foram:
+
+* Segmentação rígida da rede por função.
+* Eliminação de qualquer exposição direta à Internet.
+* Centralização administrativa por meio de um Jump Server.
+* Ausência de IPs públicos em servidores internos.
+* Controle restrito de tráfego via Network Security Groups (NSGs).
+* Flexibilidade estrutural para expansão de controles baseados em identidade (IAM).
+
+---
+
+## 📷 Evidência Real
+
+Validação visual da arquitetura de rede em ambiente real:
 
 ![Arquitetura de Rede — Cloud Security Lab](../04-evidencias/arquitetura/arquitetura-cloud-security.png)
 
-## Status
+---
 
-A arquitetura inicial já está implementada e validada. As próximas evoluções vão sendo incorporadas conforme adiciono novos controles de segurança ao laboratório.
+## 📌 Status
 
-[Retornar ao Laboratório →](../README.md)
+> **Implementado e Validado.** As próximas evoluções serão incorporadas conforme novos controles de segurança forem adicionados ao laboratório.
+
+[← Retornar ao Início do Laboratório](../README.md)
