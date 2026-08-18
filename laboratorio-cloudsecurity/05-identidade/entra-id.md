@@ -11,24 +11,34 @@
 
 </details>
 
-## Objetivo
+## 🎯 Objetivo
 
-Meu objetivo aqui é centralizar a autenticação e autorização do laboratório, eliminando dependências de contas locais e aplicando o princípio do menor privilégio.
+O objetivo desta seção é centralizar a autenticação e autorização do laboratório, eliminando dependências de credenciais locais e aplicando o princípio do menor privilégio em nível de diretório.
 
-## Status Atual
+---
 
-A estrutura de identidades, MFA e RBAC já está validada e ativa no ambiente. Como essa é minha área de especialização dentro do laboratório, sigo aprofundando os controles além do que já foi implementado.
+## 📊 Status Atual
 
-## Resumo das Implementações
+A estrutura de identidades, MFA e RBAC já se encontra validada e ativa no ambiente. Sendo uma das bases fundamentais do laboratório, a gestão de identidades atua em conjunto com as diretrizes de acesso.
 
-- **Identidades:** segregação entre contas administrativas, leitura e emergência.
-- **RBAC:** funções `Contributor` e `Reader` implementadas no escopo do `RG-CLOUD-SECURITY-LAB`.
-- **MFA:** camada de proteção adicional configurada para contas administrativas.
+---
 
-**Próximo passo:** evoluir para Privileged Access Management (PAM), federação e SSO, expandindo o escopo de IAM do laboratório.
+## ⚙️ Resumo das Implementações
 
-Para detalhes completos da implementação e a matriz de acesso atual, consulte a documentação de controle de acesso:
+* **Identidades:** Segregação rígida entre funções administrativas, leitura e contas de emergência (*break-glass*).
+* **RBAC:** Funções `Contributor` e `Reader` aplicadas estritamente no escopo do `RG-CLOUD-SECURITY-LAB`.
+* **MFA:** Camada de autenticação multifator configurada e ativa para contas com privilégios.
 
-[Ver detalhes em Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
+---
 
-[Retornar ao Laboratório →](../README.md)
+## 🔮 Próximos Passos
+
+Como evolução planejada, pretendo avançar para conceitos de *Privileged Access Management (PAM)*, federação e SSO para expandir o escopo de IAM do laboratório.
+
+> Para detalhes granulares de implementação, evidências e matriz de acesso completa, consulte a documentação dedicada:
+> 
+> [Ver detalhes em Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
+
+---
+
+[← Retornar ao Início do Laboratório](../README.md)
