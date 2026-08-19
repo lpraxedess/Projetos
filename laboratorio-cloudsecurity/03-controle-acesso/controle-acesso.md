@@ -5,21 +5,19 @@
 
 | Data | Alteração |
 |---|---|
-| 2026-03 | Etapa 07 — Implementado Azure Bastion, eliminando IP público do Jump Server. |
-| 2026-02 | Etapa 06 — Avaliado Microsoft Entra PIM; mantido como planejado por limitação de licenciamento. |
-| 2026-02 | Etapa 05 — Configurado MFA para contas administrativas (`luiz.admin`, `luiz.azure.admin`). |
-| 2026-02 | Etapa 04 — Removida atribuição de Owner na assinatura; reduzido escopo para Contributor no Resource Group. |
-| 2026-01 | Etapa 03 — Implementado Azure RBAC com função Leitor no escopo do Resource Group. |
-| 2026-01 | Etapa 02 — Criadas identidades segregadas por função no Microsoft Entra ID. |
-| 2026-01 | Etapa 01 — Implementado controle de acesso via NSGs e Jump Server. |
+| 2026-03 | Implementado Azure Bastion e removido o IP público do Jump Server. |
+| 2026-02 | Avaliado Microsoft Entra PIM; mantido para evolução futura por limitação de licenciamento. |
+| 2026-02 | Configurado MFA para contas administrativas. |
+| 2026-02 | Removida atribuição de Owner na assinatura; escopo reduzido para Contributor no Resource Group. |
+| 2026-01 | Implementado Azure RBAC com função Leitor no escopo do Resource Group. |
+| 2026-01 | Criadas identidades segregadas por função no Microsoft Entra ID. |
+| 2026-01 | Implementado controle inicial de acesso com NSGs e Jump Server. |
 
 </details>
 
 ## 🎯 Objetivo
 
-A minha proposta nesta etapa foi evoluir progressivamente os mecanismos de acesso ao ambiente, partindo de premissas de rede e avançando de forma estruturada para camadas robustas de identidade, autenticação, autorização e aplicação do princípio do menor privilégio.
-
----
+Aqui evoluo o controle de acesso ao ambiente, começando pela rede e avançando para identidade, autenticação, autorização e menor privilégio.
 
 ## 🗺️ Modelo de Acesso Atual
 
@@ -42,168 +40,97 @@ flowchart LR
 
 </div>
 
-A administração direta dos servidores internos via Internet foi completamente eliminada. Hoje, o **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`), mantendo o `SECURITY-SERVER-01` confinado em rede estritamente privada e sem IP público.
+O acesso administrativo direto aos servidores pela Internet foi eliminado. O Azure Bastion é o ponto de entrada administrativo, enquanto os servidores permanecem em rede privada.
 
-Abaixo, detalho como alcancei este padrão, etapa por etapa.
+## 🏗️ Evolução do Controle de Acesso
 
----
+### 01 — Controle inicial via rede
 
-## 🏗️ Etapa 01 — Controle de Acesso via Rede
-
-Na primeira fase, estabeleci o perímetro de segurança primário utilizando Network Security Groups (NSGs).
-
-A segmentação por subnet garantiu:
-* Tráfego RDP externo restrito exclusivamente ao segmento de gerenciamento.
-* Conectividade RDP interna limitada entre `SNET-MANAGEMENT` e `SNET-SECURITY`.
-* Ausência total de rotas de acesso administrativo direto da Internet para os servidores de segurança.
+Comecei utilizando NSGs e segmentação de subnets para restringir a comunicação administrativa.
 
 ![NSGs do ambiente](../04-evidencias/controle-acesso/nsg-cloud-security.png)
 
----
+### 02 — Identidades segregadas
 
-## 🪪 Etapa 02 — Identidade como Perímetro
+Passei a utilizar identidades diferentes para administração, leitura e acesso emergencial no Microsoft Entra ID:
 
-Com a fundação de rede validada, passei a estruturar o controle baseado em identidades dedicadas no **Microsoft Entra ID**:
+- `luiz.admin` — Administração de identidades.
+- `luiz.azure.admin` — Administração de recursos no Azure.
+- `luiz.azure.reader` — Acesso de leitura.
+- `lab.breakglass01` — Acesso emergencial.
+- `lab.breakglass02` — Acesso emergencial.
 
-* `luiz.admin` — Administração dedicada de identidades.
-* `luiz.azure.admin` — Administração de recursos no Azure.
-* `luiz.azure.reader` — Permissões estritas de leitura.
-* `lab.breakglass01` — Conta de acesso emergencial (*break-glass*).
-* `lab.breakglass02` — Conta de acesso emergencial (*break-glass*).
+### 03 — Azure RBAC
 
-Esta segregação garante isolamento absoluto entre funções operacionais, auditoria e recuperação de desastres.
+Apliquei o RBAC com escopo limitado ao grupo de recursos `RG-CLOUD-SECURITY-LAB`.
 
----
-
-## 🔐 Etapa 03 — Governança de Autorização via Azure RBAC
-
-Para controlar o acesso aos recursos do Azure com precisão, adotei o modelo de Role-Based Access Control (RBAC).
-
-Como marco inicial, atribuí a função de `Leitor` (Reader) à identidade `luiz.azure.reader` escopo estrito ao grupo de recursos `RG-CLOUD-SECURITY-LAB`, evitando privilégios amplos em nível de assinatura.
+| Identidade | Função | Escopo | Uso |
+|---|---|---|---|
+| `luiz.azure.reader` | Reader | `RG-CLOUD-SECURITY-LAB` | Leitura |
+| `luiz.azure.admin` | Contributor | `RG-CLOUD-SECURITY-LAB` | Administração |
+| `lab.breakglass01` | Global Administrator | Microsoft Entra ID | Emergência |
+| `lab.breakglass02` | Global Administrator | Microsoft Entra ID | Emergência |
 
 ![Azure RBAC — Reader no Resource Group](../04-evidencias/controle-acesso/rbac-reader-resource-group.png)
 
-### Matriz Inicial de Autorização
+### 04 — Menor privilégio
 
-| Identidade | Função | Escopo | Estado |
-|---|---|---|---|
-| `luiz.azure.reader` | Leitor | `RG-CLOUD-SECURITY-LAB` | Implementado |
-| `luiz.azure.admin` | Contributor | `RG-CLOUD-SECURITY-LAB` | Implementado |
-| `lab.breakglass01` | Global Administrator | Microsoft Entra ID | Reservado para Emergência |
-| `lab.breakglass02` | Global Administrator | Microsoft Entra ID | Reservado para Emergência |
+Depois de validar o ambiente, removi o `Owner` da assinatura e deixei a conta administrativa como `Contributor` apenas no Resource Group.
 
----
-
-## 📉 Etapa 04 — Minimização de Privilégios Administrativos
-
-Após validar o comportamento do ambiente com o perfil de `Contributor` limitado ao grupo de recursos, **removi a atribuição de `Owner`** que antes recaía diretamente sobre a assinatura principal para a conta `luiz.azure.admin`.
-
-* **Estado Anterior:** `luiz.azure.admin → Owner → Azure subscription`
-* **Estado Atual:** `luiz.azure.admin → Contributor → RG-CLOUD-SECURITY-LAB`
-
-Essa alteração restringe o raio de impacto de eventuais incidentes e consolida o menor privilégio prático.
+```text
+Antes:  luiz.azure.admin → Owner → Subscription
+Depois: luiz.azure.admin → Contributor → RG-CLOUD-SECURITY-LAB
+```
 
 ![RBAC administrativo — escopo do Resource Group](../04-evidencias/controle-acesso/rbac-admin-final.png)
 
----
+### 05 — MFA
 
-## 🛡️ Etapa 05 — Camada de Autenticação Multifator (MFA)
+Adicionei MFA às contas administrativas:
 
-Para mitigar riscos associados a credenciais comprometidas, implementei o segundo fator de autenticação nas contas administrativas:
-
-* `luiz.admin` — Validação via Software OATH/TOTP.
-* `luiz.azure.admin` — Validação via Microsoft Authenticator.
+- `luiz.admin` — Software OATH/TOTP.
+- `luiz.azure.admin` — Microsoft Authenticator.
 
 ![MFA — luiz.admin](../04-evidencias/controle-acesso/mfa-luiz-admin.png)
 
 ![MFA — luiz.azure.admin](../04-evidencias/controle-acesso/mfa-luiz-azure-admin.png)
 
-> **Nota de Contexto:** Como o tenant atual não possui licenciamento para o uso do *Microsoft Entra Conditional Access*, políticas avançadas baseadas em risco, dispositivo ou localização geográfica permanecem guardadas para expansões futuras.
+O tenant atual não possui licenciamento para Conditional Access, então controles baseados em risco, dispositivo ou localização ficam para uma evolução futura.
 
----
+### 06 — PIM
 
-## ⏳ Etapa 06 — Avaliação de Privileged Access Management (PIM)
-
-Conduzi uma avaliação para implementar o *Microsoft Entra Privileged Identity Management (PIM)* visando controle Just-In-Time (JIT) de acessos elevados.
-
-A verificação no portal apontou que os recursos completos do PIM exigem licenças específicas (Entra ID P2 ou Governance), indisponíveis no tier atual do tenant. Por esse motivo, a iniciativa foi documentada como **Planejada** para momentos de upgrade de infraestrutura, mantendo a governança baseada no Azure RBAC padrão.
+Avaliei o Microsoft Entra Privileged Identity Management para acesso Just-In-Time. A implementação completa depende de licenciamento que não está disponível no tenant atual, então mantive essa evolução documentada para quando o ambiente permitir.
 
 ![Licenciamento para Microsoft Entra PIM](../04-evidencias/controle-acesso/pim-licenciamento.png)
 
----
+### 07 — Azure Bastion
 
-## 🚪 Etapa 07 — Blindagem de Perímetro com Azure Bastion
+Por fim, removi o IP público do `JUMP-SERVER-01` e passei o acesso administrativo para o Azure Bastion.
 
-O marco conclusivo desta fase consistiu em banir qualquer exposição direta de IPs públicos em servidores voltados a tarefas administrativas.
+- `AzureBastionSubnet`: `10.10.40.0/26`
+- Região: `Brazil South`
+- Modo: Basic
+- Acesso: portal web via HTTPS (`443`)
+- Integração: `AADLoginForWindows` + `Virtual Machine User Login`
 
-* **Isolamento de NIC:** Remoção completa do IP público associado ao `JUMP-SERVER-01`.
-* **Subnet Dedicada:** Alocação da `AzureBastionSubnet` (`10.10.40.0/26`) dentro da `VNET-CLOUD-SECURITY`.
-* **Serviço:** Instalação do Azure Bastion (modo *Basic*, região *Brazil South*).
-* **Integração de Identidade:** Aplicação da extensão `AADLoginForWindows` combinada à permissão `Virtual Machine User Login` via IAM.
+## 📈 Trilha de Evolução
 
-O acesso ocorre estritamente via portal web em sessões seguras encapsuladas em HTTPS (`443`).
-
----
-
-## 📈 Resumo da Trilha de Evolução
-
-[01. Rede (NSGs)] ➡️ [02. Identidade (Entra ID)] ➡️ [03. Autorização (RBAC)] ➡️ [04. Menor Privilégio] ➡️ [05. Autenticação (MFA)] ➡️ [06. PIM (Planejado)] ➡️ [07. Azure Bastion]
-
----
-
-## 📊 Status Consolidado dos Controles
-
-| Mecanismo / Controle | Status |
-|---|---|
-| Segmentação de Rede | ✅ Implementado |
-| Network Security Groups (NSGs) | ✅ Implementado |
-| Microsoft Entra ID Core | ✅ Implementado |
-| Segregação de Contas | ✅ Implementado |
-| Azure RBAC | ✅ Implementado |
-| Minimização de Escopo | ✅ Implementado |
-| Multi-Factor Authentication (MFA) | ✅ Implementado |
-| Conditional Access | ❌ Indisponível (Licenciamento) |
-| Privileged Identity Management (PIM) | ⏳ Planejado (Licenciamento) |
-| Azure Bastion (Sem IP Público) | ✅ Implementado |
-
----
+```text
+NSGs → Entra ID → RBAC → Menor Privilégio → MFA → PIM → Azure Bastion
+```
 
 ## 🧪 Experimentos e Aprendizados
 
-> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados aqui quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
 
-### Problema
+### Exemplo
 
-Descreva o que você tentou implementar ou investigar.
+**O que mudou:** descreva a alteração realizada.
 
-### Erro
+**Por que:** explique o problema ou necessidade que motivou a mudança.
 
-Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
-
-### Investigação
-
-Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
-
-### Correção
-
-Descreva a alteração realizada e, quando aplicável, por que a solução escolhida foi preferível às alternativas testadas.
-
-### Resultado
-
-Explique como a solução foi validada tecnicamente.
-
-### Aprendizado
-
-Registre o conceito de IAM, autenticação, autorização ou segurança que foi consolidado.
-
-### Próximo passo
-
-Registre o que ainda precisa ser estudado, testado ou melhorado.
+**Resultado:** registre como a alteração foi validada e o que foi aprendido.
 
 ---
-
-## ⏭️ Próximos Passos
-
-Superada a fase de blindagem de acessos e identidades, a próxima frente natural do laboratório migra para a **Governança Preventiva** através do **Azure Policy**, assegurando que os recursos criados obedeçam a parâmetros automáticos de conformidade corporativa.
 
 [← Retornar ao Início do Laboratório](../README.md)
