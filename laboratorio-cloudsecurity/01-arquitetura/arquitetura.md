@@ -12,15 +12,9 @@
 
 ## 🌐 Visão Geral
 
-Estruturei este laboratório no **Microsoft Azure** com um objetivo claro desde o início: separar os diferentes níveis de infraestrutura e reduzir ao máximo a exposição dos recursos.
-
-Para alcançar esse isolamento, optei por uma Virtual Network dedicada, dividida em subnets com funções bem específicas, garantindo que cada componente cumpra um papel isolado dentro do ambiente.
-
----
+Aqui defino a estrutura do laboratório no **Microsoft Azure** e as decisões que orientam sua evolução. A arquitetura parte de uma Virtual Network dedicada, segmentada por função, e vai sendo ajustada conforme novos controles e experimentos são incorporados.
 
 ## 🏗️ Estrutura de Rede
-
-A infraestrutura está organizada conforme a tabela abaixo:
 
 | Componente | Bloco CIDR | Função |
 |---|---|---|
@@ -28,9 +22,7 @@ A infraestrutura está organizada conforme a tabela abaixo:
 | `SNET-MANAGEMENT` | `10.10.10.0/24` | Administração |
 | `SNET-SECURITY` | `10.10.20.0/24` | Servidores de segurança |
 | `SNET-WORKLOAD` | `10.10.30.0/24` | Workloads futuros |
-| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso seguro via Azure Bastion (sem exposição pública) |
-
----
+| `AzureBastionSubnet` | `10.10.40.0/26` | Acesso administrativo via Azure Bastion |
 
 ## 🔒 Modelo de Acesso
 
@@ -52,80 +44,46 @@ flowchart LR
 ```
 </div>
 
-Priorizei garantir que a administração dos servidores internos **nunca** seja feita de forma direta pela Internet.
+A administração dos servidores internos não é feita diretamente pela Internet.
 
-* O **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`).
-* O `SECURITY-SERVER-01` permanece isolado em rede estritamente privada, completamente desprovido de IP público.
-
----
+- O **Azure Bastion** atua como ponto de entrada administrativo, acessado via navegador (`HTTPS/443`).
+- O `SECURITY-SERVER-01` permanece em rede privada e sem IP público.
 
 ## 🧩 Segmentação por Subnet
 
-Dividi as subnets por função para aplicar controles granulares de acordo com o escopo de cada ambiente:
+Dividi as subnets por função para aplicar controles de acordo com cada ambiente:
 
-* **Management:** Recursos voltados à administração e suporte da infraestrutura.
-* **Security:** Servidores e componentes de monitoramento/segurança.
-* **Workload:** Camada reservada para aplicações e serviços futuros.
-
----
+- **Management:** administração e suporte da infraestrutura.
+- **Security:** servidores e componentes de segurança.
+- **Workload:** camada reservada para aplicações e serviços futuros.
 
 ## 🛡️ Decisões de Arquitetura & Segurança
 
-As premissas que guiaram a construção deste ambiente foram:
+As principais premissas utilizadas até aqui são:
 
-* Segmentação rígida da rede por função.
-* Eliminação de qualquer exposição direta à Internet.
-* Centralização administrativa por meio de um Jump Server.
-* Ausência de IPs públicos em servidores internos.
-* Controle restrito de tráfego via Network Security Groups (NSGs).
-* Flexibilidade estrutural para expansão de controles baseados em identidade (IAM).
-
----
+- Segmentação da rede por função.
+- Ausência de exposição direta dos servidores internos à Internet.
+- Administração centralizada por meio do Azure Bastion.
+- Ausência de IPs públicos em servidores internos.
+- Controle de tráfego por Network Security Groups (NSGs).
+- Estrutura preparada para expansão dos controles de identidade e segurança.
 
 ## 📷 Evidência Real
 
-Validação visual da arquitetura de rede em ambiente real:
-
 ![Arquitetura de Rede — Cloud Security Lab](../04-evidencias/arquitetura/arquitetura-cloud-security.png)
-
----
 
 ## 🧪 Experimentos e Aprendizados
 
-> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
 
-### Problema
+### Exemplo
 
-Descreva o que você tentou implementar ou investigar.
+**O que mudou:** descreva a alteração realizada.
 
-### Erro
+**Por que:** explique o problema ou necessidade que motivou a mudança.
 
-Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
-
-### Investigação
-
-Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
-
-### Correção
-
-Descreva a alteração realizada para resolver o problema ou ajustar a arquitetura.
-
-### Resultado
-
-Explique como a solução foi validada tecnicamente.
-
-### Aprendizado
-
-Registre o conceito que foi consolidado com o experimento.
-
-### Próximo passo
-
-Registre o que ainda precisa ser estudado, testado ou melhorado.
+**Resultado:** registre como a alteração foi validada e o que foi aprendido.
 
 ---
-
-## 📌 Status
-
-> **Implementado e Validado.** As próximas evoluções serão incorporadas conforme novos controles de segurança forem adicionados ao laboratório.
 
 [← Retornar ao Início do Laboratório](../README.md)
