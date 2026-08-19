@@ -72,6 +72,8 @@ As principais premissas utilizadas até aqui são:
 >
 > **Constatação:** Durante o acompanhamento, identifiquei que o Bastion se tornou o maior consumidor de recursos/custo do laboratório.
 >
+> ![Consumo de recursos — Azure Bastion](../04-evidencias/arquitetura/consumo-bastion.png)
+>
 > **Decisão:** Mesmo reconhecendo sua importância para um modelo de acesso administrativo mais seguro, decidi remover a função temporariamente para analisar o comportamento do ambiente sem ela.
 >
 > **Objetivo:** Comparar diferentes abordagens, entender os impactos de cada escolha e utilizar os resultados para evoluir a arquitetura do laboratório.
