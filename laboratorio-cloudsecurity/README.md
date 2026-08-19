@@ -9,11 +9,13 @@ Aqui é onde aplico na prática meus conhecimentos de **Cloud Security, IAM e in
 ## 🔄 Fluxo do Laboratório
 
 ```text
-Arquitetura → Rede → Identidade → Controle de Acesso → Governança
+Arquitetura → Rede → Controle de Acesso → Identidade → Governança
                                       ↓
-                     Monitoramento → Detecção → Defesa
+                         Federação / SSO → Criptografia
                                       ↓
-                             DevSecOps / IaC
+                  Monitoramento → Detecção → Defesa
+                                      ↓
+              Resposta a Incidentes → DevSecOps / IaC
 ```
 
 A estrutura não é fixa. As áreas podem ser revisitadas conforme novos testes, descobertas e mudanças na arquitetura surgirem.
@@ -34,5 +36,7 @@ A estrutura não é fixa. As áreas podem ser revisitadas conforme novos testes,
 | 📊 **Monitoramento** | Logs, métricas, observabilidade e acompanhamento do ambiente |
 | 🔎 **Detecção** | Alertas, análise de eventos e identificação de comportamentos suspeitos |
 | 🛡️ **Defender Cloud** | Postura de segurança, proteção de workloads e recomendações do Microsoft Defender for Cloud |
+
+> **Nota:** As áreas sem link ainda não possuem documentação desenvolvida. Elas permanecem aqui como referência dos próximos temas que pretendo explorar no laboratório.
 
 [← Voltar para os projetos](../README.md)
