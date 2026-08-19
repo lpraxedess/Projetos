@@ -4,9 +4,7 @@ Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azu
 
 ## 🎯 Objetivo
 
-Aplicar na prática conhecimentos de **Cloud Security, Identity & Access Management, segurança de redes e governança em Azure**, construindo e evoluindo um ambiente controlado para experimentar conceitos, testar configurações, analisar problemas e consolidar conhecimento técnico.
-
-O laboratório acompanha minha evolução profissional por meio das implementações realizadas, mudanças de arquitetura e aprendizados relevantes ao longo do desenvolvimento.
+Aqui é onde aplico na prática meus conhecimentos de **Cloud Security, IAM e infraestrutura no Microsoft Azure**. Construo, testo e modifico o ambiente conforme avanço nos estudos, experimentando diferentes configurações e abordagens. Os desafios, erros, decisões e aprendizados relevantes fazem parte da evolução do laboratório e do meu desenvolvimento técnico.
 
 ## Laboratório
 
