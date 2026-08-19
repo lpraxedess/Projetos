@@ -48,11 +48,20 @@ Isso validou que o controle está atuando preventivamente no *Management Plane*,
 
 ![Bloqueio preventivo de criação por falta de tag](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
 
-## 🧠 O que este experimento mostrou
+## 🧠 Experimentos e Aprendizados
 
-O principal aprendizado foi perceber na prática a diferença entre identificar um problema depois que um recurso existe e impedir que uma configuração fora do padrão seja criada.
+Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
 
-Novos experimentos de governança serão registrados aqui conforme forem realizados.
+### Exemplo
+
+**O que mudou:**  
+Descreva a alteração realizada.
+
+**Por que:**  
+Explique o problema ou necessidade que motivou a mudança.
+
+**Resultado:**  
+Registre como a alteração foi validada e o que foi aprendido.
 
 ---
 
