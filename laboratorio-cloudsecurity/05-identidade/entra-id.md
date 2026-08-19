@@ -33,15 +33,14 @@ Novos experimentos, erros, decisões ou descobertas relevantes são registrados 
 
 ### Exemplo
 
-**O que mudou:** descreva a alteração realizada.
+**O que mudou:**  
+Descreva a alteração realizada.
 
-**Por que:** explique o problema ou necessidade que motivou a mudança.
+**Por que:**  
+Explique o problema ou necessidade que motivou a mudança.
 
-**Resultado:** registre como a alteração foi validada e o que foi aprendido.
-
-## 🔮 Próximos Passos
-
-A evolução desta área deve avançar conforme o laboratório incorporar novos cenários de PAM, federação e SSO.
+**Resultado:**  
+Registre como a alteração foi validada e o que foi aprendido.
 
 ---
 
