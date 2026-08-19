@@ -28,14 +28,6 @@ flowchart LR
     A(["💻 Admin"])-->|HTTPS 443| B(["🔒 Bastion"])
     B --> C(["🖥️ JUMP-SERVER-01"])
     C -->|RDP interno| D(["🛡️ SECURITY-SERVER-01"])
-    classDef external fill:#1e3a5f,stroke:#60a5fa,stroke-width:2px,color:#e0f2fe
-    classDef bastion fill:#5a3a1e,stroke:#fb923c,stroke-width:2px,color:#fed7aa
-    classDef server fill:#1e4620,stroke:#4ade80,stroke-width:2px,color:#dcfce7
-    classDef secure fill:#4c1d1d,stroke:#f87171,stroke-width:2px,color:#fecaca
-    class A external
-    class B bastion
-    class C server
-    class D secure
 ```
 
 </div>
@@ -52,13 +44,7 @@ Comecei utilizando NSGs e segmentação de subnets para restringir a comunicaç�
 
 ### 02 — Identidades segregadas
 
-Passei a utilizar identidades diferentes para administração, leitura e acesso emergencial no Microsoft Entra ID:
-
-- `luiz.admin` — Administração de identidades.
-- `luiz.azure.admin` — Administração de recursos no Azure.
-- `luiz.azure.reader` — Acesso de leitura.
-- `lab.breakglass01` — Acesso emergencial.
-- `lab.breakglass02` — Acesso emergencial.
+Passei a utilizar identidades diferentes para administração, leitura e acesso emergencial no Microsoft Entra ID.
 
 ### 03 — Azure RBAC
 
@@ -125,11 +111,14 @@ Novos experimentos, erros, decisões ou descobertas relevantes são registrados 
 
 ### Exemplo
 
-**O que mudou:** descreva a alteração realizada.
+**O que mudou:**  
+Descreva a alteração realizada.
 
-**Por que:** explique o problema ou necessidade que motivou a mudança.
+**Por que:**  
+Explique o problema ou necessidade que motivou a mudança.
 
-**Resultado:** registre como a alteração foi validada e o que foi aprendido.
+**Resultado:**  
+Registre como a alteração foi validada e o que foi aprendido.
 
 ---
 
