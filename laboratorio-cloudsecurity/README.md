@@ -6,6 +6,18 @@ Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azu
 
 Aqui é onde aplico na prática meus conhecimentos de **Cloud Security, IAM e infraestrutura no Microsoft Azure**. Construo, testo e modifico o ambiente conforme avanço nos estudos, experimentando diferentes configurações e abordagens. Os desafios, erros, decisões e aprendizados relevantes fazem parte da evolução do laboratório e do meu desenvolvimento técnico.
 
+## 🔄 Fluxo do Laboratório
+
+```text
+Arquitetura → Rede → Identidade → Controle de Acesso → Governança
+                                      ↓
+                     Monitoramento → Detecção → Defesa
+                                      ↓
+                             DevSecOps / IaC
+```
+
+A estrutura não é fixa. As áreas podem ser revisitadas conforme novos testes, descobertas e mudanças na arquitetura surgirem.
+
 ## Laboratório
 
 | Área | O que é tratado |
