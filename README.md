@@ -32,13 +32,13 @@ Ambiente em nuvem que venho desenvolvendo passo a passo, aplicando conceitos e p
 
 ---
 
-### 2. 🛡️ On-Premises | Blue Team — *Em Construção*
-Ambiente simulado on-premises que estou estruturando para praticar monitoramento, detecção de ameaças e resposta a incidentes.
+### 2. 🛡️ On-Premises | Blue Team
+Ambiente local que venho construindo para praticar infraestrutura tradicional, identidade híbrida, hardening e monitoramento de segurança.
 
-* **Foco:** Blue Team, SOC, SIEM, análise de logs, detecção e resposta.
-* **Objetivo:** Simular uma infraestrutura corporativa tradicional para praticar triagem, investigação e hunting.
-* **Stack:** Wazuh, Graylog, TheHive, Active Directory e Sysmon.
-* **Referências:** MITRE ATT&CK, CIS Controls, NIST CSF e melhores práticas de SOC.
+* **Foco:** Active Directory, hardening, gestão de atualizações, SIEM, IDS/IPS e integração híbrida.
+* **Objetivo:** Reproduzir cenários de infraestrutura corporativa local, aplicar controles de segurança e validar seu comportamento na prática.
+* **Stack:** VirtualBox, Windows Server 2025, Active Directory, DNS, WSUS, Microsoft Entra Connect, Rocky Linux, Wazuh, Suricata e Kali Linux.
+* **Referências:** CIS Benchmarks, MITRE ATT&CK, CIS Controls e NIST CSF.
 
 [👉 Acessar Laboratório On-Premises](./laboratorio-onpremises/README.md)
 
