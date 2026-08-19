@@ -16,24 +16,6 @@
 
 > 💡 **Propósito:** Uso estes ambientes para transformar estudos teóricos em prática — testando tecnologias, validando configurações, simulando cenários e aprofundando conhecimentos técnicos de forma controlada.
 
-> 🧠 **Método de aprendizagem:** O objetivo não é construir ambientes perfeitos desde o início. Cada laboratório registra a evolução do meu conhecimento: o que tentei, os erros encontrados, como investiguei, o que corrigi e o que aprendi com cada experiência.
-
----
-
-## 🧪 Como documento meus experimentos
-
-Cada etapa relevante deve registrar não apenas o resultado final, mas também o processo de aprendizagem:
-
-1. **Problema** — o que eu queria implementar ou investigar.
-2. **Erro** — o comportamento inesperado ou falha encontrada.
-3. **Investigação** — hipóteses, testes e evidências utilizadas para encontrar a causa.
-4. **Correção** — alteração realizada para resolver o problema.
-5. **Resultado** — como validei tecnicamente a solução.
-6. **Aprendizado** — o conceito ou conhecimento consolidado.
-7. **Próximo passo** — o que ainda preciso estudar ou melhorar.
-
-> **Princípio:** erros de laboratório não são removidos da história quando são relevantes para o aprendizado; são documentados como parte da evolução técnica.
-
 ---
 
 ## 🏗️ Meus Laboratórios
