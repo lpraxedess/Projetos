@@ -7,71 +7,41 @@
 |---|---|
 | 2026-02 | Validada estrutura de RBAC (`Contributor`/`Reader`) no escopo do Resource Group. |
 | 2026-02 | Configurado MFA para contas administrativas. |
-| 2026-01 | Criação das identidades segregadas: administração, leitura e contas de emergência (break glass). |
+| 2026-01 | Criadas identidades segregadas para administração, leitura e acesso emergencial. |
 
 </details>
 
 ## 🎯 Objetivo
 
-O objetivo desta seção é centralizar a autenticação e autorização do laboratório, eliminando dependências de credenciais locais e aplicando o princípio do menor privilégio em nível de diretório.
+Aqui concentro a parte de identidade do laboratório: criação e organização das contas, autenticação, autorização e aplicação do menor privilégio.
 
----
+## 👤 Estrutura Atual
 
-## 📊 Status Atual
+- **Identidades:** separação entre administração, leitura e contas de emergência (*break-glass*).
+- **RBAC:** `Contributor` e `Reader` aplicados no escopo do `RG-CLOUD-SECURITY-LAB`.
+- **MFA:** configurado para as contas administrativas.
 
-A estrutura de identidades, MFA e RBAC já se encontra validada e ativa no ambiente. Sendo uma das bases fundamentais do laboratório, a gestão de identidades atua em conjunto com as diretrizes de acesso.
+## 🔐 Relação com o Controle de Acesso
 
----
+A identidade é utilizada junto com as regras de acesso do ambiente. A documentação detalhada das permissões, escopos e do processo de evolução está em:
 
-## ⚙️ Resumo das Implementações
-
-* **Identidades:** Segregação rígida entre funções administrativas, leitura e contas de emergência (*break-glass*).
-* **RBAC:** Funções `Contributor` e `Reader` aplicadas estritamente no escopo do `RG-CLOUD-SECURITY-LAB`.
-* **MFA:** Camada de autenticação multifator configurada e ativa para contas com privilégios.
-
----
+[Ver Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
 
 ## 🧪 Experimentos e Aprendizados
 
-> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
 
-### Problema
+### Exemplo
 
-Descreva o que você tentou implementar ou investigar.
+**O que mudou:** descreva a alteração realizada.
 
-### Erro
+**Por que:** explique o problema ou necessidade que motivou a mudança.
 
-Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
-
-### Investigação
-
-Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
-
-### Correção
-
-Descreva a alteração realizada e o motivo técnico da solução escolhida.
-
-### Resultado
-
-Explique como a solução foi validada tecnicamente.
-
-### Aprendizado
-
-Registre o conceito de identidade, autenticação ou autorização consolidado com o experimento.
-
-### Próximo passo
-
-Registre o que ainda precisa ser estudado, testado ou melhorado.
-
----
+**Resultado:** registre como a alteração foi validada e o que foi aprendido.
 
 ## 🔮 Próximos Passos
 
-Como evolução planejada, pretendo avançar para conceitos de *Privileged Access Management (PAM)*, federação e SSO para expandir o escopo de IAM do laboratório.
-
-> Para detalhes granulares de implementação, evidências e matriz de acesso completa, consulte a documentação dedicada:
->
-> [Ver detalhes em Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
+A evolução desta área deve avançar conforme o laboratório incorporar novos cenários de PAM, federação e SSO.
 
 ---
 
