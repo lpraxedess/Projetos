@@ -9,27 +9,33 @@
 
 </details>
 
+## 🎯 Objetivo
+
+Aqui defino a estrutura do ambiente local e as decisões que permitem testar infraestrutura, identidade e segurança em um cenário on-premises.
+
 ## 🌐 Visão Geral
 
-O laboratório simula uma rede corporativa híbrida localmente utilizando **VirtualBox**. A topologia foi desenhada para separar serviços de infraestrutura crítica, servidores de segurança e estações de trabalho, permitindo simular tráfego interno, políticas de domínio e monitoramento de perímetro.
+O laboratório simula uma infraestrutura corporativa local utilizando **VirtualBox**, com separação entre serviços de infraestrutura, servidores de segurança e estações de trabalho. A rede foi pensada para permitir testes de comunicação interna, políticas de domínio, integração híbrida e monitoramento.
+
+## 🔒 Topologia de Rede
+
+- **Rede Interna (Internal Network):** utilizada para manter a comunicação principal entre os componentes do laboratório isolada do ambiente externo.
+- **Bridge / NAT:** utilizados quando um recurso precisa de conectividade externa, como atualizações e sincronização com o Microsoft Entra ID.
+
+A separação entre rede interna e conectividade externa permite testar diferentes cenários sem transformar o laboratório em uma rede totalmente exposta.
+
+## 🧩 Componentes do Ambiente
+
+- **VirtualBox:** camada de virtualização.
+- **Windows Server 2025:** Active Directory, DNS e WSUS.
+- **Microsoft Entra Connect:** integração entre o Active Directory local e o Microsoft Entra ID.
+- **Rocky Linux:** base para Wazuh e Suricata.
+- **Kali Linux:** validação e simulação de cenários ofensivos.
+
+## 📝 Observações
+
+>
 
 ---
 
-## 🏗️ Stack Tecnológica
-
-* **Hipervisor:** Oracle VirtualBox
-* **Serviços de Diretório & Infra:** Windows Server 2025 (Active Directory, DNS, WSUS)
-* **Sincronização Cloud:** Microsoft Entra Connect (integrando o AD local com o tenant Azure)
-* **Segurança & Monitoramento:** Rocky Linux rodando **Wazuh** (SIEM/EDR) e **Suricata** (IDS/IPS)
-* **Ofensivo / Validação:** Kali Linux
-
----
-
-## 🔒 Topologia de Rede (Conceitual)
-
-* **Rede Interna (Internal Network):** Isola os servidores de domínio e os agentes de monitoramento.
-* **Modo Bridge / NAT:** Utilizado para conectividade pontual de atualizações (WSUS) e sincronização com o Microsoft Entra ID.
-
----
-
-[← Retornar ao Início do Lab On-Premises](../README.md)
+[← Laboratório](../README.md) · [Identidade →](../02-identidade/identidade.md)
