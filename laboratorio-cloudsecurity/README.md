@@ -2,6 +2,12 @@
 
 Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azure**, desenvolvido de forma incremental conforme minha evolução técnica.
 
+## 🎯 Objetivo
+
+Aplicar na prática conhecimentos de **Cloud Security, Identity & Access Management, segurança de redes e governança em Azure**, construindo e evoluindo um ambiente controlado para experimentar conceitos, testar configurações, analisar problemas e consolidar conhecimento técnico.
+
+O laboratório acompanha minha evolução profissional por meio das implementações realizadas, mudanças de arquitetura e aprendizados relevantes ao longo do desenvolvimento.
+
 ## Laboratório
 
 | Área | O que é tratado | Status |
@@ -15,14 +21,5 @@ Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azu
 | 🔒 **08 — Criptografia** | Proteção de dados, Key Vault, secrets e criptografia | ⏳ Planejado |
 | 🚨 **09 — Resposta a Incidentes** | Investigação, contenção, recuperação e resposta | ⏳ Planejado |
 | ⚙️ **10 — DevSecOps / IaC** | Infraestrutura como código, automação e segurança no ciclo de entrega | ⏳ Planejado |
-
-## Tecnologias
-
-**Cloud:** Microsoft Azure  
-**Identity:** Microsoft Entra ID  
-**Network:** VNet, Subnets, NSGs, Azure Bastion  
-**Governance:** Azure Policy  
-**Compute:** Windows Server  
-**Security:** IAM, RBAC, MFA, Network Segmentation, Hardening
 
 [← Voltar para os projetos](../README.md)
