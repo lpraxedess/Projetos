@@ -6,50 +6,45 @@
 | Data | Alteração |
 |---|---|
 | 2026-03 | Análise de aplicabilidade e execução de script automatizado para hardening parcial do Windows Server com base nas recomendações CIS do Wazuh. |
-| 2026-03 | Validação prática e captura de evidências (comparativo de pontuação de conformidade antes e depois). |
+| 2026-03 | Validação prática e captura de evidências com comparativo de pontuação de conformidade antes e depois. |
 
 </details>
 
-## 🎯 Por que e como eu faço o Hardening neste Lab?
+## 🎯 Objetivo
 
-Montar um laboratório é legal, mas deixá-lo seguro de verdade exige método. Aqui, eu quis trazer exatamente a mesma linha de raciocínio que sinto e aplico no meu dia a dia profissional: **nem tudo o que vem pronto em um framework ou baseline teórico é aplicável ou faz sentido em um ambiente corporativo real**. 
+Aplicar hardening ao Windows Server com critério, usando as recomendações do CIS como referência e validando quais controles fazem sentido para o ambiente antes de automatizar sua aplicação.
 
-Quando puxei a auditoria inicial do **Wazuh** baseada nos **CIS Benchmarks**, vieram centenas de alertas. Antes de sair rodando qualquer script ou aceitando todas as recomendações cegamente, realizei uma análise criteriosa para validar o que realmente é aplicável ao contexto do meu laboratório (e que reflete o cuidado que devemos ter em produções reais para não quebrar sistemas ou travar aplicações).
+## 🛠️ Abordagem Prática
 
----
+1. **Auditoria de Postura:** execução da avaliação do Wazuh para estabelecer o cenário inicial.
+2. **Análise de Aplicabilidade:** avaliação dos controles identificados, separando ajustes aplicáveis de pontos que exigem exceções ou contexto adicional.
+3. **Automação:** criação de um script para aplicar os ajustes selecionados de forma reproduzível.
+4. **Validação:** nova avaliação para comparar a postura antes e depois e verificar se os ajustes produziram o resultado esperado sem comprometer as funcionalidades testadas.
 
-## 🛠️ Minha Abordagem Prática
+## 📊 Evidências de Melhoria
 
-1. **Auditoria de Postura:** Deixei o Wazuh varrer o Windows Server para expor o cenário "cru" e entender onde estavam as maiores brechas de configuração.
-2. **Filtro de Aplicabilidade:** Avaliei os pontos apontados, separando o que é crítico de ajustar (políticas de senha, auditoria de eventos, restrições de privilégio) daquilo que exigiria exceções controladas.
-3. **Automação com Script:** Criei um script focado nos ajustes que passei pelo crivo da minha análise, garantindo agilidade e reprodutibilidade no ambiente.
-4. **Validação:** Executei novamente o scan para medir o salto na pontuação de conformidade e certificar que o servidor ficou blindado, mas funcional.
+### 🔴 Cenário Inicial
 
----
-
-## 📊 Evidências de Melhoria (Antes vs. Depois)
-
-Os prints abaixo mostram o antes e o depois do ambiente após a aplicação dos ajustes que selecionei como aplicáveis:
-
-### 🔴 Cenário Inicial (Antes do Hardening)
-> *Visão da pontuação crua e dos alertas gerados pelas políticas padrão de instalação do sistema.*
+> Pontuação e alertas identificados antes da aplicação do hardening.
 
 ![Pontuação Antes do Hardening](../evidencias/hardening/before-hardening.png)
 
----
+### 🟢 Após o Hardening
 
-### 🟢 Cenário Atual (Após o Hardening Aplicado e Filtrado)
-> *Visão após rodar os ajustes validados, mostrando a subida expressiva na conformidade e a mitigação dos riscos reais.*
+> Resultado da nova avaliação após a aplicação dos ajustes selecionados.
 
 ![Pontuação Depois do Hardening](../evidencias/hardening/after-hardening.png)
 
+## ⏭️ Próximos Testes
+
+- Avaliar novos pontos de melhoria nas políticas de auditoria.
+- Validar exceções e controles que não foram aplicados inicialmente.
+- Levar a mesma abordagem de hardening com critério para o ambiente Linux.
+
+## 📝 Observações
+
+>
+
 ---
 
-## ⏭️ Próximos Passos
-
-* Avaliar novos pontos de melhoria nas políticas de auditoria.
-* Levar essa mesma linha de raciocínio de "hardening com critério" para o meu ambiente Linux (Rocky Linux / Wazuh / Suricata).
-
----
-
-[← Retornar ao Início do Lab On-Premises](../README.md)
+[← Identidade](../02-identidade/identidade.md) · [← Laboratório](../README.md)
