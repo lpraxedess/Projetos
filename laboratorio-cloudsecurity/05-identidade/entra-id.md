@@ -31,12 +31,46 @@ A estrutura de identidades, MFA e RBAC já se encontra validada e ativa no ambie
 
 ---
 
+## 🧪 Experimentos e Aprendizados
+
+> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+
+### Problema
+
+Descreva o que você tentou implementar ou investigar.
+
+### Erro
+
+Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
+
+### Investigação
+
+Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
+
+### Correção
+
+Descreva a alteração realizada e o motivo técnico da solução escolhida.
+
+### Resultado
+
+Explique como a solução foi validada tecnicamente.
+
+### Aprendizado
+
+Registre o conceito de identidade, autenticação ou autorização consolidado com o experimento.
+
+### Próximo passo
+
+Registre o que ainda precisa ser estudado, testado ou melhorado.
+
+---
+
 ## 🔮 Próximos Passos
 
 Como evolução planejada, pretendo avançar para conceitos de *Privileged Access Management (PAM)*, federação e SSO para expandir o escopo de IAM do laboratório.
 
 > Para detalhes granulares de implementação, evidências e matriz de acesso completa, consulte a documentação dedicada:
-> 
+>
 > [Ver detalhes em Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
 
 ---
