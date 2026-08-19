@@ -48,21 +48,10 @@ Isso validou que o controle está atuando preventivamente no *Management Plane*,
 
 ![Bloqueio preventivo de criação por falta de tag](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
 
-## 🧠 Experimentos e Aprendizados
+## 📝 Observações
 
-Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
-
-### Exemplo
-
-**O que mudou:**  
-Descreva a alteração realizada.
-
-**Por que:**  
-Explique o problema ou necessidade que motivou a mudança.
-
-**Resultado:**  
-Registre como a alteração foi validada e o que foi aprendido.
+>
 
 ---
 
-[← Retornar ao Início do Laboratório](../README.md)
+[← Identidade](../05-identidade/entra-id.md) · [↑ Laboratório](../README.md)
