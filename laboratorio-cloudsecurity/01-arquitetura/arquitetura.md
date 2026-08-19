@@ -64,20 +64,9 @@ As principais premissas utilizadas até aqui são:
 
 ![Arquitetura de Rede — Cloud Security Lab](../04-evidencias/arquitetura/arquitetura-cloud-security.png)
 
-## 🧪 Experimentos e Aprendizados
+## 📝 Observações
 
-Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
-
-### Exemplo
-
-**O que mudou:**  
-Descreva a alteração realizada.
-
-**Por que:**  
-Explique o problema ou necessidade que motivou a mudança.
-
-**Resultado:**  
-Registre como a alteração foi validada e o que foi aprendido.
+>
 
 ---
 
