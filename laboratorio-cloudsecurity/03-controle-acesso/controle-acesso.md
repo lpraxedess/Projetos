@@ -42,7 +42,7 @@ flowchart LR
 
 </div>
 
-A administração direta dos servidores internos via Internet foi completamente eliminada. Hoje, o **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`), mantendo o `SECURITY-SERVER-01` confinado em rede estritamente privada e sem IP público. 
+A administração direta dos servidores internos via Internet foi completamente eliminada. Hoje, o **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`), mantendo o `SECURITY-SERVER-01` confinado em rede estritamente privada e sem IP público.
 
 Abaixo, detalho como alcancei este padrão, etapa por etapa.
 
@@ -165,6 +165,40 @@ O acesso ocorre estritamente via portal web em sessões seguras encapsuladas em 
 | Conditional Access | ❌ Indisponível (Licenciamento) |
 | Privileged Identity Management (PIM) | ⏳ Planejado (Licenciamento) |
 | Azure Bastion (Sem IP Público) | ✅ Implementado |
+
+---
+
+## 🧪 Experimentos e Aprendizados
+
+> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados aqui quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+
+### Problema
+
+Descreva o que você tentou implementar ou investigar.
+
+### Erro
+
+Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
+
+### Investigação
+
+Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
+
+### Correção
+
+Descreva a alteração realizada e, quando aplicável, por que a solução escolhida foi preferível às alternativas testadas.
+
+### Resultado
+
+Explique como a solução foi validada tecnicamente.
+
+### Aprendizado
+
+Registre o conceito de IAM, autenticação, autorização ou segurança que foi consolidado.
+
+### Próximo passo
+
+Registre o que ainda precisa ser estudado, testado ou melhorado.
 
 ---
 
