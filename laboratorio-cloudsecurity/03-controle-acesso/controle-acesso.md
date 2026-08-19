@@ -105,21 +105,10 @@ Por fim, removi o IP público do `JUMP-SERVER-01` e passei o acesso administrati
 NSGs → Entra ID → RBAC → Menor Privilégio → MFA → PIM → Azure Bastion
 ```
 
-## 🧪 Experimentos e Aprendizados
+## 📝 Observações
 
-Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
-
-### Exemplo
-
-**O que mudou:**  
-Descreva a alteração realizada.
-
-**Por que:**  
-Explique o problema ou necessidade que motivou a mudança.
-
-**Resultado:**  
-Registre como a alteração foi validada e o que foi aprendido.
+>
 
 ---
 
-[← Retornar ao Início do Laboratório](../README.md)
+[← Arquitetura](../01-arquitetura/arquitetura.md) · [↑ Laboratório](../README.md) · [Identidade →](../05-identidade/entra-id.md)
