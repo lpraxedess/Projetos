@@ -1,160 +1,80 @@
-<div align="center">
-
 # ☁️ Cloud Security & IAM Lab — Microsoft Azure
 
-> Laboratório prático para desenvolver, testar e consolidar conhecimentos em Cloud Security, IAM e infraestrutura Azure.
+Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azure**, desenvolvido de forma incremental conforme minha evolução técnica.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
-  <img src="https://img.shields.io/badge/Core-IAM%20%2F%20Entra%20ID-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white" alt="Entra ID">
-  <img src="https://img.shields.io/badge/Status-Em%20Evolução-107C10?style=for-the-badge" alt="Status">
-</p>
-
-</div>
+> **Explore o laboratório:** escolha uma área abaixo para ver sua implementação, evolução, decisões, testes e evidências.
 
 ---
 
-## 🎯 Sobre o laboratório
+## 🧭 Laboratório
 
-Este ambiente é meu espaço de prática em **Cloud Security e IAM no Microsoft Azure**. A construção acontece de forma incremental: novos conceitos são estudados, implementados, testados e incorporados ao laboratório conforme minha evolução técnica.
-
-O objetivo não é reproduzir um ambiente corporativo completo de uma vez, mas **aprender construindo**, aumentando gradualmente a complexidade e a maturidade dos controles.
-
-Erros, dificuldades, decisões e mudanças relevantes também são documentados durante essa evolução.
-
----
-
-## 🏗️ Arquitetura atual
-
-```text
-                         INTERNET
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Azure Bastion  │
-                    │   Acesso RDP   │
-                    └───────┬───────┘
-                            │
-                            ▼
-┌──────────────────────────────────────────────────────────────┐
-│                    VNET-CLOUD-SECURITY                       │
-│                       10.10.0.0/16                           │
-│                                                              │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
-│  │   MANAGEMENT    │  │    SECURITY     │  │   WORKLOAD   │ │
-│  │ 10.10.10.0/24  │  │ 10.10.20.0/24  │  │10.10.30.0/24 │ │
-│  │                 │  │                 │  │              │ │
-│  │ Administração   │  │ Controles de    │  │ Recursos de  │ │
-│  │ e Jump Server   │  │ segurança      │  │ trabalho     │ │
-│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
-│                                                              │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │                 AzureBastionSubnet                     │  │
-│  │                    10.10.40.0/26                       │  │
-│  └────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────┘
-
-        Microsoft Entra ID  →  IAM / RBAC / MFA
-        Azure Policy        →  Governança / Enforcement
-        NSGs                →  Segmentação / Controle de tráfego
-```
-
----
-
-## 📊 Evolução do laboratório
-
-| Área | Situação | Resultado |
+| Área | O que você encontra | Status |
 |---|---|---|
-| Arquitetura | ✅ Concluído | Estrutura inicial da infraestrutura e segmentação |
-| Rede | ✅ Concluído | VNet, subnets e NSGs |
-| Controle de acesso | ✅ Concluído | RBAC, MFA e controles administrativos |
-| Azure Bastion | ✅ Concluído | Administração sem exposição RDP direta à Internet |
-| Identidade / IAM | ✅ Concluído | Microsoft Entra ID e separação de funções |
-| Governança | ✅ Concluído | Azure Policy com enforcement |
-| Federação / SSO | ⏳ Próximo | B2B/B2C, federação e SSO |
-| Criptografia | ⏳ Planejado | Key Vault e proteção de dados |
-| Monitoramento | ⏳ Planejado | Logs e visibilidade do ambiente |
-| Detecção | ⏳ Planejado | Alertas e identificação de comportamentos anômalos |
-| Resposta a incidentes | ⏳ Planejado | Investigação e resposta baseada em evidências |
-| Microsoft Defender | ⏳ Planejado | Postura e proteção de workloads |
-| DevSecOps / IaC | ⏳ Planejado | Automação e validação de segurança |
+| 🏗️ **[Arquitetura](./01-arquitetura/arquitetura.md)** | Estrutura do ambiente, decisões arquiteturais e evolução | ✅ Concluído |
+| 🌐 **[Rede](./02-rede/rede.md)** | VNet, subnets, NSGs, segmentação e controles de tráfego | ✅ Concluído |
+| 🔐 **[Controle de Acesso](./03-controle-acesso/controle-acesso.md)** | RBAC, MFA, Bastion e administração do ambiente | ✅ Concluído |
+| 📸 **[Evidências](./04-evidencias/)** | Evidências das configurações e validações realizadas | 🔄 Em evolução |
+| 👤 **[Identidade / Entra ID](./05-identidade/entra-id.md)** | Identidades, funções, grupos e IAM | ✅ Concluído |
+| 🛡️ **[Governança / Azure Policy](./06-governanca/azure-policy.md)** | Policies, enforcement e controles preventivos | ✅ Concluído |
+| 🔑 **07 — Federação / SSO** | Federação e Single Sign-On | ⏳ Planejado |
+| 🔒 **08 — Criptografia** | Proteção de dados, Key Vault e secrets | ⏳ Planejado |
+| 🚨 **09 — Resposta a Incidentes** | Investigação, contenção e resposta | ⏳ Planejado |
+| ⚙️ **10 — DevSecOps / IaC** | Infraestrutura como código, automação e segurança | ⏳ Planejado |
 
 ---
 
-## 🔄 Principais evoluções
-
-### Exposição administrativa
+## 🗺️ Visão rápida do ambiente
 
 ```text
-ANTES
-Internet → Public IP → RDP → Jump Server
+                         MICROSOFT AZURE
+                                │
+                                ▼
+                    ┌────────────────────┐
+                    │ VNET-CLOUD-SECURITY│
+                    │     10.10.0.0/16   │
+                    └─────────┬──────────┘
+                              │
+          ┌───────────────────┼───────────────────┐
+          ▼                   ▼                   ▼
+    MANAGEMENT            SECURITY             WORKLOAD
+    10.10.10.0/24        10.10.20.0/24        10.10.30.0/24
+          │                   │                   │
+          └───────────────┬───┴───────────────────┘
+                          │
+                    Azure Bastion
+                    10.10.40.0/26
 
-DEPOIS
-Admin → Azure Bastion → Private IP → Jump Server
+     Entra ID → IAM / RBAC / MFA
+     NSGs     → Segmentação
+     Policy   → Governança / Enforcement
 ```
-
-**Objetivo:** reduzir a superfície de exposição e eliminar o acesso RDP diretamente pela Internet.
-
-### Privilégios administrativos
-
-```text
-ANTES
-Owner → Subscription
-
-DEPOIS
-Contributor → Resource Group
-```
-
-**Objetivo:** aplicar menor privilégio e limitar o escopo administrativo.
-
-### Governança
-
-```text
-ANTES
-Recurso sem tag → Provisionamento permitido
-
-DEPOIS
-Recurso sem tag → Azure Policy → DENY
-```
-
-**Objetivo:** transformar requisitos de governança em controles preventivos.
 
 ---
 
-## 📂 Laboratório por etapa
+## 📈 Evolução
 
-| Módulo | Conteúdo | Status |
-|---|---|---|
-| [01 — Arquitetura](./01-arquitetura/arquitetura.md) | Desenho e organização da infraestrutura | ✅ |
-| [02 — Rede](./02-rede/rede.md) | VNet, subnets e NSGs | ✅ |
-| [03 — Controle de Acesso](./03-controle-acesso/controle-acesso.md) | RBAC, MFA, Bastion e acesso administrativo | ✅ |
-| [04 — Evidências](./04-evidencias/) | Evidências visuais das implementações | 🔄 |
-| [05 — Identidade](./05-identidade/entra-id.md) | Microsoft Entra ID e IAM | ✅ |
-| [06 — Governança](./06-governanca/azure-policy.md) | Azure Policy e compliance | ✅ |
-| 07 — Federação / SSO | Federação e Single Sign-On | ⏳ |
-| 08 — Criptografia | Key Vault e proteção de dados | ⏳ |
-| 09 — Resposta a Incidentes | Investigação e resposta | ⏳ |
-| 10 — DevSecOps / IaC | Automação e segurança no ciclo de entrega | ⏳ |
+O laboratório evolui conforme novos conhecimentos são aplicados. Mudanças relevantes ficam registradas dentro dos respectivos módulos.
+
+### Principais mudanças já realizadas
+
+| Evolução | Resultado |
+|---|---|
+| **Public IP → Azure Bastion** | Redução da exposição administrativa e remoção do RDP direto pela Internet |
+| **Owner → Contributor** | Redução do escopo de privilégio administrativo |
+| **Sem enforcement → Azure Policy** | Controle preventivo sobre configuração de recursos |
+| **IAM inicial → identidade segmentada** | Separação de funções e aplicação de menor privilégio |
 
 ---
 
-## 🧪 Evidências e validações
+## 🧪 Como o laboratório é desenvolvido
 
-O laboratório prioriza evidências práticas para demonstrar que os controles foram realmente implementados e testados.
+A documentação de cada área acompanha o desenvolvimento real do ambiente. Quando relevante, são registrados **erros, dificuldades, decisões, mudanças, testes e resultados**.
 
-- Configurações do Azure Portal
-- Testes de acesso
-- Testes de bloqueio por Azure Policy
-- RBAC e permissões
-- MFA e identidade
-- NSGs e segmentação
-- Evolução da arquitetura
-
-[📁 Acessar evidências](./04-evidencias/)
+Não é necessário documentar cada operação: o foco é registrar aquilo que ajuda a entender **como o laboratório evoluiu e o que foi aprendido no processo**.
 
 ---
 
-## 🛠️ Stack atual
+## 🛠️ Tecnologias
 
 **Cloud:** Microsoft Azure  
 **Identity:** Microsoft Entra ID  
@@ -165,23 +85,14 @@ O laboratório prioriza evidências práticas para demonstrar que os controles f
 
 ---
 
-## 🚧 Próximos passos
+## 🚧 Próximas etapas
 
-A evolução planejada é gradual, priorizando conhecimento antes de adicionar novas tecnologias:
-
-1. Federação / SSO
-2. Key Vault e criptografia
-3. Monitoramento e logging
-4. Detecção e resposta
-5. Microsoft Defender
-6. IaC
-7. DevSecOps
-8. Automação e testes de segurança
+**Federação / SSO → Criptografia → Monitoramento → Detecção → Resposta a Incidentes → Defender → IaC → DevSecOps**
 
 ---
 
-## 📌 Observação
+## 📌 Objetivo
 
-Este laboratório é desenvolvido exclusivamente para **estudo, prática e evolução técnica**. As implementações representam experimentos controlados e não ambientes produtivos.
+Este é um **laboratório de estudo e desenvolvimento técnico**, não um ambiente produtivo. A infraestrutura é construída, modificada e expandida conforme novos conceitos são estudados e aplicados.
 
-[← Voltar para os Laboratórios](../README.md)
+[← Voltar para os projetos](../README.md)
