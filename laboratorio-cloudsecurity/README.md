@@ -25,6 +25,26 @@ Aqui você vai encontrar exatamente o histórico prático de tudo o que estou es
 
 ---
 
+## 🧪 Como funciona meu processo de aprendizagem
+
+Este laboratório não tem como objetivo apresentar um ambiente perfeito ou definitivo. Ele representa minha evolução técnica na prática.
+
+As implementações são feitas de forma incremental: estudo um conceito, tento aplicá-lo, valido o comportamento, encontro limitações ou erros, investigo a causa, corrijo e registro o aprendizado.
+
+Quando uma experiência gera um erro ou uma decisão técnica relevante, o processo deve ser documentado dentro do módulo correspondente:
+
+1. **Problema** — o que eu queria implementar ou investigar.
+2. **Erro** — o comportamento inesperado, falha ou limitação encontrada.
+3. **Investigação** — hipóteses, testes, documentação consultada e evidências utilizadas.
+4. **Correção** — alteração realizada e motivo técnico da solução escolhida.
+5. **Resultado** — como validei tecnicamente a solução.
+6. **Aprendizado** — o conceito que foi consolidado.
+7. **Próximo passo** — o que ainda preciso estudar, testar ou melhorar.
+
+> **Princípio:** erros relevantes não são apagados da história do laboratório. Eles fazem parte do processo de aprendizagem e profissionalização.
+
+---
+
 ## 📂 O que já construí e meus próximos passos
 
 | Área do Laboratório | O que fiz / O que abrange | Status |
