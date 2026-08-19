@@ -43,20 +43,9 @@ Cada subnet possui um NSG dedicado:
 
 Os NSGs são utilizados para controlar a comunicação entre os segmentos e reduzir acessos desnecessários.
 
-## 🧪 Experimentos e Aprendizados
+## 📝 Observações
 
-Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
-
-### Exemplo
-
-**O que mudou:**  
-Descreva a alteração realizada.
-
-**Por que:**  
-Explique o problema ou necessidade que motivou a mudança.
-
-**Resultado:**  
-Registre como a alteração foi validada e o que foi aprendido.
+>
 
 ---
 
