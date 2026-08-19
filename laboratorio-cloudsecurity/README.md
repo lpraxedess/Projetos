@@ -15,9 +15,12 @@ Aqui é onde aplico na prática meus conhecimentos de **Cloud Security, IAM e in
 | 🔐 **[Controle de Acesso](./03-controle-acesso/controle-acesso.md)** | RBAC, MFA, Bastion, permissões e administração segura |
 | 👤 **[Identidade / Entra ID](./05-identidade/entra-id.md)** | Identidades, grupos, funções, autenticação e IAM |
 | 🛡️ **[Governança / Azure Policy](./06-governanca/azure-policy.md)** | Policies, enforcement, padrões e controles preventivos |
-| 🔑 **07 — Federação / SSO** | Federação de identidade e Single Sign-On |
-| 🔒 **08 — Criptografia** | Proteção de dados, Key Vault, secrets e criptografia |
-| 🚨 **09 — Resposta a Incidentes** | Investigação, contenção, recuperação e resposta |
-| ⚙️ **10 — DevSecOps / IaC** | Infraestrutura como código, automação e segurança no ciclo de entrega |
+| 🔑 **[Federação / SSO](./07-federacao-sso/README.md)** | Federação de identidade e Single Sign-On |
+| 🔒 **[Criptografia](./08-criptografia/README.md)** | Proteção de dados, Key Vault, secrets e criptografia |
+| 🚨 **[Resposta a Incidentes](./09-resposta-incidentes/README.md)** | Investigação, contenção, recuperação e resposta |
+| ⚙️ **[DevSecOps / IaC](./10-devsecops-iac/README.md)** | Infraestrutura como código, automação e segurança no ciclo de entrega |
+| 📊 **[Monitoramento](./11-monitoramento/README.md)** | Logs, métricas, observabilidade e acompanhamento do ambiente |
+| 🔎 **[Detecção](./12-deteccao/README.md)** | Alertas, análise de eventos e identificação de comportamentos suspeitos |
+| 🛡️ **[Defender Cloud](./13-defender-cloud/README.md)** | Postura de segurança, proteção de workloads e recomendações do Microsoft Defender for Cloud |
 
 [← Voltar para os projetos](../README.md)
