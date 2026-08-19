@@ -27,21 +27,10 @@ A identidade é utilizada junto com as regras de acesso do ambiente. A documenta
 
 [Ver Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
 
-## 🧪 Experimentos e Aprendizados
+## 📝 Observações
 
-Novos experimentos, erros, decisões ou descobertas relevantes são registrados aqui conforme surgirem.
-
-### Exemplo
-
-**O que mudou:**  
-Descreva a alteração realizada.
-
-**Por que:**  
-Explique o problema ou necessidade que motivou a mudança.
-
-**Resultado:**  
-Registre como a alteração foi validada e o que foi aprendido.
+>
 
 ---
 
-[← Retornar ao Início do Laboratório](../README.md)
+[← Controle de Acesso](../03-controle-acesso/controle-acesso.md) · [↑ Laboratório](../README.md) · [Governança →](../06-governanca/azure-policy.md)
