@@ -12,17 +12,15 @@
 
 ## 🎯 Objetivo
 
-O objetivo desta etapa foi evoluir o laboratório de uma abordagem de controle estritamente reativa para mecanismos de governança preventiva. Utilizei o **Azure Policy** para garantir conformidade automatizada e padronização organizacional, focando inicialmente na obrigatoriedade de tags em recursos.
-
----
+Aqui começo a transformar requisitos de segurança e organização em controles que o próprio Azure consegue aplicar. O primeiro experimento foi usar o **Azure Policy** para exigir uma tag obrigatória nos recursos do laboratório.
 
 ## 🛠️ Implementação da Política de Tags
 
-Configurei uma política personalizada para exigir a presença obrigatória da tag `Ambiente` em qualquer recurso provisionado no escopo do grupo de recursos do laboratório (`RG-CLOUD-SECURITY-LAB`).
+Configurei uma política personalizada para exigir a tag `Ambiente` nos recursos provisionados no `RG-CLOUD-SECURITY-LAB`.
 
 ### Definição da Política
 
-Utilizei o modo `All` para assegurar que o motor do Azure Policy analise e intercepte requisições de criação ou modificação (`PUT/PATCH`) no nível de controle:
+Utilizei o modo `All` para analisar operações de criação ou modificação no nível de controle:
 
 ```json
 {
@@ -40,51 +38,21 @@ Utilizei o modo `All` para assegurar que o motor do Azure Policy analise e inter
 }
 ```
 
----
+## 🧪 Validação
 
-## 🧪 Validação e Evidências
+Tentei provisionar a conta de armazenamento `testesemtag` sem a tag obrigatória. O Azure Policy bloqueou a operação com `RequestDisallowedByPolicy`.
 
-Para testar o controle preventivo, tentei provisionar uma conta de armazenamento (`testesemtag`) omitindo a tag obrigatória. O Azure Policy interceptou a submissão e bloqueou o provisionamento de forma síncrona.
-
-> **Nota Técnica:** O retorno do código de erro `RequestDisallowedByPolicy` evidencia que o motor de conformidade atuou na camada de controle (*Management Plane*), negando a operação antes que qualquer infraestrutura fosse alocada.
+Isso validou que o controle está atuando preventivamente no *Management Plane*, antes da criação do recurso.
 
 ![Atribuição da política no Resource Group](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
 
 ![Bloqueio preventivo de criação por falta de tag](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
 
----
+## 🧠 O que este experimento mostrou
 
-## 🧠 Experimentos e Aprendizados
+O principal aprendizado foi perceber na prática a diferença entre identificar um problema depois que um recurso existe e impedir que uma configuração fora do padrão seja criada.
 
-> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
-
-### Problema
-
-Descreva o que você tentou implementar ou investigar.
-
-### Erro
-
-Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
-
-### Investigação
-
-Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
-
-### Correção
-
-Descreva a alteração realizada na Policy ou no ambiente.
-
-### Resultado
-
-Explique como a política foi validada, incluindo evidências do comportamento esperado.
-
-### Aprendizado
-
-Registre o conceito de governança, compliance ou Azure Policy consolidado com o experimento.
-
-### Próximo passo
-
-Registre o próximo controle ou cenário que pretende testar.
+Novos experimentos de governança serão registrados aqui conforme forem realizados.
 
 ---
 
