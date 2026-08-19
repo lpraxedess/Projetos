@@ -52,7 +52,7 @@ flowchart LR
 ```
 </div>
 
-Priorizei garantir que a administração dos servidores internos **nunca** seja feita de forma direta pela Internet. 
+Priorizei garantir que a administração dos servidores internos **nunca** seja feita de forma direta pela Internet.
 
 * O **Azure Bastion** atua como o único ponto de entrada administrativo, acessado de forma segura via navegador (`HTTPS/443`).
 * O `SECURITY-SERVER-01` permanece isolado em rede estritamente privada, completamente desprovido de IP público.
@@ -87,6 +87,40 @@ As premissas que guiaram a construção deste ambiente foram:
 Validação visual da arquitetura de rede em ambiente real:
 
 ![Arquitetura de Rede — Cloud Security Lab](../04-evidencias/arquitetura/arquitetura-cloud-security.png)
+
+---
+
+## 🧪 Experimentos e Aprendizados
+
+> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+
+### Problema
+
+Descreva o que você tentou implementar ou investigar.
+
+### Erro
+
+Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
+
+### Investigação
+
+Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
+
+### Correção
+
+Descreva a alteração realizada para resolver o problema ou ajustar a arquitetura.
+
+### Resultado
+
+Explique como a solução foi validada tecnicamente.
+
+### Aprendizado
+
+Registre o conceito que foi consolidado com o experimento.
+
+### Próximo passo
+
+Registre o que ainda precisa ser estudado, testado ou melhorado.
 
 ---
 
