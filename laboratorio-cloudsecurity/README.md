@@ -4,18 +4,18 @@ Laboratório prático de **Cloud Security, IAM e infraestrutura no Microsoft Azu
 
 ## Laboratório
 
-| Área | Status |
-|---|---|
-| 🏗️ **[Arquitetura](./01-arquitetura/arquitetura.md)** | ✅ Concluído |
-| 🌐 **[Rede](./02-rede/rede.md)** | ✅ Concluído |
-| 🔐 **[Controle de Acesso](./03-controle-acesso/controle-acesso.md)** | ✅ Concluído |
-| 📸 **[Evidências](./04-evidencias/)** | 🔄 Em evolução |
-| 👤 **[Identidade / Entra ID](./05-identidade/entra-id.md)** | ✅ Concluído |
-| 🛡️ **[Governança / Azure Policy](./06-governanca/azure-policy.md)** | ✅ Concluído |
-| 🔑 **07 — Federação / SSO** | ⏳ Planejado |
-| 🔒 **08 — Criptografia** | ⏳ Planejado |
-| 🚨 **09 — Resposta a Incidentes** | ⏳ Planejado |
-| ⚙️ **10 — DevSecOps / IaC** | ⏳ Planejado |
+| Área | O que é tratado | Status |
+|---|---|---|
+| 🏗️ **[Arquitetura](./01-arquitetura/arquitetura.md)** | Estrutura do ambiente, componentes, decisões arquiteturais e evolução | ✅ Concluído |
+| 🌐 **[Rede](./02-rede/rede.md)** | VNet, subnets, NSGs, segmentação e controle de tráfego | ✅ Concluído |
+| 🔐 **[Controle de Acesso](./03-controle-acesso/controle-acesso.md)** | RBAC, MFA, Bastion, permissões e administração segura | ✅ Concluído |
+| 📸 **[Evidências](./04-evidencias/)** | Evidências das configurações, testes e validações realizadas | 🔄 Em evolução |
+| 👤 **[Identidade / Entra ID](./05-identidade/entra-id.md)** | Identidades, grupos, funções, autenticação e IAM | ✅ Concluído |
+| 🛡️ **[Governança / Azure Policy](./06-governanca/azure-policy.md)** | Policies, enforcement, padrões e controles preventivos | ✅ Concluído |
+| 🔑 **07 — Federação / SSO** | Federação de identidade e Single Sign-On | ⏳ Planejado |
+| 🔒 **08 — Criptografia** | Proteção de dados, Key Vault, secrets e criptografia | ⏳ Planejado |
+| 🚨 **09 — Resposta a Incidentes** | Investigação, contenção, recuperação e resposta | ⏳ Planejado |
+| ⚙️ **10 — DevSecOps / IaC** | Infraestrutura como código, automação e segurança no ciclo de entrega | ⏳ Planejado |
 
 ## Tecnologias
 
