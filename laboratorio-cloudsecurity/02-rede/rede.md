@@ -49,4 +49,4 @@ Os NSGs são utilizados para controlar a comunicação entre os segmentos e redu
 
 ---
 
-[← Retornar ao Início do Laboratório](../README.md)
+[← Arquitetura](../01-arquitetura/arquitetura.md) · [↑ Laboratório](../README.md) · [Controle de Acesso →](../03-controle-acesso/controle-acesso.md)
