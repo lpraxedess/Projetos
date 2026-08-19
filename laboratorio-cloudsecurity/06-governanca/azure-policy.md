@@ -39,6 +39,7 @@ Utilizei o modo `All` para assegurar que o motor do Azure Policy analise e inter
   "parameters": {}
 }
 ```
+
 ---
 
 ## 🧪 Validação e Evidências
@@ -50,6 +51,40 @@ Para testar o controle preventivo, tentei provisionar uma conta de armazenamento
 ![Atribuição da política no Resource Group](../04-evidencias/governanca/politica-atribuida-rg-lab.png)
 
 ![Bloqueio preventivo de criação por falta de tag](../04-evidencias/governanca/politica-exigencia-tag-criacao-recurso.png)
+
+---
+
+## 🧠 Experimentos e Aprendizados
+
+> Esta seção registra o processo de aprendizagem. Novos experimentos devem ser adicionados quando uma implementação gerar um erro, descoberta ou decisão técnica relevante.
+
+### Problema
+
+Descreva o que você tentou implementar ou investigar.
+
+### Erro
+
+Registre o comportamento inesperado, mensagem de erro ou resultado diferente do esperado.
+
+### Investigação
+
+Registre as hipóteses, testes, documentação consultada e evidências utilizadas para encontrar a causa.
+
+### Correção
+
+Descreva a alteração realizada na Policy ou no ambiente.
+
+### Resultado
+
+Explique como a política foi validada, incluindo evidências do comportamento esperado.
+
+### Aprendizado
+
+Registre o conceito de governança, compliance ou Azure Policy consolidado com o experimento.
+
+### Próximo passo
+
+Registre o próximo controle ou cenário que pretende testar.
 
 ---
 
