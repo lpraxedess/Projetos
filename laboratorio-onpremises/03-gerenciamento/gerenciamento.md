@@ -10,16 +10,15 @@ A solução não substitui o WSUS. Ela adiciona uma camada de observabilidade pa
 
 ## 🏗️ Solução
 
-```text
-┌───────────┐      ┌──────────────┐      ┌───────────┐      ┌───────────┐      ┌───────────┐
-│    WSUS   │ ───► │  PowerShell  │ ───► │ Telegraf  │ ───► │ InfluxDB  │ ───► │  Grafana  │
-│           │      │ + PoshWSUS   │      │           │      │           │      │           │
-│ Dados de  │      │    Coleta    │      │ Execução  │      │ Histórico │      │ Dashboard │
-│atualização│      │ e métricas   │      │ periódica │      │ e métricas│      │           │
-└───────────┘      └──────────────┘      └───────────┘      └───────────┘      └───────────┘
+```mermaid
+flowchart LR
+    A[🖥️ WSUS<br/>Dados de atualização] --> B[💻 PowerShell + PoshWSUS<br/>Coleta e consolidação]
+    B --> C[📥 Telegraf<br/>Execução a cada 10 min]
+    C --> D[🗄️ InfluxDB<br/>Histórico e métricas]
+    D --> E[📊 Grafana<br/>Dashboard e observabilidade]
 ```
 
-**Fluxo:** WSUS → PowerShell/PoshWSUS → Telegraf → InfluxDB → Grafana.
+O fluxo transforma os dados operacionais do WSUS em métricas históricas e informações de fácil acompanhamento no Grafana.
 
 ## 📊 Indicadores monitorados
 
