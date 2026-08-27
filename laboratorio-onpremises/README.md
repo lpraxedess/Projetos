@@ -12,7 +12,7 @@ Aqui é onde aplico na prática conhecimentos de infraestrutura e segurança em 
 |---|---|
 | 🏗️ **[Arquitetura](./01-arquitetura/arquitetura.md)** | Topologia, segmentação, conectividade e organização das máquinas virtuais |
 | 👤 **[Identidade](./02-identidade/identidade.md)** | Active Directory, DNS, organização de identidades e integração com Microsoft Entra ID |
-| ⚙️ **Gerenciamento** | WSUS, atualizações, patches e correções de segurança |
+| ⚙️ **[Gerenciamento](.\03-gerenciamento/gerenciamento.md)** | WSUS, atualizações, patches e correções de segurança |
 | 🛡️ **[Hardening](./04-hardening/hardening.md)** | CIS Benchmarks, análise de aplicabilidade, automação e validação de postura |
 | 📊 **Monitoramento** | Wazuh, Suricata, logs, eventos e detecção |
 | 🚨 **Resposta a Incidentes** | Simulação de ataques, triagem, investigação e resposta |
