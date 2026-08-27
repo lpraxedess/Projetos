@@ -17,10 +17,9 @@ flowchart LR
     C --> D[🗄️ InfluxDB<br/>Histórico e métricas]
     D --> E[📊 Grafana<br/>Dashboard e observabilidade]
 ```
-
-**Fluxo:** WSUS → PowerShell/PoshWSUS → Telegraf → InfluxDB → Grafana.
-
+---
 ## 📊 Indicadores monitorados
+
 
 | Indicador                     | Descrição                           |
 | ----------------------------- | ----------------------------------- |
