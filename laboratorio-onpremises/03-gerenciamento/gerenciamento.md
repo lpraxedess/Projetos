@@ -120,7 +120,7 @@ A proposta é complementar o WSUS com observabilidade, facilitando o acompanhame
 
 Dashboard utilizado para demonstrar a solução em funcionamento:
 
-> **Inserir aqui o print do dashboard.**
+> **![wsus-stats](../evidencias/gerenciamento/wsus-stats.png)**
 
 ## 📚 Relação com o laboratório
 
