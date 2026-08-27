@@ -8,42 +8,18 @@ O objetivo deste projeto foi ampliar a visibilidade operacional do **WSUS (Windo
 
 A solução não substitui o WSUS. Ela adiciona uma camada de observabilidade para facilitar o acompanhamento do ambiente e identificar rapidamente máquinas e atualizações que exigem atenção.
 
-## 🏗️ Arquitetura
+## 🏗️ Solução
 
 ```text
-                    ┌─────────────────┐
-                    │      WSUS       │
-                    │ Atualizações e  │
-                    │   conformidade  │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │    PowerShell   │
-                    │     PoshWSUS    │
-                    │     Coleta      │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │     Telegraf    │
-                    │ Coleta periódica│
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │    InfluxDB     │
-                    │    Histórico    │
-                    │    das métricas │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │     Grafana     │
-                    │   Dashboards    │
-                    │  e indicadores  │
-                    └─────────────────┘
+┌───────────┐      ┌──────────────┐      ┌───────────┐      ┌───────────┐      ┌───────────┐
+│    WSUS   │ ───► │  PowerShell  │ ───► │ Telegraf  │ ───► │ InfluxDB  │ ───► │  Grafana  │
+│           │      │   + PoshWSUS │      │           │      │           │      │           │
+│ Dados de  │      │    Coleta    │      │ Execução  │      │ Histórico │      │ Dashboard │
+│ atualização│      │  e métricas  │      │ periódica │      │ e métricas│      │           │
+└───────────┘      └──────────────┘      └───────────┘      └───────────┘      └───────────┘
 ```
+
+**Fluxo:** WSUS → PowerShell/PoshWSUS → Telegraf → InfluxDB → Grafana.
 
 ## 📊 Indicadores monitorados
 
