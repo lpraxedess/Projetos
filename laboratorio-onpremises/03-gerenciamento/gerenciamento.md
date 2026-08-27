@@ -13,9 +13,9 @@ A solução não substitui o WSUS. Ela adiciona uma camada de observabilidade pa
 ```text
 ┌───────────┐      ┌──────────────┐      ┌───────────┐      ┌───────────┐      ┌───────────┐
 │    WSUS   │ ───► │  PowerShell  │ ───► │ Telegraf  │ ───► │ InfluxDB  │ ───► │  Grafana  │
-│           │      │   + PoshWSUS │      │           │      │           │      │           │
+│           │      │ + PoshWSUS   │      │           │      │           │      │           │
 │ Dados de  │      │    Coleta    │      │ Execução  │      │ Histórico │      │ Dashboard │
-│ atualização│      │  e métricas  │      │ periódica │      │ e métricas│      │           │
+│atualização│      │ e métricas   │      │ periódica │      │ e métricas│      │           │
 └───────────┘      └──────────────┘      └───────────┘      └───────────┘      └───────────┘
 ```
 
