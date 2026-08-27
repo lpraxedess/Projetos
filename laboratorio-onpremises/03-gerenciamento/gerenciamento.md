@@ -1,14 +1,14 @@
 # ⚙️ Gerenciamento
 
-Documentação das práticas de gerenciamento de atualizações, aplicação de patches e acompanhamento de conformidade no ambiente **On-Premises**.
+Gerenciamento de atualizações, aplicação de patches e acompanhamento de conformidade no ambiente **On-Premises**, com uma camada de observabilidade construída sobre o WSUS.
 
 ## 🎯 Objetivo
 
-Utilizar o WSUS como fonte de dados para construir uma camada de observabilidade que permita acompanhar, de forma centralizada, a situação das máquinas, atualizações pendentes, falhas e ausência de comunicação dos clientes.
+O objetivo deste projeto foi ampliar a visibilidade operacional do **WSUS (Windows Server Update Services)**, transformando os dados de conformidade e atualização já disponibilizados pelo WSUS em indicadores, histórico e dashboards centralizados.
 
-A solução transforma informações operacionais do WSUS em métricas históricas e indicadores visuais, facilitando a identificação de máquinas que necessitam de intervenção.
+A solução não substitui o WSUS. Ela adiciona uma camada de observabilidade para facilitar o acompanhamento do ambiente e identificar rapidamente máquinas e atualizações que exigem atenção.
 
-## 🏗️ Solução
+## 🏗️ Arquitetura
 
 ```text
                     ┌─────────────────┐
@@ -27,8 +27,7 @@ A solução transforma informações operacionais do WSUS em métricas históric
                              ▼
                     ┌─────────────────┐
                     │     Telegraf    │
-                    │    Coleta /     │
-                    │    Transporte   │
+                    │ Coleta periódica│
                     └────────┬────────┘
                              │
                              ▼
@@ -46,38 +45,38 @@ A solução transforma informações operacionais do WSUS em métricas históric
                     └─────────────────┘
 ```
 
-## 📊 Informações monitoradas
+## 📊 Indicadores monitorados
 
-A coleta consolida informações relevantes do ambiente WSUS:
+A coleta consolida informações relevantes para o acompanhamento do ambiente:
 
 | Indicador | Descrição |
 |---|---|
-| 🖥️ **Total de máquinas** | Quantidade de clientes identificados pelo WSUS |
+| 🖥️ **Total de máquinas** | Clientes identificados pelo WSUS |
 | ✅ **Conformes** | Máquinas sem atualizações que exigem atenção |
 | 🟠 **Pendentes** | Máquinas com atualizações ainda não instaladas |
 | 🔴 **Falhas** | Máquinas com atualizações em estado de falha |
 | 🔄 **Reboot pendente** | Máquinas que necessitam de reinicialização |
 | ❓ **Unknown** | Máquinas com estado de atualização desconhecido |
-| 📡 **Sem reporte > 3 dias** | Clientes que não reportam ao WSUS há mais de três dias |
+| 📡 **Sem reporte > 3 dias** | Clientes sem reporte ao WSUS há mais de três dias |
 | 🔄 **Sincronização** | Resultado da última sincronização dos clientes |
 | 📦 **Atualizações pendentes** | KB, título e estado das atualizações por máquina |
 
-## 🗄️ Métricas no InfluxDB
+## 🗄️ Dados no InfluxDB
 
-Os dados são organizados em três medições:
+Os dados são organizados em três medições principais:
 
 ### `wsus-stats`
 
-Indicadores consolidados do ambiente, utilizados para números gerais e gráficos históricos.
+Armazena os indicadores consolidados do ambiente, permitindo acompanhar os números gerais e sua evolução histórica.
 
 ### `wsus-machines`
 
-Informações individuais das máquinas, incluindo:
+Representa a situação individual das máquinas, incluindo:
 
 - nome da máquina;
 - status de conformidade;
-- atualizações pendentes;
-- falhas;
+- quantidade de atualizações pendentes;
+- quantidade de falhas;
 - reinicialização pendente;
 - estado desconhecido;
 - último reporte;
@@ -85,32 +84,50 @@ Informações individuais das máquinas, incluindo:
 
 ### `wsus-updates`
 
-Detalhamento das atualizações que exigem atenção, relacionando:
+Registra as atualizações que exigem atenção, relacionando:
 
 - máquina;
 - KB;
-- atualização;
+- título da atualização;
 - estado;
 - ID da atualização.
 
-## 📈 Grafana
+## 📈 Dashboard Grafana
 
-O dashboard permite visualizar a situação do ambiente de forma centralizada, incluindo:
+O dashboard centraliza a visualização do ambiente e permite acompanhar:
 
-- visão geral da conformidade;
-- máquinas sem reporte há mais de 3 dias;
+- visão geral de conformidade;
+- máquinas conformes, pendentes e com falha;
 - atualizações pendentes por máquina;
-- evolução das máquinas pendentes;
-- evolução das máquinas com falha;
-- acompanhamento da sincronização.
+- atualizações em estado de falha;
+- máquinas sem reporte há mais de 3 dias;
+- status de sincronização dos clientes;
+- evolução histórica das máquinas pendentes;
+- evolução histórica das máquinas com falha.
 
 ## 🔄 Funcionamento
 
-O PowerShell consulta diretamente a API administrativa do WSUS e consolida os dados de conformidade e atualização.
+O **PowerShell**, utilizando **PoshWSUS**, consulta a API administrativa do WSUS e consolida os dados de conformidade e atualização.
 
-O **Telegraf** executa o script periodicamente e envia as métricas para o **InfluxDB**, que mantém o histórico utilizado pelo **Grafana**.
+O **Telegraf** executa o script automaticamente em intervalo configurável e envia as métricas para o **InfluxDB**.
 
-O intervalo de coleta é configurável no `telegraf.conf`.
+O **InfluxDB** mantém o histórico dos dados, enquanto o **Grafana** utiliza essas informações para apresentar indicadores e tendências do ambiente.
+
+No ambiente documentado, a coleta está configurada para ocorrer a cada **10 minutos**.
+
+## 💡 Resultado
+
+O principal ganho da solução foi transformar informações operacionais do WSUS em uma **visão centralizada, histórica e de rápida interpretação**.
+
+Em vez de depender exclusivamente de consultas operacionais dentro do WSUS para identificar situações de atenção, o dashboard permite acompanhar de forma mais direta:
+
+- onde estão as pendências;
+- quais máquinas apresentam falhas;
+- quais clientes deixaram de reportar;
+- quais atualizações aprovadas ainda não foram instaladas;
+- como esses indicadores evoluem ao longo do tempo.
+
+A proposta é complementar o WSUS com observabilidade, facilitando o acompanhamento operacional e apoiando a identificação de pontos que necessitam de intervenção.
 
 ## 🧰 Tecnologias
 
@@ -120,20 +137,18 @@ O intervalo de coleta é configurável no `telegraf.conf`.
 | 🔄 **WSUS** | Gerenciamento de atualizações |
 | 💻 **PowerShell** | Automação e coleta |
 | 🔌 **PoshWSUS** | Integração com o WSUS |
-| 📥 **Telegraf** | Coleta e envio das métricas |
-| 🗄️ **InfluxDB** | Armazenamento das séries temporais |
+| 📥 **Telegraf 1.39.3** | Execução periódica e coleta das métricas |
+| 🗄️ **InfluxDB 1.12.4** | Armazenamento do histórico |
 | 📊 **Grafana** | Visualização e acompanhamento |
 
 ## 🖼️ Evidência
 
-Dashboard desenvolvido para acompanhamento do ambiente WSUS:
+Dashboard utilizado para demonstrar a solução em funcionamento:
 
 > **Inserir aqui o print do dashboard.**
 
-## 💡 Resultado
+## 📚 Relação com o laboratório
 
-A solução adiciona uma camada de observabilidade ao WSUS, permitindo sair de uma visão predominantemente operacional e passar a acompanhar indicadores, histórico e situações que exigem intervenção em um único dashboard.
-
-O objetivo não é substituir o WSUS, mas **ampliar a visibilidade sobre os dados que ele já disponibiliza**, facilitando o acompanhamento da saúde do ambiente e da conformidade das máquinas.
+Este projeto faz parte da área de **Gerenciamento** do laboratório On-Premises e complementa as práticas relacionadas a atualizações, patches, monitoramento e conformidade.
 
 [← Voltar ao Laboratório](../README.md)
